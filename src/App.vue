@@ -1,5 +1,6 @@
 <script>
 import { cars as carsData } from '/src/data/cars.ts';
+import Header from '/src/components/atoms/Header/Header.vue';
 
 export default {
 	setup() {
@@ -7,11 +8,14 @@ export default {
 
 		return { cars };
 	},
+	components: {
+		Header,
+	},
 };
 </script>
 
 <template>
-	<h1>Segment C Hatchback cars <span>(late 1990's, early 2000's)</span></h1>
+	<Header />
 	<div>
 		<div v-for="car in cars" :key="car.brand">{{ car.brand }} {{ car.model }}</div>
 	</div>
