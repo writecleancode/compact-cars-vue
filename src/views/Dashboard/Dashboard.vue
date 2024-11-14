@@ -1,7 +1,8 @@
 <script>
+import { cars as carsData } from '@/data/cars.ts';
 import SearchInput from '@/components/atoms/SearchInput/SearchInput.vue';
 import SortSelect from '@/components/atoms/SortSelect/SortSelect.vue';
-import { cars as carsData } from '@/data/cars.ts';
+import CarCard from '../../components/molecules/CarCard/CarCard.vue';
 
 export default {
 	setup() {
@@ -14,6 +15,7 @@ export default {
 	components: {
 		SearchInput,
 		SortSelect,
+		CarCard,
 	},
 };
 </script>
@@ -30,7 +32,7 @@ export default {
 			</div>
 		</div>
 		<div class="car-cards-wrapper">
-			<div v-for="car in cars" :key="car.brand">{{ car.brand }} {{ car.model }}</div>
+			<CarCard v-for="car in cars" :key="car.id" v-bind:car="car" />
 		</div>
 	</div>
 </template>
