@@ -15,7 +15,7 @@ export default {
 
 <template>
 	<div class="wrapper">
-		<StyledTitle content="@TEMP" />
+		<StyledTitle>{{ title }}</StyledTitle>
 		<ul class="filter-items">
 			<li class="filter-item">@TEMP</li>
 			<li class="filter-item">@TEMP</li>
