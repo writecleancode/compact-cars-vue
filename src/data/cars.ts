@@ -1,10 +1,10 @@
 // import { CarsType } from 'src/types/types';
-// import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 // export const cars: CarsType = [
 export const cars = [
 	{
-		// id: uuid(),
+		id: uuid(),
 		brand: 'Alfa Romeo',
 		model: '146',
 		generation: 'I (Type 930)',
@@ -17,7 +17,7 @@ export const cars = [
 		},
 	},
 	{
-		// id: uuid(),
+		id: uuid(),
 		brand: 'Audi',
 		model: 'A3',
 		generation: 'I (8L)',
@@ -31,7 +31,7 @@ export const cars = [
 		},
 	},
 	{
-		// id: uuid(),
+		id: uuid(),
 		brand: 'BMW',
 		model: '3 Compact',
 		generation: 'I (E36)',
@@ -44,7 +44,7 @@ export const cars = [
 		},
 	},
 	{
-		// id: uuid(),
+		id: uuid(),
 		brand: 'Citroen',
 		model: 'Xsara',
 		generation: 'I (N1)',
@@ -57,7 +57,7 @@ export const cars = [
 		},
 	},
 	{
-		// id: uuid(),
+		id: uuid(),
 		brand: 'Fiat',
 		model: 'Brava',
 		generation: 'I (Type 182)',
@@ -70,7 +70,7 @@ export const cars = [
 		},
 	},
 	{
-		// id: uuid(),
+		id: uuid(),
 		brand: 'Ford',
 		model: 'Focus',
 		generation: 'I (C170)',
@@ -84,7 +84,7 @@ export const cars = [
 		},
 	},
 	{
-		// id: uuid(),
+		id: uuid(),
 		brand: 'Honda',
 		model: 'Civic',
 		generation: 'VI',
@@ -98,7 +98,7 @@ export const cars = [
 		},
 	},
 	{
-		// id: uuid(),
+		id: uuid(),
 		brand: 'Lancia',
 		model: 'Delta',
 		generation: 'II',
@@ -112,7 +112,7 @@ export const cars = [
 		},
 	},
 	{
-		// id: uuid(),
+		id: uuid(),
 		brand: 'Mazda',
 		model: '323',
 		generation: 'VI (BJ)',
@@ -125,7 +125,7 @@ export const cars = [
 		},
 	},
 	{
-		// id: uuid(),
+		id: uuid(),
 		brand: 'Nissan',
 		model: 'Almera',
 		generation: 'I (N15)',
@@ -138,7 +138,7 @@ export const cars = [
 		},
 	},
 	{
-		// id: uuid(),
+		id: uuid(),
 		brand: 'Opel',
 		model: 'Astra',
 		generation: 'II (G)',
@@ -152,7 +152,7 @@ export const cars = [
 		},
 	},
 	{
-		// id: uuid(),
+		id: uuid(),
 		brand: 'Peugeot',
 		model: '306',
 		generation: 'I (7A/C)',
@@ -165,7 +165,7 @@ export const cars = [
 		},
 	},
 	{
-		// id: uuid(),
+		id: uuid(),
 		brand: 'Renault',
 		model: 'Megane',
 		generation: 'I (BA)',
@@ -179,7 +179,7 @@ export const cars = [
 		},
 	},
 	{
-		// id: uuid(),
+		id: uuid(),
 		brand: 'Seat',
 		model: 'Leon',
 		generation: 'I (1M)',
@@ -192,7 +192,7 @@ export const cars = [
 		},
 	},
 	{
-		// id: uuid(),
+		id: uuid(),
 		brand: 'Toyota',
 		model: 'Corolla',
 		generation: 'VIII (E110)',
@@ -205,7 +205,7 @@ export const cars = [
 		},
 	},
 	{
-		// id: uuid(),
+		id: uuid(),
 		brand: 'Volkswagen',
 		model: 'Golf',
 		generation: 'IV (1J)',
