@@ -1,7 +1,18 @@
+<script>
+import BurgerButton from '@/components/atoms/BurgerButton/BurgerButton.vue';
+
+export default {
+	components: {
+		BurgerButton,
+	},
+};
+</script>
+
 <template>
 	<div class="wrapper">
 		<h1 class="h1">Segment C Hatchback cars <span>(late 1990's, early 2000's)</span></h1>
 	</div>
+	<BurgerButton />
 </template>
 
 <style scoped>
