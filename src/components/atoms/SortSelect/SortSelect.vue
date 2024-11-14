@@ -1,6 +1,17 @@
+<script>
+export default {
+	props: {
+		defaultOption: {
+			type: String,
+		},
+	},
+};
+</script>
+
 <template>
 	<div class="wrapper">
 		<select aria-label="sort cars" class="styled-select">
+			<option value="" disabled>{{ defaultOption }}</option>
 			<option value="">@TEMP</option>
 			<option value="">@TEMP</option>
 			<option value="">@TEMP</option>

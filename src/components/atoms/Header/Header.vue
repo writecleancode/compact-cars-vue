@@ -2,6 +2,10 @@
 import BurgerButton from '@/components/atoms/BurgerButton/BurgerButton.vue';
 
 export default {
+	props: {
+		isNavActive: Boolean,
+	},
+
 	components: {
 		BurgerButton,
 	},
@@ -12,7 +16,7 @@ export default {
 	<div class="wrapper">
 		<h1 class="h1">Segment C Hatchback cars <span>(late 1990's, early 2000's)</span></h1>
 	</div>
-	<BurgerButton />
+	<BurgerButton v-bind:isNavActive="isNavActive" />
 </template>
 
 <style scoped>

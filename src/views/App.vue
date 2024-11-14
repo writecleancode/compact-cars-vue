@@ -5,6 +5,16 @@ import FiltersManagement from '@/components/organisms/FiltersManagement/FiltersM
 import Dashboard from '@/views/Dashboard/Dashboard.vue';
 
 export default {
+	data() {
+		const isNavActive = false;
+		const comparedCars = [];
+
+		return {
+			isNavActive,
+			comparedCars,
+		};
+	},
+
 	components: {
 		Header,
 		NavBar,
@@ -16,8 +26,8 @@ export default {
 
 <template>
 	<div class="wrapper">
-		<Header />
-		<NavBar />
+		<Header v-bind:isNavActive="isNavActive" />
+		<NavBar v-bind:isNavActive="isNavActive" v-bind:comparedCarsNumber="comparedCars.length" />
 		<FiltersManagement />
 		<Dashboard />
 	</div>

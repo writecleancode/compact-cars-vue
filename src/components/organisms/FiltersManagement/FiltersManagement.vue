@@ -11,19 +11,19 @@ export default {
 </script>
 
 <template>
-	<div class="wrapper">
+	<div class="filters-wrapper">
 		<FilterBoxYears />
 		<FilterBoxBrands />
 	</div>
 </template>
 
 <style scoped>
-.wrapper {
+.filters-wrapper {
 	display: none;
 }
 
 @media (min-width: 1200px) {
-	.wrapper {
+	.filters-wrapper {
 		display: flex;
 		flex-direction: column;
 		gap: 4.8rem;

@@ -1,5 +1,16 @@
+<script>
+export default {
+	props: {
+		content: {
+			type: String,
+			required: true,
+		},
+	},
+};
+</script>
+
 <template>
-	<p class="styled-title"></p>
+	<p class="styled-title">{{ content }}</p>
 </template>
 
 <style scoped>

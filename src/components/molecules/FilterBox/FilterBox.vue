@@ -2,6 +2,11 @@
 import StyledTitle from '@/components/atoms/StyledTitle/StyledTitle.vue';
 
 export default {
+	props: {
+		title: {
+			type: String,
+		},
+	},
 	components: {
 		StyledTitle,
 	},
@@ -10,7 +15,7 @@ export default {
 
 <template>
 	<div class="wrapper">
-		<StyledTitle />
+		<StyledTitle content="@TEMP" />
 		<ul class="filter-items">
 			<li class="filter-item">@TEMP</li>
 			<li class="filter-item">@TEMP</li>

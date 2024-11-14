@@ -9,5 +9,5 @@ export default {
 </script>
 
 <template>
-	<FilterBox />
+	<FilterBox title="Choose brand(s):" />
 </template>

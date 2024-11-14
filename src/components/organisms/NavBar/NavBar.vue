@@ -1,19 +1,35 @@
+<script>
+export default {
+	props: {
+		isNavActive: {
+			type: Boolean,
+		},
+		comparedCarsNumber: {
+			type: Number,
+			default: 0,
+		},
+	},
+};
+</script>
+
 <template>
-	<nav class="wrapper">
+	<nav v-bind:class="`wrapper ${isNavActive ? 'active' : ''}`">
 		<ul class="nav-links-list">
 			<li><a href="#" class="nav-link">Dashboard</a></li>
-			<li><a href="#" class="nav-link">Comparison</a></li>
+			<li>
+				<a href="#" class="nav-link">Comparison {{ comparedCarsNumber > 0 ? `(${comparedCarsNumber})` : ' ' }}</a>
+			</li>
 			<li><a href="#" class="nav-link">Add car</a></li>
 		</ul>
 	</nav>
-	<!-- <div class="background-tint"></div> -->
+	<div class="background-tint"></div>
 </template>
 
 <style scoped>
 .wrapper {
 	position: absolute;
 	z-index: 2;
-	/* translate: ${({ $isNavActive }) => ($isNavActive ? '0' : '-100%')}; */
+	translate: -100%;
 	padding: 2.4rem;
 	padding-right: 3.2rem;
 	border-right: 1px solid #d8d8d8;
@@ -21,8 +37,8 @@
 	min-height: 100vh;
 	min-height: 100svh;
 	background-color: #fff;
-	/* visibility: ${({ $isNavActive }) => ($isNavActive ? 'visible' : 'hidden')}; */
-	/* transition: ${({ $isNavActive }) => ($isNavActive ? 'translate 0.2s' : 'translate 0.2s, visibility .2s .2s')}; */
+	visibility: hidden;
+	transition: translate 0.2s, visibility 0.2s 0.2s;
 }
 
 .nav-links-list {
@@ -73,8 +89,23 @@
 	min-height: 100vh;
 	min-height: 100svh;
 	background-color: rgba(0, 0, 0, 0.3);
-	/* opacity: ${({ $isNavActive }) => ($isNavActive ? '1' : '0')}; */
-	transition: opacity 0.1s;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.1s, visibility 0.2s 0.2s;
+}
+
+.active {
+	&.wrapper {
+		translate: 0;
+		visibility: visible;
+		transition: translate 0.2s;
+	}
+
+	&.background-tint {
+		opacity: 1;
+		visibility: visible;
+		transition: opacity 0.1s;
+	}
 }
 
 @media (min-width: 900px) {

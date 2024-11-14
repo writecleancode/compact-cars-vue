@@ -1,5 +1,17 @@
+<script>
+export default {
+	props: {
+		isNavActive: {
+			type: Boolean,
+		},
+	},
+};
+</script>
+
 <template>
-	<button class="burger-btn">
+	<button
+		v-bind:class="`burger-btn ${isNavActive ? 'active' : ''}`"
+		v-bind:aria-label="`${isNavActive ? 'close navigation' : 'open navigation'}`">
 		<span className="burger-line burger-line--top"></span>
 		<span className="burger-line burger-line--middle"></span>
 		<span className="burger-line burger-line--bottom"></span>
@@ -27,26 +39,54 @@
 
 		&--top,
 		&--bottom {
-			/* transition: ${({ $isActive }) =>
-				$isActive ? 'translate 0.1s, rotate 0.1s 0.1s, scale 0.1s 0.05s' : 'translate 0.1s 0.1s, rotate 0.1s, scale 0.1s 0.05s'}; */
+			transition: translate 0.1s 0.1s, rotate 0.1s, scale 0.1s 0.05s;
 		}
 
 		&--middle {
-			/* opacity: ${({ $isActive }) => ($isActive ? '0' : '1')}; */
+			opacity: 1;
 			transition-property: opacity;
 			transition-delay: 0.1s;
 		}
 
 		&--top {
-			/* translate: ${({ $isActive }) => ($isActive ? '0 8px' : '0 0')}; */
-			/* rotate: ${({ $isActive }) => ($isActive ? '45deg' : 'none')}; */
-			/* scale: ${({ $isActive }) => ($isActive ? '1.05 1' : '1 1')}; */
+			translate: 0 0;
+			rotate: none;
+			scale: 1 1;
 		}
 
 		&--bottom {
-			/* translate: ${({ $isActive }) => ($isActive ? '0 -8px' : '0 0')}; */
-			/* rotate: ${({ $isActive }) => ($isActive ? '-45deg' : 'none')}; */
-			/* scale: ${({ $isActive }) => ($isActive ? '1.05 1' : '1 1')}; */
+			translate: 0 0;
+			rotate: none;
+			scale: 1 1;
+		}
+	}
+}
+
+.active {
+	&.burger-btn {
+		.burger-line {
+			&--top,
+			&--bottom {
+				transition: translate 0.1s, rotate 0.1s 0.1s, scale 0.1s 0.05s;
+			}
+
+			&--middle {
+				opacity: 0;
+				transition-property: opacity;
+				transition-delay: 0.1s;
+			}
+
+			&--top {
+				translate: 0 8px;
+				rotate: 45deg;
+				scale: 1.05 1;
+			}
+
+			&--bottom {
+				translate: 0 -8px;
+				rotate: -45deg;
+				scale: 1.05 1;
+			}
 		}
 	}
 }

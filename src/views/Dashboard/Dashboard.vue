@@ -11,10 +11,10 @@ export default {
 			cars,
 		};
 	},
-    components: {
-        SearchInput,
-        SortSelect,
-    }
+	components: {
+		SearchInput,
+		SortSelect,
+	},
 };
 </script>
 
@@ -22,8 +22,8 @@ export default {
 	<div>
 		<div class="controls-wrapper">
 			<div class="search-wrapper">
-                <SearchInput />
-                <SortSelect />
+				<SearchInput />
+				<SortSelect defaultOption="sort cars" />
 			</div>
 			<div class="filters-wrapper">
 				<button class="manage-filters-btn">manage filters</button>
