@@ -1,5 +1,6 @@
 <script>
 import { cars as carsData } from '@/data/cars.ts';
+import { selectOptions } from '../../data/select';
 import SearchInput from '@/components/atoms/SearchInput/SearchInput.vue';
 import SortSelect from '@/components/atoms/SortSelect/SortSelect.vue';
 import CarCard from '../../components/molecules/CarCard/CarCard.vue';
@@ -10,6 +11,7 @@ export default {
 
 		return {
 			cars,
+			selectOptions,
 		};
 	},
 	components: {
@@ -25,7 +27,7 @@ export default {
 		<div class="controls-wrapper">
 			<div class="search-wrapper">
 				<SearchInput />
-				<SortSelect defaultOption="sort cars" />
+				<SortSelect v-bind:options="selectOptions" defaultOption="sort cars" />
 			</div>
 			<div class="filters-wrapper">
 				<button class="manage-filters-btn">manage filters</button>

@@ -1,6 +1,9 @@
 <script>
 export default {
 	props: {
+		options: {
+			type: Object,
+		},
 		defaultOption: {
 			type: String,
 		},
@@ -11,11 +14,8 @@ export default {
 <template>
 	<div class="wrapper">
 		<select aria-label="sort cars" class="styled-select">
-			<option value="" disabled>{{ defaultOption }}</option>
-			<option value="">@TEMP</option>
-			<option value="">@TEMP</option>
-			<option value="">@TEMP</option>
-			<option value="">@TEMP</option>
+			<option v-if="defaultOption" value="" disabled>{{ defaultOption }}</option>
+			<option v-for="option in options" v-bind:value="option.value">{{ option.text }}</option>
 		</select>
 	</div>
 </template>
