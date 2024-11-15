@@ -1,8 +1,18 @@
 <script>
-import FilterBoxBrands from '@/components/molecules/FilterBoxBrands/FilterBoxBrands.vue';
+import { filterBrands, filterYears } from '../../../data/filters';
 import FilterBoxYears from '@/components/molecules/FilterBoxYears/FilterBoxYears.vue';
+import FilterBoxBrands from '@/components/molecules/FilterBoxBrands/FilterBoxBrands.vue';
 
 export default {
+	data() {
+		const filterYearsData = filterYears.map(option => ({ value: option, isActive: false }));
+		const filterBrandsData = filterBrands.map(option => ({ value: option, isActive: false }));
+		const usersFilterPreferences = { brands: filterBrandsData, years: filterYearsData };
+
+		return {
+			usersFilterPreferences,
+		};
+	},
 	components: {
 		FilterBoxYears,
 		FilterBoxBrands,
@@ -12,8 +22,8 @@ export default {
 
 <template>
 	<div class="filters-wrapper">
-		<FilterBoxYears />
-		<FilterBoxBrands />
+		<FilterBoxYears v-bind:options="usersFilterPreferences.years" />
+		<FilterBoxBrands v-bind:options="usersFilterPreferences.brands" />
 	</div>
 </template>
 

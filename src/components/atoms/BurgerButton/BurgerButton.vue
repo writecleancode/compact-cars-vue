@@ -12,9 +12,9 @@ export default {
 	<button
 		v-bind:class="`burger-btn ${isNavActive ? 'active' : ''}`"
 		v-bind:aria-label="`${isNavActive ? 'close navigation' : 'open navigation'}`">
-		<span className="burger-line burger-line--top"></span>
-		<span className="burger-line burger-line--middle"></span>
-		<span className="burger-line burger-line--bottom"></span>
+		<span className="burger-btn-line burger-btn-line--top"></span>
+		<span className="burger-btn-line burger-btn-line--middle"></span>
+		<span className="burger-btn-line burger-btn-line--bottom"></span>
 	</button>
 </template>
 
@@ -31,7 +31,7 @@ export default {
 	border: none;
 	background-color: transparent;
 
-	.burger-line {
+	.burger-btn-line {
 		display: inline-block;
 		/* width: ${({ theme }) => theme.burgerButton.width}; */
 		height: 3px;
@@ -64,7 +64,7 @@ export default {
 
 .active {
 	&.burger-btn {
-		.burger-line {
+		.burger-btn-line {
 			&--top,
 			&--bottom {
 				transition: translate 0.1s, rotate 0.1s 0.1s, scale 0.1s 0.05s;

@@ -1,15 +1,21 @@
 <script>
 import CarImage from '../../atoms/CarImage/CarImage.vue';
 import CarInfoBox from '../../atoms/CarInfoBox/CarInfoBox.vue';
+import CompareButton from '../../atoms/CompareButton/CompareButton.vue';
 
 export default {
 	props: {
 		car: Object,
+		isCompared: {
+			type: Boolean,
+			default: false,
+		},
 	},
 
 	components: {
 		CarImage,
 		CarInfoBox,
+		CompareButton,
 	},
 };
 </script>
@@ -22,6 +28,9 @@ export default {
 			<CarInfoBox title="Generation" v-bind:content="car.generation || 'unknown'" />
 			<CarInfoBox title="Production years" v-bind:content="`${car.productionStartYear} - ${car.productionEndYear}`" />
 			<CarInfoBox title="Facelift" v-bind:content="car.facelift || 'unknown'" />
+		</div>
+		<div class="buttons-wrapper" v-if="car.id">
+			<CompareButton v-bind:isCompared="isCompared" />
 		</div>
 	</div>
 </template>
@@ -51,6 +60,21 @@ export default {
 	flex-direction: column;
 	gap: 1.2rem;
 	margin-top: 0.8rem;
+}
+
+.buttons-wrapper {
+	position: absolute;
+	bottom: 0.6rem;
+	right: 0.6rem;
+	display: grid;
+	grid-template-rows: repeat(2, 1fr);
+	gap: 0.4rem;
+
+	@container (min-width: 190px) {
+		right: 0.8rem;
+		bottom: 0.8rem;
+		gap: 0.6rem;
+	}
 }
 
 @media (min-width: 1600px) {

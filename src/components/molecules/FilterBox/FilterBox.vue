@@ -6,6 +6,9 @@ export default {
 		title: {
 			type: String,
 		},
+		options: {
+			type: Object,
+		},
 	},
 	components: {
 		StyledTitle,
@@ -17,12 +20,13 @@ export default {
 	<div class="wrapper">
 		<StyledTitle>{{ title }}</StyledTitle>
 		<ul class="filter-items">
-			<li class="filter-item">@TEMP</li>
-			<li class="filter-item">@TEMP</li>
-			<li class="filter-item">@TEMP</li>
-			<li class="filter-item">@TEMP</li>
-			<li class="filter-item">@TEMP</li>
-			<li class="filter-item">@TEMP</li>
+			<li
+				v-bind:class="`filter-item ${option.isActive ? 'active-option' : ''}`"
+				v-for="option in options"
+				v-bind:value="option.value"
+				:key="option.value">
+				{{ option.value }}
+			</li>
 		</ul>
 	</div>
 </template>
@@ -48,9 +52,13 @@ export default {
 	align-items: center;
 	padding: 0.4rem 1.6rem;
 	/* min-width: ${({ $isYears }) => ($isYears ? '72px' : 'unset')}; */
-	/* background-color: ${({ $isActive }) => ($isActive ? '#bdeeb1' : '#d9d9d9')}; */
+	background-color: #d9d9d9;
 	font-size: 1.6rem;
 	cursor: pointer;
+
+	&.active-option {
+		background-color: #bdeeb1;
+	}
 }
 
 @media (min-width: 1200px) {
