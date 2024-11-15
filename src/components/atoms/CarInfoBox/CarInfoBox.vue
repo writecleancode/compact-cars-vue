@@ -1,27 +1,31 @@
 <script>
 export default {
 	props: {
-		title: String,
-		content: String,
+		title: {
+			type: String,
+		},
+		content: {
+			type: String,
+		},
 	},
 };
 </script>
 
 <template>
 	<div>
-		<p class="styled-title">{{ title }}</p>
-		<p class="styled-info">{{ content }}</p>
+		<p class="styled-info-title">{{ title }}</p>
+		<p class="styled-info-content">{{ content }}</p>
 	</div>
 </template>
 
 <style scoped>
-.styled-title {
+.styled-info-title {
 	margin-bottom: 0.2rem;
 	font-size: 1.6rem;
 	font-weight: bold;
 }
 
-.styled-info {
+.styled-info-content {
 	font-size: 1.4rem;
 }
 </style>

@@ -1,23 +1,25 @@
 <script>
 export default {
 	props: {
-		isCompared: Boolean,
+		isCompared: {
+			type: Boolean,
+		},
 	},
 };
 </script>
 
 <template>
 	<button
-		v-bind:class="`wrapper ${isCompared ? 'is-compared' : ''}`"
+		v-bind:class="`compare-btn ${isCompared ? 'is-compared' : ''}`"
 		v-bind:title="isCompared ? 'remove car from comparison' : 'add car to comparison'"
 		v-bind:aria-label="isCompared ? 'remove car from comparison' : 'add car to comparison'">
-		<span class="button-bar button-bar--vertical"></span>
-		<span class="button-bar button-bar--horizontal"></span>
+		<span class="compare-btn-bar compare-btn-bar--vertical"></span>
+		<span class="compare-btn-bar compare-btn-bar--horizontal"></span>
 	</button>
 </template>
 
 <style scoped>
-.wrapper {
+.compare-btn {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -34,12 +36,12 @@ export default {
 		color: #555555;
 	}
 
-	&:hover .button-bar {
+	&:hover .compare-btn-bar {
 		background-color: #555;
 	}
 }
 
-.button-bar {
+.compare-btn-bar {
 	position: absolute;
 	border-radius: 100px;
 	background-color: #fff;
@@ -61,7 +63,7 @@ export default {
 }
 
 .is-compared {
-	.button-bar {
+	.compare-btn-bar {
 		&--vertical {
 			rotate: 630deg;
 		}
