@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import Header from '@/components/atoms/Header/Header.vue';
 import NavBar from '@/components/organisms/NavBar/NavBar.vue';
 import FiltersManagement from '@/components/organisms/FiltersManagement/FiltersManagement.vue';
