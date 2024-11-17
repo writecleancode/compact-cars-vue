@@ -9,8 +9,11 @@ export default {
 		const filterBrandsData = filterBrands.map(option => ({ value: option, isActive: false }));
 		const usersFilterPreferences = { brands: filterBrandsData, years: filterYearsData };
 
+		const handleFilterPreferences = () => console.log('Handled filter preferences');
+
 		return {
 			usersFilterPreferences,
+			handleFilterPreferences,
 		};
 	},
 	components: {
@@ -22,8 +25,8 @@ export default {
 
 <template>
 	<div class="filters-wrapper">
-		<FilterBoxYears v-bind:options="usersFilterPreferences.years" />
-		<FilterBoxBrands v-bind:options="usersFilterPreferences.brands" />
+		<FilterBoxYears v-bind:options="usersFilterPreferences.years" v-bind:handleFilterPreferences />
+		<FilterBoxBrands v-bind:options="usersFilterPreferences.brands" v-bind:handleFilterPreferences />
 	</div>
 </template>
 

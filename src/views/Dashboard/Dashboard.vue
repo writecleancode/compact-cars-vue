@@ -9,15 +9,23 @@ export default {
 	setup() {
 		const cars = carsData;
 
+		const openModal = () => console.log('modal opened');
+
 		return {
 			cars,
 			selectOptions,
+			openModal,
 		};
 	},
 	components: {
 		SearchInput,
 		SortSelect,
 		CarCard,
+	},
+	props: {
+		comparedCars: {
+			type: Array,
+		},
 	},
 };
 </script>
@@ -30,13 +38,24 @@ export default {
 				<SortSelect v-bind:options="selectOptions" defaultOption="sort cars" />
 			</div>
 			<div class="filters-wrapper">
-				<button class="manage-filters-btn">manage filters</button>
+				<button class="manage-filters-btn" v-on:click="openModal">manage filters</button>
 			</div>
 		</div>
 		<div class="car-cards-wrapper">
-			<CarCard v-for="car in cars" :key="car.id" v-bind:car />
+			<CarCard
+				v-for="car in cars"
+				:key="car.id"
+				v-bind:car
+				v-bind:isCompared="comparedCars.some(comparedCar => comparedCar.id === car.id)" />
 		</div>
-	</div>
+
+		<!-- 
+			<Modal isOpen={isModalOpen} closeModal={closeModal}>
+				<FilterBoxYears />
+				<FilterBoxBrands />
+			</Modal>
+		-->
+		</div>
 </template>
 
 <style scoped>

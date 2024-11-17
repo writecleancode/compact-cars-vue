@@ -9,7 +9,11 @@ export default {
 		options: {
 			type: Object,
 		},
+		handleFilter: {
+			type: Function,
+		},
 	},
+
 	components: {
 		StyledTitle,
 	},
@@ -20,7 +24,11 @@ export default {
 	<div class="wrapper">
 		<StyledTitle v-bind:isFilterTitle="true">{{ title }}</StyledTitle>
 		<ul class="filter-items">
-			<li v-bind:class="`filter-item ${option.isActive ? 'active-option' : ''}`" v-for="option in options" :key="option.value">
+			<li
+				v-bind:class="`filter-item ${option.isActive ? 'active-option' : ''}`"
+				v-for="option in options"
+				:key="option.value"
+				v-on:click="handleFilter">
 				{{ option.value }}
 			</li>
 		</ul>

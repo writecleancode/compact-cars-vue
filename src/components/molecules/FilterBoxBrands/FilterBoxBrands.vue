@@ -6,6 +6,9 @@ export default {
 		options: {
 			type: Object,
 		},
+		handleFilterPreferences: {
+			type: Function,
+		},
 	},
 	components: {
 		FilterBox,
@@ -14,5 +17,5 @@ export default {
 </script>
 
 <template>
-	<FilterBox title="Choose brand(s):" v-bind:options />
+	<FilterBox title="Choose brand(s):" v-bind:options v-bind:handleFilter="handleFilterPreferences" />
 </template>

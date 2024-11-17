@@ -34,7 +34,7 @@ export default {
 		<NavBar v-bind:isNavActive v-bind:comparedCarsNumber="comparedCars.length" />
 		<FiltersManagement />
 		<div class="content-wrapper">
-			<Dashboard />
+			<Dashboard v-bind:comparedCars />
 		</div>
 		<SuccessNotification
 			v-if="successNotifications.length > 0"

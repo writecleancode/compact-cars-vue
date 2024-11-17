@@ -1,5 +1,12 @@
 <script>
 export default {
+	data() {
+		const closeMobileNav = () => console.log('Closed mobile nav');
+
+		return {
+			closeMobileNav,
+		};
+	},
 	props: {
 		isNavActive: {
 			type: Boolean,
@@ -22,7 +29,7 @@ export default {
 			<li><a href="#" class="nav-link">Add car</a></li>
 		</ul>
 	</nav>
-	<div class="background-tint"></div>
+	<div class="background-tint" v-on:click="closeMobileNav"></div>
 </template>
 
 <style scoped>

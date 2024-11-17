@@ -32,7 +32,7 @@ export default {
 			<CarInfoBox title="Facelift" v-bind:content="car.facelift || 'unknown'" />
 		</div>
 		<div class="buttons-wrapper" v-if="car.id">
-			<CompareButton v-bind:isCompared="car.isCompared" />
+			<CompareButton v-bind:isCompared="isCompared" />
 		</div>
 	</div>
 </template>

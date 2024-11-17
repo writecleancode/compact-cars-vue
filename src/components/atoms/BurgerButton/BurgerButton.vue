@@ -1,5 +1,12 @@
 <script>
 export default {
+	data() {
+		const handleMobileNav = () => console.log('handling mobile nav');
+
+		return {
+			handleMobileNav,
+		};
+	},
 	props: {
 		isNavActive: {
 			type: Boolean,
@@ -10,8 +17,9 @@ export default {
 
 <template>
 	<button
-		v-bind:class="`burger-btn ${isNavActive ? 'active' : ''}`"
-		v-bind:aria-label="`${isNavActive ? 'close navigation' : 'open navigation'}`">
+		v-bind:class="`burger-btn ${isNavActive} ? 'active' : ''`"
+		v-bind:aria-label="`${isNavActive ? 'close navigation' : 'open navigation'}`"
+		v-on:click="handleMobileNav">
 		<span className="burger-btn-line burger-btn-line--top"></span>
 		<span className="burger-btn-line burger-btn-line--middle"></span>
 		<span className="burger-btn-line burger-btn-line--bottom"></span>
