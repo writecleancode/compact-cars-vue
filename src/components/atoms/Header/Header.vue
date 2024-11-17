@@ -3,7 +3,9 @@ import BurgerButton from '@/components/atoms/BurgerButton/BurgerButton.vue';
 
 export default {
 	props: {
-		isNavActive: Boolean,
+		isNavActive: {
+			type: Boolean,
+		},
 	},
 
 	components: {
@@ -13,14 +15,14 @@ export default {
 </script>
 
 <template>
-	<div class="wrapper">
+	<div class="header-wrapper">
 		<h1 class="h1">Segment C Hatchback cars <span>(late 1990's, early 2000's)</span></h1>
 	</div>
-	<BurgerButton v-bind:isNavActive="isNavActive" />
+	<BurgerButton v-bind:isNavActive />
 </template>
 
 <style scoped>
-.wrapper {
+.header-wrapper {
 	position: relative;
 	/* padding: ${({ theme }) => `1.4rem calc(${theme.burgerButton.width} + ${theme.burgerButton.padding} * 2 + 1.6rem) 1.2rem`}; */
 	border-bottom: 1px solid #e4e4e4;
@@ -52,7 +54,7 @@ export default {
 }
 
 @media (min-width: 640px) {
-	.wrapper {
+	.header-wrapper {
 		/* padding: ${({ theme }) => `1.6rem calc(${theme.burgerButton.width} + ${theme.burgerButton.padding} * 2 + 2.4rem)`}; */
 	}
 
@@ -71,20 +73,20 @@ export default {
 }
 
 @media (min-width: 900px) {
-	.wrapper {
+	.header-wrapper {
 		grid-column: 1 / 3;
 		grid-row: 1 / 2;
 	}
 }
 
 @media (min-width: 1200px) {
-	.wrapper {
+	.header-wrapper {
 		grid-column: 1 / 4;
 	}
 }
 
 @media (min-width: 1500px) {
-	.wrapper {
+	.header-wrapper {
 		padding: 1.8rem;
 	}
 }

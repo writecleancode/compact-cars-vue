@@ -1,14 +1,14 @@
 <template>
-	<div class="wrapper">
+	<div class="search-input-wrapper">
 		<input name="search" id="search" placeholder="find car" type="text" class="search-input" />
-		<label for="search" aria-label="find car by name" class="icon-wrapper">
+		<label for="search" aria-label="find car by name" class="search-icon-wrapper">
 			<!-- search icon -->
 		</label>
 	</div>
 </template>
 
 <style scoped>
-.wrapper {
+.search-input-wrapper {
 	display: flex;
 	flex-grow: 1;
 	background-color: #f6f6f6;
@@ -26,7 +26,7 @@
 	min-width: 0;
 }
 
-.icon-wrapper {
+.search-icon-wrapper {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -41,7 +41,7 @@
 }
 
 @media (min-width: 640px) {
-	.wrapper {
+	.search-input-wrapper {
 		position: absolute;
 		left: 50%;
 		translate: -50%;
