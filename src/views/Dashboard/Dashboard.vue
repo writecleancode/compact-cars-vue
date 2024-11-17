@@ -34,7 +34,7 @@ export default {
 			</div>
 		</div>
 		<div class="car-cards-wrapper">
-			<CarCard v-for="car in cars" :key="car.id" v-bind:car="car" />
+			<CarCard v-for="car in cars" :key="car.id" v-bind:car />
 		</div>
 	</div>
 </template>

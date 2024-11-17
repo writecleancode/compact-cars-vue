@@ -1,5 +1,5 @@
 <script>
-import { filterBrands, filterYears } from '../../../data/filters';
+import { filterBrands, filterYears } from '@/data/filters';
 import FilterBoxYears from '@/components/molecules/FilterBoxYears/FilterBoxYears.vue';
 import FilterBoxBrands from '@/components/molecules/FilterBoxBrands/FilterBoxBrands.vue';
 

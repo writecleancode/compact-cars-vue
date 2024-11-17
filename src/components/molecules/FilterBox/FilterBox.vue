@@ -18,7 +18,7 @@ export default {
 
 <template>
 	<div class="wrapper">
-		<StyledTitle>{{ title }}</StyledTitle>
+		<StyledTitle v-bind:isFilterTitle="true">{{ title }}</StyledTitle>
 		<ul class="filter-items">
 			<li v-bind:class="`filter-item ${option.isActive ? 'active-option' : ''}`" v-for="option in options" :key="option.value">
 				{{ option.value }}

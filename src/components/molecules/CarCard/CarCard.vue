@@ -1,11 +1,13 @@
 <script>
-import CarImage from '../../atoms/CarImage/CarImage.vue';
-import CarInfoBox from '../../atoms/CarInfoBox/CarInfoBox.vue';
-import CompareButton from '../../atoms/CompareButton/CompareButton.vue';
+import CarImage from '@/components/atoms/CarImage/CarImage.vue';
+import CarInfoBox from '@/components/atoms/CarInfoBox/CarInfoBox.vue';
+import CompareButton from '@/components/atoms/CompareButton/CompareButton.vue';
 
 export default {
 	props: {
-		car: Object,
+		car: {
+			type: Object,
+		},
 		isCompared: {
 			type: Boolean,
 			default: false,
@@ -23,14 +25,14 @@ export default {
 <template>
 	<div class="wrapper">
 		<p class="car-name">{{ car.brand || 'unknown' }} {{ car.model || 'unknown' }}</p>
-		<CarImage v-bind:imgUrl="car.img" v-bind:altText="`${brand} ${model}`" />
+		<CarImage v-bind:imgUrl="car.img" v-bind:altText="`${car.brand} ${car.model}`" />
 		<div class="car-info-wrapper">
 			<CarInfoBox title="Generation" v-bind:content="car.generation || 'unknown'" />
 			<CarInfoBox title="Production years" v-bind:content="`${car.productionStartYear} - ${car.productionEndYear}`" />
 			<CarInfoBox title="Facelift" v-bind:content="car.facelift || 'unknown'" />
 		</div>
 		<div class="buttons-wrapper" v-if="car.id">
-			<CompareButton v-bind:isCompared="isCompared" />
+			<CompareButton v-bind:isCompared="car.isCompared" />
 		</div>
 	</div>
 </template>

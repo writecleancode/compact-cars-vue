@@ -26,8 +26,8 @@ export default {
 
 <template>
 	<div class="wrapper">
-		<Header v-bind:isNavActive="isNavActive" />
-		<NavBar v-bind:isNavActive="isNavActive" v-bind:comparedCarsNumber="comparedCars.length" />
+		<Header v-bind:isNavActive />
+		<NavBar v-bind:isNavActive v-bind:comparedCarsNumber="comparedCars.length" />
 		<FiltersManagement />
 		<div class="content-wrapper">
 			<Dashboard />

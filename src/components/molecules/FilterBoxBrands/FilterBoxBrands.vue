@@ -14,5 +14,5 @@ export default {
 </script>
 
 <template>
-	<FilterBox title="Choose brand(s):" v-bind:options="options" />
+	<FilterBox title="Choose brand(s):" v-bind:options />
 </template>
