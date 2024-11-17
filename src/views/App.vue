@@ -3,15 +3,18 @@ import Header from '@/components/atoms/Header/Header.vue';
 import NavBar from '@/components/organisms/NavBar/NavBar.vue';
 import FiltersManagement from '@/components/organisms/FiltersManagement/FiltersManagement.vue';
 import Dashboard from '@/views/Dashboard/Dashboard.vue';
+import SuccessNotification from '@/components/atoms/SuccessNotification/SuccessNotification.vue';
 
 export default {
 	data() {
 		const isNavActive = false;
 		const comparedCars = [];
+		const successNotifications = [];
 
 		return {
 			isNavActive,
 			comparedCars,
+			successNotifications,
 		};
 	},
 
@@ -20,6 +23,7 @@ export default {
 		NavBar,
 		FiltersManagement,
 		Dashboard,
+		SuccessNotification,
 	},
 };
 </script>
@@ -32,6 +36,12 @@ export default {
 		<div class="content-wrapper">
 			<Dashboard />
 		</div>
+		<SuccessNotification
+			v-if="successNotifications.length > 0"
+			v-for="successNotification in successNotifications"
+			:key="successNotification">
+			✔ Car added to the list
+		</SuccessNotification>
 	</div>
 </template>
 
