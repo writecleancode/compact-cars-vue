@@ -1,12 +1,5 @@
 <script>
 export default {
-	data() {
-		const closeMobileNav = () => console.log('Closed mobile nav');
-
-		return {
-			closeMobileNav,
-		};
-	},
 	props: {
 		isNavActive: {
 			type: Boolean,
@@ -15,6 +8,9 @@ export default {
 			type: Number,
 			default: 0,
 		},
+		closeMobileNav: {
+			type: Function,
+		},
 	},
 };
 </script>
@@ -22,14 +18,14 @@ export default {
 <template>
 	<nav v-bind:class="`wrapper ${isNavActive ? 'active' : ''}`">
 		<ul class="nav-links-list">
-			<li><a href="#" class="nav-link">Dashboard</a></li>
+			<li><a href="" class="nav-link">Dashboard</a></li>
 			<li>
-				<a href="#" class="nav-link">Comparison {{ comparedCarsNumber > 0 ? `(${comparedCarsNumber})` : ' ' }}</a>
+				<a href="" class="nav-link">Comparison {{ comparedCarsNumber > 0 ? `(${comparedCarsNumber})` : ' ' }}</a>
 			</li>
-			<li><a href="#" class="nav-link">Add car</a></li>
+			<li><a href="" class="nav-link">Add car</a></li>
 		</ul>
 	</nav>
-	<div class="background-tint" v-on:click="closeMobileNav"></div>
+	<div v-bind:class="`background-tint ${isNavActive ? 'active' : ''}`" v-on:click="closeMobileNav"></div>
 </template>
 
 <style scoped>

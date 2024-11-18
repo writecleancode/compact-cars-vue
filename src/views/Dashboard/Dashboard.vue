@@ -1,18 +1,15 @@
 <script>
 import { cars as carsData } from '@/data/cars.ts';
-import { selectOptions } from '../../data/select';
+import { selectOptions } from '@/data/select';
 import SearchInput from '@/components/atoms/SearchInput/SearchInput.vue';
 import SortSelect from '@/components/atoms/SortSelect/SortSelect.vue';
 import CarCard from '../../components/molecules/CarCard/CarCard.vue';
 
 export default {
 	setup() {
-		const cars = carsData;
-
 		const openModal = () => console.log('modal opened');
 
 		return {
-			cars,
 			selectOptions,
 			openModal,
 		};
@@ -23,6 +20,9 @@ export default {
 		CarCard,
 	},
 	props: {
+		cars: {
+			type: Array,
+		},
 		comparedCars: {
 			type: Array,
 		},
@@ -54,8 +54,7 @@ export default {
 				<FilterBoxYears />
 				<FilterBoxBrands />
 			</Modal>
-		-->
-		</div>
+		--></div>
 </template>
 
 <style scoped>

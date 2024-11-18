@@ -1,20 +1,30 @@
 <script lang="ts">
+import { cars as carsData } from '@/data/cars.ts';
 import Header from '@/components/atoms/Header/Header.vue';
 import NavBar from '@/components/organisms/NavBar/NavBar.vue';
 import FiltersManagement from '@/components/organisms/FiltersManagement/FiltersManagement.vue';
 import Dashboard from '@/views/Dashboard/Dashboard.vue';
 import SuccessNotification from '@/components/atoms/SuccessNotification/SuccessNotification.vue';
+import { ref } from 'vue';
 
 export default {
 	data() {
-		const isNavActive = false;
-		const comparedCars = [];
-		const successNotifications = [];
+		const isNavActive = ref(false);
+		const cars = ref(carsData);
+		const comparedCars = ref([]);
+		const successNotifications = ref([]);
+
+		const closeMobileNav = () => (isNavActive.value = false);
+
+		const handleMobileNav = () => (isNavActive.value = !isNavActive.value);
 
 		return {
 			isNavActive,
+			cars,
 			comparedCars,
 			successNotifications,
+			closeMobileNav,
+			handleMobileNav,
 		};
 	},
 
@@ -30,11 +40,11 @@ export default {
 
 <template>
 	<div class="wrapper">
-		<Header v-bind:isNavActive />
-		<NavBar v-bind:isNavActive v-bind:comparedCarsNumber="comparedCars.length" />
+		<Header v-bind:isNavActive v-bind:closeMobileNav />
+		<NavBar v-bind:isNavActive v-bind:comparedCarsNumber="comparedCars.length" v-bind:closeMobileNav />
 		<FiltersManagement />
 		<div class="content-wrapper">
-			<Dashboard v-bind:comparedCars />
+			<Dashboard v-bind:cars v-bind:comparedCars />
 		</div>
 		<SuccessNotification
 			v-if="successNotifications.length > 0"

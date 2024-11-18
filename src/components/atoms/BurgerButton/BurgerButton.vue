@@ -1,15 +1,11 @@
 <script>
 export default {
-	data() {
-		const handleMobileNav = () => console.log('handling mobile nav');
-
-		return {
-			handleMobileNav,
-		};
-	},
 	props: {
 		isNavActive: {
 			type: Boolean,
+		},
+		closeMobileNav: {
+			type: Function,
 		},
 	},
 };

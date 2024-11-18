@@ -6,6 +6,9 @@ export default {
 		isNavActive: {
 			type: Boolean,
 		},
+		closeMobileNav: {
+			type: Function,
+		},
 	},
 
 	components: {
@@ -18,7 +21,7 @@ export default {
 	<div class="header-wrapper">
 		<h1 class="h1">Segment C Hatchback cars <span>(late 1990's, early 2000's)</span></h1>
 	</div>
-	<BurgerButton v-bind:isNavActive />
+	<BurgerButton v-bind:isNavActive v-bind:closeMobileNav />
 </template>
 
 <style scoped>
