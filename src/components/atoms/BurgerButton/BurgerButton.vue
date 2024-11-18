@@ -13,7 +13,8 @@ export default {
 
 <template>
 	<button
-		v-bind:class="`burger-btn ${isNavActive} ? 'active' : ''`"
+		class="burger-btn"
+		v-bind:class="{ active: isNavActive }"
 		v-bind:aria-label="`${isNavActive ? 'close navigation' : 'open navigation'}`"
 		v-on:click="handleMobileNav">
 		<span className="burger-btn-line burger-btn-line--top"></span>

@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-	<p v-bind:class="`styled-title ${isFilterTitle ? 'filter-title' : ''}`">
+	<p class="styled-title" v-bind:class="{ 'filter-title': isFilterTitle }">
 		<slot />
 	</p>
 </template>

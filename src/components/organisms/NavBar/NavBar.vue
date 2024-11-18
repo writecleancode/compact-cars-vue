@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-	<nav v-bind:class="`wrapper ${isNavActive ? 'active' : ''}`">
+	<nav class="wrapper" v-bind:class="{ active: isNavActive }">
 		<ul class="nav-links-list">
 			<li><a href="" class="nav-link">Dashboard</a></li>
 			<li>
@@ -25,7 +25,7 @@ export default {
 			<li><a href="" class="nav-link">Add car</a></li>
 		</ul>
 	</nav>
-	<div v-bind:class="`background-tint ${isNavActive ? 'active' : ''}`" v-on:click="closeMobileNav"></div>
+	<div class="background-tint" v-on:click="closeMobileNav"></div>
 </template>
 
 <style scoped>
@@ -104,7 +104,7 @@ export default {
 		transition: translate 0.2s;
 	}
 
-	&.background-tint {
+	+ .background-tint {
 		opacity: 1;
 		visibility: visible;
 		transition: opacity 0.1s;
@@ -124,6 +124,10 @@ export default {
 		min-height: initial;
 		visibility: visible;
 		transition: initial;
+	}
+
+	.background-tint {
+		display: none;
 	}
 }
 

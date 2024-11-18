@@ -25,7 +25,8 @@ export default {
 		<StyledTitle v-bind:isFilterTitle="true">{{ title }}</StyledTitle>
 		<ul class="filter-items">
 			<li
-				v-bind:class="`filter-item ${option.isActive ? 'active-option' : ''}`"
+				class="filter-item"
+				v-bind:class="{ 'active-option': options.isActive }"
 				v-for="option in options"
 				:key="option.value"
 				v-on:click="handleFilter">
