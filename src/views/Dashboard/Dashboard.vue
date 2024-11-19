@@ -164,7 +164,7 @@ export default {
 	}
 }
 
-@media (min-wdith: 900px) {
+@media (min-width: 900px) {
 	.controls-wrapper {
 		background-color: initial;
 		padding: 1.6rem 2.4rem;
@@ -195,7 +195,7 @@ export default {
 	}
 }
 
-@media (min-wdith: 1600px) {
+@media (min-width: 1600px) {
 	.controls-wrapper {
 		padding: 2.4rem 3.2rem;
 	}
