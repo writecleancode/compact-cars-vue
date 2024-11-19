@@ -97,6 +97,12 @@ export default {
 	padding: 0.8rem 0.8rem 0.4rem;
 }
 
+.manage-filters-btn {
+	display: block;
+	padding: 0.3rem;
+	width: 100%;
+}
+
 .manage-filters-button {
 	display: block;
 	padding: 0.3rem;
@@ -133,7 +139,7 @@ export default {
 	}
 }
 
-@media (min-wdith: 640px) {
+@media (min-width: 640px) {
 	.controls-wrapper {
 		position: relative;
 		display: flex;
@@ -150,12 +156,12 @@ export default {
 	.filters-wrapper {
 		padding: 0;
 	}
-}
 
-.manage-filters-button {
-	padding: 0.4rem 1.2rem;
-	width: auto;
-	height: 100%;
+	.manage-filters-btn {
+		padding: 0.4rem 1.2rem;
+		width: auto;
+		height: 100%;
+	}
 }
 
 @media (min-wdith: 900px) {
