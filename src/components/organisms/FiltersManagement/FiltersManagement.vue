@@ -1,21 +1,17 @@
 <script>
-import { filterBrands, filterYears } from '@/data/filters';
 import FilterBoxYears from '@/components/molecules/FilterBoxYears/FilterBoxYears.vue';
 import FilterBoxBrands from '@/components/molecules/FilterBoxBrands/FilterBoxBrands.vue';
 
 export default {
-	data() {
-		const filterYearsData = filterYears.map(option => ({ value: option, isActive: false }));
-		const filterBrandsData = filterBrands.map(option => ({ value: option, isActive: false }));
-		const usersFilterPreferences = { brands: filterBrandsData, years: filterYearsData };
-
-		const handleFilterPreferences = () => console.log('Handled filter preferences');
-
-		return {
-			usersFilterPreferences,
-			handleFilterPreferences,
-		};
+	props: {
+		usersFilterPreferences: {
+			type: Object,
+		},
+		handleFilterPreferences: {
+			type: Function,
+		},
 	},
+
 	components: {
 		FilterBoxYears,
 		FilterBoxBrands,

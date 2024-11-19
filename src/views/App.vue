@@ -1,5 +1,6 @@
 <script lang="ts">
 import { cars as carsData } from '@/data/cars.ts';
+import { filterBrands, filterYears } from '@/data/filters';
 import { onMounted, ref } from 'vue';
 import debounce from 'lodash.debounce';
 import Header from '@/components/atoms/Header/Header.vue';
@@ -20,6 +21,9 @@ export default {
 		const cars = ref(carsData);
 		const carsToDisplay = ref([]);
 		const comparedCars = ref([]);
+		const filterYearsData = filterYears.map(option => ({ value: option, isActive: false }));
+		const filterBrandsData = filterBrands.map(option => ({ value: option, isActive: false }));
+		const usersFilterPreferences = ref({ brands: filterBrandsData, years: filterYearsData });
 		const successNotifications = ref([1]);
 		const searchPhrase = ref('');
 		const selectedSortValue = ref('');
@@ -29,14 +33,40 @@ export default {
 		const handleMobileNav = () => (isNavActive.value = !isNavActive.value);
 
 		const findCars = inputValue => {
-			// const carsToCheck = cars.value === filteredCars ? cars.value : filteredCars;
-			const carsToCheck = cars.value;
+			const carsToCheck = cars.value === filteredCars ? cars.value : filteredCars;
 
 			const matchingCars = inputValue
 				? carsToCheck.filter(car => `${car.brand} ${car.model}`.toLowerCase().includes(inputValue.toLowerCase().trim()))
 				: carsToCheck;
 
 			return matchingCars;
+		};
+
+		const filterCars = () => {
+			filteredCars = cars.value;
+
+			if (usersFilterPreferences.value.brands.some(option => option.isActive)) {
+				const filteredByBrand = [];
+				const activeFilterClasses = usersFilterPreferences.value.brands.filter(option => option.isActive);
+
+				cars.value.forEach(car => {
+					activeFilterClasses.forEach(option => option.value === car.brand && filteredByBrand.push(car));
+				});
+
+				filteredCars = filteredByBrand;
+			}
+
+			if (usersFilterPreferences.value.years.some(option => option.isActive)) {
+				usersFilterPreferences.value.years.forEach(option => {
+					if (option.isActive) {
+						filteredCars = filteredCars.filter(
+							car => option.value >= car.productionStartYear && option.value <= car.productionEndYear && car
+						);
+					}
+				});
+			}
+
+			return filteredCars;
 		};
 
 		const setCarsToDisplay = cars => {
@@ -56,7 +86,7 @@ export default {
 		const handleDisplayCars = () => {
 			let matchingCars;
 
-			// matchingCars = filterCars();
+			matchingCars = filterCars();
 			matchingCars = findCars(searchPhrase.value);
 
 			setCarsToDisplay(matchingCars);
@@ -97,6 +127,17 @@ export default {
 			sortCars(selectedValue);
 		};
 
+		const handleFilterPreferences = clickedOption => {
+			const optionType = typeof clickedOption === 'number' ? 'years' : 'brands';
+			const clickedOptionIndex = usersFilterPreferences.value[optionType].map(option => option.value).indexOf(clickedOption);
+
+			usersFilterPreferences.value[optionType][clickedOptionIndex].isActive =
+				!usersFilterPreferences.value[optionType][clickedOptionIndex].isActive;
+
+			// TEMP <---------------
+			handleDisplayCars();
+		};
+
 		onMounted(() => {
 			setCarsToDisplay(cars.value);
 			isLoading.value = false;
@@ -108,6 +149,7 @@ export default {
 			cars,
 			carsToDisplay,
 			comparedCars,
+			usersFilterPreferences,
 			successNotifications,
 			searchPhrase,
 			selectedSortValue,
@@ -115,6 +157,7 @@ export default {
 			handleMobileNav,
 			handleSearchInputChange,
 			handleSelectedValueChange,
+			handleFilterPreferences,
 		};
 	},
 
@@ -132,7 +175,7 @@ export default {
 	<div class="wrapper">
 		<Header v-bind:isNavActive v-bind:closeMobileNav />
 		<NavBar v-bind:isNavActive v-bind:comparedCarsNumber="comparedCars.length" v-bind:closeMobileNav />
-		<FiltersManagement />
+		<FiltersManagement v-bind:usersFilterPreferences v-bind:handleFilterPreferences />
 		<div class="content-wrapper">
 			<Dashboard
 				v-bind:isLoading

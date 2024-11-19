@@ -26,10 +26,10 @@ export default {
 		<ul class="filter-items">
 			<li
 				class="filter-item"
-				v-bind:class="{ 'active-option': options.isActive }"
+				v-bind:class="{ 'active-option': option.isActive }"
 				v-for="option in options"
 				:key="option.value"
-				v-on:click="handleFilter">
+				v-on:click="handleFilter(option.value)">
 				{{ option.value }}
 			</li>
 		</ul>
