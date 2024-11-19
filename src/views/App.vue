@@ -33,7 +33,7 @@ export default {
 			const carsToCheck = cars.value;
 
 			const matchingCars = inputValue
-				? carsToCheck.filter(car => `${car.brand} ${car.model}`.toLowerCase().includes(inputValue.toLowerCase()))
+				? carsToCheck.filter(car => `${car.brand} ${car.model}`.toLowerCase().includes(inputValue.toLowerCase().trim()))
 				: carsToCheck;
 
 			return matchingCars;
