@@ -27,8 +27,17 @@ export default {
 		cars: {
 			type: Array,
 		},
+		carsToDisplay: {
+			type: Array,
+		},
 		comparedCars: {
 			type: Array,
+		},
+		searchPhrase: {
+			type: String,
+		},
+		handleSearchInputChange: {
+			type: Function,
 		},
 	},
 };
@@ -38,7 +47,7 @@ export default {
 	<div>
 		<div class="controls-wrapper">
 			<div class="search-wrapper">
-				<SearchInput />
+				<SearchInput v-bind:value="searchPhrase" v-bind:handleInputChange="handleSearchInputChange" />
 				<SortSelect v-bind:options="selectOptions" defaultOption="sort cars" />
 			</div>
 			<div class="filters-wrapper">
@@ -47,9 +56,9 @@ export default {
 		</div>
 		<LoadingAnimation v-if="isLoading" />
 		<div v-else class="car-cards-wrapper">
-			<template v-if="cars.length > 0">
+			<template v-if="carsToDisplay.length > 0">
 				<CarCard
-					v-for="car in cars"
+					v-for="car in carsToDisplay"
 					:key="car.id"
 					v-bind:car
 					v-bind:isCompared="comparedCars.some(comparedCar => comparedCar.id === car.id)" />

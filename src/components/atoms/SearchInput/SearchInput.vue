@@ -1,20 +1,19 @@
 <script>
 export default {
-	data() {
-		const handleInputChange = () => {
-			console.log('searching for cars...');
-		};
-
-		return {
-			handleInputChange,
-		};
+	props: {
+		value: {
+			type: String,
+		},
+		handleInputChange: {
+			type: Function,
+		},
 	},
 };
 </script>
 
 <template>
 	<div class="search-input-wrapper">
-		<input name="search" id="search" placeholder="find car" type="text" class="search-input" v-on:change="handleInputChange" />
+		<input name="search" id="search" placeholder="find car" type="text" class="search-input" v-bind:value v-on:input="handleInputChange" />
 		<label for="search" aria-label="find car by name" class="search-icon-wrapper">
 			<!-- search icon -->
 		</label>
