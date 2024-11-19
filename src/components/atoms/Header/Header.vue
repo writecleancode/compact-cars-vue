@@ -20,8 +20,8 @@ export default {
 <template>
 	<div class="header-wrapper">
 		<h1 class="h1">Segment C Hatchback cars <span>(late 1990's, early 2000's)</span></h1>
+		<BurgerButton v-bind:isNavActive v-on:handle-mobile-nav="handleMobileNav" />
 	</div>
-	<BurgerButton v-bind:isNavActive v-on:handle-mobile-nav="handleMobileNav" />
 </template>
 
 <style lang="scss" scoped>
