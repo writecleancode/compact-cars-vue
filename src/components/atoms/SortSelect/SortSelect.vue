@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-	<div class="wrapper">
+	<div class="select-wrapper">
 		<select
 			aria-label="sort cars"
 			class="styled-select"
@@ -28,7 +28,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.wrapper {
+.select-wrapper {
 	background-color: #f6f6f6;
 }
 

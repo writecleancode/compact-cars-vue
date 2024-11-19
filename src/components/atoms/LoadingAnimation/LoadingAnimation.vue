@@ -1,5 +1,5 @@
 <template>
-	<div class="wrapper">
+	<div class="loading-animation-wrapper">
 		<img src="@/assets/img/wheel.webp" alt="" class="spinning-wheel" />
 		<p>Loading...</p>
 	</div>
@@ -16,7 +16,7 @@
 	}
 }
 
-.wrapper {
+.loading-animation-wrapper {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
