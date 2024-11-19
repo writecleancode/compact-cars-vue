@@ -1,7 +1,7 @@
 <script lang="ts">
 import { cars as carsData } from '@/data/cars.ts';
 import { filterBrands, filterYears } from '@/data/filters';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import debounce from 'lodash.debounce';
 import Header from '@/components/atoms/Header/Header.vue';
 import NavBar from '@/components/organisms/NavBar/NavBar.vue';
@@ -116,9 +116,6 @@ export default {
 			});
 
 			cars.value = sortedCars;
-
-			// TEMP <---------------
-			handleDisplayCars();
 		};
 
 		const handleSelectedValueChange = e => {
@@ -133,14 +130,19 @@ export default {
 
 			usersFilterPreferences.value[optionType][clickedOptionIndex].isActive =
 				!usersFilterPreferences.value[optionType][clickedOptionIndex].isActive;
-
-			// TEMP <---------------
-			handleDisplayCars();
 		};
 
 		onMounted(() => {
 			setCarsToDisplay(cars.value);
 			isLoading.value = false;
+		});
+
+		watch(usersFilterPreferences.value, () => {
+			handleDisplayCars();
+		});
+
+		watch(cars, () => {
+			handleDisplayCars();
 		});
 
 		return {
