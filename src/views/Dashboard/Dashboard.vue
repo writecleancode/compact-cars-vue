@@ -1,6 +1,5 @@
 <script>
 import { selectOptions } from '@/data/select';
-import { onMounted, ref } from 'vue';
 import SearchInput from '@/components/atoms/SearchInput/SearchInput.vue';
 import SortSelect from '@/components/atoms/SortSelect/SortSelect.vue';
 import LoadingAnimation from '@/components/atoms/LoadingAnimation/LoadingAnimation.vue';
