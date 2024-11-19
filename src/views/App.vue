@@ -1,6 +1,6 @@
 <script lang="ts">
 import { cars as carsData } from '@/data/cars.ts';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import debounce from 'lodash.debounce';
 import Header from '@/components/atoms/Header/Header.vue';
 import NavBar from '@/components/organisms/NavBar/NavBar.vue';
@@ -15,10 +15,10 @@ export default {
 		const getCarName = car => `${car.brand} ${car.model}`;
 		const getCarProductionYear = car => car.productionStartYear;
 
+		const isLoading = ref(true);
 		const isNavActive = ref(false);
 		const cars = ref(carsData);
-		// const carsToDisplay = ref([]);
-		const carsToDisplay = ref(carsData);
+		const carsToDisplay = ref([]);
 		const comparedCars = ref([]);
 		const successNotifications = ref([1]);
 		const searchPhrase = ref('');
@@ -97,7 +97,13 @@ export default {
 			sortCars(selectedValue);
 		};
 
+		onMounted(() => {
+			setCarsToDisplay(cars.value);
+			isLoading.value = false;
+		});
+
 		return {
+			isLoading,
 			isNavActive,
 			cars,
 			carsToDisplay,
@@ -129,6 +135,7 @@ export default {
 		<FiltersManagement />
 		<div class="content-wrapper">
 			<Dashboard
+				v-bind:isLoading
 				v-bind:cars
 				v-bind:carsToDisplay
 				v-bind:comparedCars

@@ -1,6 +1,6 @@
 <script>
 import { selectOptions } from '@/data/select';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import SearchInput from '@/components/atoms/SearchInput/SearchInput.vue';
 import SortSelect from '@/components/atoms/SortSelect/SortSelect.vue';
 import LoadingAnimation from '@/components/atoms/LoadingAnimation/LoadingAnimation.vue';
@@ -8,12 +8,10 @@ import CarCard from '../../components/molecules/CarCard/CarCard.vue';
 
 export default {
 	setup() {
-		const isLoading = ref(false);
 		const openModal = () => console.log('modal opened');
 
 		return {
 			selectOptions,
-			isLoading,
 			openModal,
 		};
 	},
@@ -24,6 +22,10 @@ export default {
 		CarCard,
 	},
 	props: {
+		isLoading: {
+			type: Boolean,
+			default: true,
+		},
 		cars: {
 			type: Array,
 		},
