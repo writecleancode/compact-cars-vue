@@ -12,7 +12,7 @@ export default {
 		const isNavActive = ref(true);
 		const cars = ref(carsData);
 		const comparedCars = ref([]);
-		const successNotifications = ref([]);
+		const successNotifications = ref([1]);
 
 		const closeMobileNav = () => (isNavActive.value = false);
 
@@ -46,12 +46,11 @@ export default {
 		<div class="content-wrapper">
 			<Dashboard v-bind:cars v-bind:comparedCars />
 		</div>
-		<SuccessNotification
-			v-if="successNotifications.length > 0"
-			v-for="successNotification in successNotifications"
-			:key="successNotification">
-			✔ Car added to the list
-		</SuccessNotification>
+		<template v-if="successNotifications.length > 0">
+			<SuccessNotification v-for="successNotification in successNotifications" :key="successNotification">
+				✔ Car added to the list
+			</SuccessNotification>
+		</template>
 	</div>
 </template>
 

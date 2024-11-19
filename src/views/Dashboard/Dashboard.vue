@@ -1,22 +1,26 @@
 <script>
-import { cars as carsData } from '@/data/cars.ts';
 import { selectOptions } from '@/data/select';
+import { ref } from 'vue';
 import SearchInput from '@/components/atoms/SearchInput/SearchInput.vue';
 import SortSelect from '@/components/atoms/SortSelect/SortSelect.vue';
+import LoadingAnimation from '@/components/atoms/LoadingAnimation/LoadingAnimation.vue';
 import CarCard from '../../components/molecules/CarCard/CarCard.vue';
 
 export default {
 	setup() {
+		const isLoading = ref(false);
 		const openModal = () => console.log('modal opened');
 
 		return {
 			selectOptions,
+			isLoading,
 			openModal,
 		};
 	},
 	components: {
 		SearchInput,
 		SortSelect,
+		LoadingAnimation,
 		CarCard,
 	},
 	props: {
@@ -41,12 +45,16 @@ export default {
 				<button class="manage-filters-btn" v-on:click="openModal">manage filters</button>
 			</div>
 		</div>
-		<div class="car-cards-wrapper">
-			<CarCard
-				v-for="car in cars"
-				:key="car.id"
-				v-bind:car
-				v-bind:isCompared="comparedCars.some(comparedCar => comparedCar.id === car.id)" />
+		<LoadingAnimation v-if="isLoading" />
+		<div v-else class="car-cards-wrapper">
+			<template v-if="cars.length > 0">
+				<CarCard
+					v-for="car in cars"
+					:key="car.id"
+					v-bind:car
+					v-bind:isCompared="comparedCars.some(comparedCar => comparedCar.id === car.id)" />
+			</template>
+			<p class="no-cars-info" v-else>There are no cars to display...</p>
 		</div>
 
 		<!-- 
@@ -82,6 +90,12 @@ export default {
 	padding: 1.2rem;
 }
 
+.no-cars-info {
+	grid-column: 1 / 3;
+	margin-top: 5.6rem;
+	text-align: center;
+}
+
 @media (min-width: 440px) {
 	.search-wrapper {
 		justify-content: space-between;
@@ -91,6 +105,11 @@ export default {
 @media (min-width: 614px) {
 	.car-cards-wrapper {
 		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.no-cars-info {
+		grid-column: 1 / 4;
+		font-size: 1.7rem;
 	}
 }
 
@@ -142,6 +161,11 @@ export default {
 	.car-cards-wrapper {
 		grid-template-columns: repeat(4, 1fr);
 		gap: 1.6rem;
+	}
+
+	.no-cars-info {
+		grid-column: 1 / 5;
+		font-size: 1.8rem;
 	}
 }
 
