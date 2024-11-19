@@ -9,7 +9,7 @@ import { ref } from 'vue';
 
 export default {
 	data() {
-		const isNavActive = ref(true);
+		const isNavActive = ref(false);
 		const cars = ref(carsData);
 		const comparedCars = ref([]);
 		const successNotifications = ref([1]);

@@ -1,6 +1,20 @@
+<script>
+export default {
+	data() {
+		const handleInputChange = () => {
+			console.log('searching for cars...');
+		};
+
+		return {
+			handleInputChange,
+		};
+	},
+};
+</script>
+
 <template>
 	<div class="search-input-wrapper">
-		<input name="search" id="search" placeholder="find car" type="text" class="search-input" />
+		<input name="search" id="search" placeholder="find car" type="text" class="search-input" v-on:change="handleInputChange" />
 		<label for="search" aria-label="find car by name" class="search-icon-wrapper">
 			<!-- search icon -->
 		</label>

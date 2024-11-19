@@ -8,12 +8,21 @@ export default {
 			type: String,
 		},
 	},
+
+	data() {
+		const handleSelectedValueChange = () => {
+			console.log('Changing selected value...');
+		};
+		return {
+			handleSelectedValueChange,
+		};
+	},
 };
 </script>
 
 <template>
 	<div class="wrapper">
-		<select aria-label="sort cars" class="styled-select">
+		<select aria-label="sort cars" class="styled-select" v-on:change="handleSelectedValueChange">
 			<option v-if="defaultOption" value="" disabled>{{ defaultOption }}</option>
 			<option v-for="option in options" v-bind:value="option.value">{{ option.text }}</option>
 		</select>
