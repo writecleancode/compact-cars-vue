@@ -12,6 +12,9 @@ export default {
 	data() {
 		let filteredCars = [];
 
+		const getCarName = car => `${car.brand} ${car.model}`;
+		const getCarProductionYear = car => car.productionStartYear;
+
 		const isNavActive = ref(false);
 		const cars = ref(carsData);
 		// const carsToDisplay = ref([]);
@@ -19,6 +22,7 @@ export default {
 		const comparedCars = ref([]);
 		const successNotifications = ref([1]);
 		const searchPhrase = ref('');
+		const selectedSortValue = ref('');
 
 		const closeMobileNav = () => (isNavActive.value = false);
 
@@ -49,6 +53,50 @@ export default {
 			handleSearchCars(inputValue);
 		};
 
+		const handleDisplayCars = () => {
+			let matchingCars;
+
+			// matchingCars = filterCars();
+			matchingCars = findCars(searchPhrase.value);
+
+			setCarsToDisplay(matchingCars);
+		};
+
+		const sortCars = (sortCriteria = 'byAlphabet') => {
+			const sortedCars = cars.value.toSorted((carA, carB) => {
+				if (sortCriteria.toLowerCase().includes('alphabet')) {
+					carA = getCarName(carA);
+					carB = getCarName(carB);
+				} else if (sortCriteria.toLowerCase().includes('year')) {
+					carA = getCarProductionYear(carA);
+					carB = getCarProductionYear(carB);
+				}
+
+				if (sortCriteria.toLowerCase().includes('reverse')) {
+					[carA, carB] = [carB, carA];
+				}
+
+				if (carA < carB) {
+					return -1;
+				} else if (carA > carB) {
+					return 1;
+				} else {
+					return 0;
+				}
+			});
+
+			cars.value = sortedCars;
+
+			// TEMP <---------------
+			handleDisplayCars();
+		};
+
+		const handleSelectedValueChange = e => {
+			const selectedValue = e.target.value;
+			selectedSortValue.value = selectedValue;
+			sortCars(selectedValue);
+		};
+
 		return {
 			isNavActive,
 			cars,
@@ -56,9 +104,11 @@ export default {
 			comparedCars,
 			successNotifications,
 			searchPhrase,
+			selectedSortValue,
 			closeMobileNav,
 			handleMobileNav,
 			handleSearchInputChange,
+			handleSelectedValueChange,
 		};
 	},
 
@@ -78,7 +128,14 @@ export default {
 		<NavBar v-bind:isNavActive v-bind:comparedCarsNumber="comparedCars.length" v-bind:closeMobileNav />
 		<FiltersManagement />
 		<div class="content-wrapper">
-			<Dashboard v-bind:cars v-bind:carsToDisplay v-bind:comparedCars v-bind:searchPhrase v-bind:handleSearchInputChange />
+			<Dashboard
+				v-bind:cars
+				v-bind:carsToDisplay
+				v-bind:comparedCars
+				v-bind:searchPhrase
+				v-bind:handleSearchInputChange
+				v-bind:selectedSortValue
+				v-bind:handleSelectedValueChange />
 		</div>
 		<template v-if="successNotifications.length > 0">
 			<SuccessNotification v-for="successNotification in successNotifications" :key="successNotification">

@@ -39,6 +39,12 @@ export default {
 		handleSearchInputChange: {
 			type: Function,
 		},
+		selectedSortValue: {
+			type: String,
+		},
+		handleSelectedValueChange: {
+			type: Function,
+		},
 	},
 };
 </script>
@@ -48,7 +54,11 @@ export default {
 		<div class="controls-wrapper">
 			<div class="search-wrapper">
 				<SearchInput v-bind:value="searchPhrase" v-bind:handleInputChange="handleSearchInputChange" />
-				<SortSelect v-bind:options="selectOptions" defaultOption="sort cars" />
+				<SortSelect
+					v-bind:options="selectOptions"
+					defaultOption="sort cars"
+					v-bind:selectedValue="selectedSortValue"
+					v-bind:handleSelectedValueChange />
 			</div>
 			<div class="filters-wrapper">
 				<button class="manage-filters-btn" v-on:click="openModal">manage filters</button>
