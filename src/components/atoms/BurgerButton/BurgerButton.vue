@@ -21,6 +21,8 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '@/assets/styles/variables.scss' as *;
+
 .burger-btn {
 	position: absolute;
 	top: 50%;
@@ -29,15 +31,13 @@ export default {
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
-	/* padding: ${({ theme }) => theme.burgerButton.padding}; */
+	padding: $burger-button-padding;
 	border: none;
 	background-color: transparent;
 
-	border: 10px solid royalblue;
-
 	.burger-btn-line {
 		display: inline-block;
-		/* width: ${({ theme }) => theme.burgerButton.width}; */
+		width: $burger-button-width;
 		height: 3px;
 		background-color: #3b3b3b;
 

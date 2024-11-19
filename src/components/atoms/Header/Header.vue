@@ -25,9 +25,11 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '@/assets/styles/variables.scss' as *;
+
 .header-wrapper {
 	position: relative;
-	/* padding: ${({ theme }) => `1.4rem calc(${theme.burgerButton.width} + ${theme.burgerButton.padding} * 2 + 1.6rem) 1.2rem`}; */
+	padding: 1.4rem calc($burger-button-width + $burger-button-padding * 2 + 1.6rem) 1.2rem;
 	border-bottom: 1px solid #e4e4e4;
 	background-image: linear-gradient(-45deg, rgb(248, 248, 248), rgba(243, 243, 243, 0.48), rgb(248, 248, 248));
 }
@@ -58,7 +60,7 @@ export default {
 
 @media (min-width: 640px) {
 	.header-wrapper {
-		/* padding: ${({ theme }) => `1.6rem calc(${theme.burgerButton.width} + ${theme.burgerButton.padding} * 2 + 2.4rem)`}; */
+		padding: 1.6rem calc($burger-button-width + $burger-button-padding * 2 + 2.4rem);
 	}
 
 	.h1 {

@@ -9,6 +9,9 @@ export default {
 		options: {
 			type: Object,
 		},
+		isYears: {
+			type: Boolean,
+		},
 	},
 
 	components: {
@@ -23,7 +26,7 @@ export default {
 		<ul class="filter-items">
 			<li
 				class="filter-item"
-				v-bind:class="{ 'active-option': option.isActive }"
+				v-bind:class="{ 'active-option': option.isActive, 'min-width': isYears }"
 				v-for="option in options"
 				:key="option.value"
 				v-on:click="$emit('handleFilter', option.value)">
@@ -53,10 +56,13 @@ export default {
 	justify-content: center;
 	align-items: center;
 	padding: 0.4rem 1.6rem;
-	/* min-width: ${({ $isYears }) => ($isYears ? '72px' : 'unset')}; */
 	background-color: #d9d9d9;
 	font-size: 1.6rem;
 	cursor: pointer;
+
+	&.min-width {
+		min-width: 72px;
+	}
 
 	&.active-option {
 		background-color: #bdeeb1;
