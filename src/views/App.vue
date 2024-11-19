@@ -137,6 +137,10 @@ export default {
 			isLoading.value = false;
 		});
 
+		watch(isNavActive, () => {
+			isNavActive.value ? document.body.classList.add('prevent-scroll') : document.body.classList.remove('prevent-scroll');
+		});
+
 		watch(
 			usersFilterPreferences,
 			() => {

@@ -20,15 +20,15 @@ body {
   font-size: 1.6rem;
   font-family: 'Montserrat', sans-serif;
 
-  /* &.preventScroll {
+  &.prevent-scroll {
     overflow-y: hidden;
   }
 
-  .ReactModalPortal {
-    @media (min-width: 1200px) {
-      display: none;
-    }
-  } */
+  // .ReactModalPortal {
+  //   @media (min-width: 1200px) {
+  //     display: none;
+  //   }
+  // }
 }
 
 img {
