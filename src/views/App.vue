@@ -24,7 +24,7 @@ export default {
 		const filterYearsData = filterYears.map(option => ({ value: option, isActive: false }));
 		const filterBrandsData = filterBrands.map(option => ({ value: option, isActive: false }));
 		const usersFilterPreferences = ref({ brands: filterBrandsData, years: filterYearsData });
-		const successNotifications = ref([1]);
+		const successNotifications = ref([]);
 		const searchPhrase = ref('');
 		const selectedSortValue = ref('');
 
@@ -133,13 +133,17 @@ export default {
 		};
 
 		onMounted(() => {
-			setCarsToDisplay(cars.value);
+			handleDisplayCars();
 			isLoading.value = false;
 		});
 
-		watch(usersFilterPreferences.value, () => {
-			handleDisplayCars();
-		});
+		watch(
+			usersFilterPreferences,
+			() => {
+				handleDisplayCars();
+			},
+			{ deep: true }
+		);
 
 		watch(cars, () => {
 			handleDisplayCars();
@@ -175,8 +179,8 @@ export default {
 
 <template>
 	<div class="wrapper">
-		<Header v-bind:isNavActive v-bind:closeMobileNav />
-		<NavBar v-bind:isNavActive v-bind:comparedCarsNumber="comparedCars.length" v-bind:closeMobileNav />
+		<Header v-bind:isNavActive v-bind:handleMobileNav />
+		<NavBar v-bind:isNavActive v-bind:comparedCarsNumber="comparedCars.length" v-on:close-mobile-nav="closeMobileNav" />
 		<FiltersManagement v-bind:usersFilterPreferences v-bind:handleFilterPreferences />
 		<div class="content-wrapper">
 			<Dashboard
@@ -197,7 +201,7 @@ export default {
 	</div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 @media (min-width: 900px) {
 	.wrapper {
 		display: grid;

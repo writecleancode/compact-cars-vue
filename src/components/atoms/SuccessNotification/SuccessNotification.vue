@@ -2,8 +2,8 @@
 	<span class="success-notification"><slot /></span>
 </template>
 
-<style scoped>
-/* keyframes slide-in-out: {
+<style lang="scss" scoped>
+@keyframes slide-in-out {
 	0% {
 		transform: translateY(-120%);
 	}
@@ -19,7 +19,7 @@
 	100% {
 		transform: translateY(-120%);
 	}
-} */
+}
 
 .success-notification {
 	position: fixed;

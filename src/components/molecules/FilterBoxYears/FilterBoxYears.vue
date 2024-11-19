@@ -17,5 +17,5 @@ export default {
 </script>
 
 <template>
-	<FilterBox title="Choose production year(s):" v-bind:options v-bind:handleFilter="handleFilterPreferences" />
+	<FilterBox title="Choose production year(s):" v-bind:options v-on:handle-filter="handleFilterPreferences" />
 </template>

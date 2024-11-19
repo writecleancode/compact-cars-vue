@@ -15,7 +15,7 @@ export default {
 	</p>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .styled-title {
 	margin-bottom: 0.8rem;
 	color: #3e3e3e;

@@ -9,9 +9,6 @@ export default {
 		options: {
 			type: Object,
 		},
-		handleFilter: {
-			type: Function,
-		},
 	},
 
 	components: {
@@ -29,14 +26,14 @@ export default {
 				v-bind:class="{ 'active-option': option.isActive }"
 				v-for="option in options"
 				:key="option.value"
-				v-on:click="handleFilter(option.value)">
+				v-on:click="$emit('handleFilter', option.value)">
 				{{ option.value }}
 			</li>
 		</ul>
 	</div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .wrapper {
 	display: flex;
 	flex-direction: column;

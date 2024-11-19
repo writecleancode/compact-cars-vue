@@ -19,7 +19,7 @@ export default {
 	</button>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .compare-btn {
 	display: flex;
 	justify-content: center;

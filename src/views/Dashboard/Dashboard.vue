@@ -54,12 +54,12 @@ export default {
 	<div>
 		<div class="controls-wrapper">
 			<div class="search-wrapper">
-				<SearchInput v-bind:value="searchPhrase" v-bind:handleInputChange="handleSearchInputChange" />
+				<SearchInput v-bind:value="searchPhrase" v-on:handle-input-change="handleSearchInputChange" />
 				<SortSelect
 					v-bind:options="selectOptions"
 					defaultOption="sort cars"
 					v-bind:selectedValue="selectedSortValue"
-					v-bind:handleSelectedValueChange />
+					v-on:handle-selected-value-change="handleSelectedValueChange" />
 			</div>
 			<div class="filters-wrapper">
 				<button class="manage-filters-btn" v-on:click="openModal">manage filters</button>
@@ -85,7 +85,7 @@ export default {
 		--></div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .search-wrapper {
 	display: flex;
 	gap: 1.6rem;

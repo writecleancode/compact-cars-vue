@@ -4,23 +4,26 @@ export default {
 		value: {
 			type: String,
 		},
-		handleInputChange: {
-			type: Function,
-		},
 	},
 };
 </script>
 
 <template>
 	<div class="search-input-wrapper">
-		<input name="search" id="search" placeholder="find car" type="text" class="search-input" v-bind:value v-on:input="handleInputChange" />
+		<input
+			name="search"
+			id="search"
+			placeholder="find car"
+			type="text"
+			class="search-input"
+			v-on:input="e => $emit('handleInputChange', e)" />
 		<label for="search" aria-label="find car by name" class="search-icon-wrapper">
 			<!-- search icon -->
 		</label>
 	</div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .search-input-wrapper {
 	display: flex;
 	flex-grow: 1;

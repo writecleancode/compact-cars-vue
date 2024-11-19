@@ -37,7 +37,7 @@ export default {
 	</div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .wrapper {
 	position: relative;
 	display: flex;

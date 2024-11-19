@@ -10,23 +10,24 @@ export default {
 		selectedSortValue: {
 			type: String,
 		},
-		handleSelectedValueChange: {
-			type: Function,
-		},
 	},
 };
 </script>
 
 <template>
 	<div class="wrapper">
-		<select aria-label="sort cars" class="styled-select" V-bind:value="selectedSortValue" v-on:change="handleSelectedValueChange">
+		<select
+			aria-label="sort cars"
+			class="styled-select"
+			V-bind:value="selectedSortValue"
+			v-on:change="e => $emit('handleSelectedValueChange', e)">
 			<option v-if="defaultOption" value="" disabled>{{ defaultOption }}</option>
 			<option v-for="option in options" v-bind:value="option.value">{{ option.text }}</option>
 		</select>
 	</div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .wrapper {
 	background-color: #f6f6f6;
 }

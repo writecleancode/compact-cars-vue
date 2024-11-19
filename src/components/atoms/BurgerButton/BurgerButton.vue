@@ -4,9 +4,6 @@ export default {
 		isNavActive: {
 			type: Boolean,
 		},
-		closeMobileNav: {
-			type: Function,
-		},
 	},
 };
 </script>
@@ -16,14 +13,14 @@ export default {
 		class="burger-btn"
 		v-bind:class="{ active: isNavActive }"
 		v-bind:aria-label="`${isNavActive ? 'close navigation' : 'open navigation'}`"
-		v-on:click="handleMobileNav">
+		v-on:click="$emit('handleMobileNav')">
 		<span className="burger-btn-line burger-btn-line--top"></span>
 		<span className="burger-btn-line burger-btn-line--middle"></span>
 		<span className="burger-btn-line burger-btn-line--bottom"></span>
 	</button>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .burger-btn {
 	position: absolute;
 	top: 50%;
@@ -35,6 +32,8 @@ export default {
 	/* padding: ${({ theme }) => theme.burgerButton.padding}; */
 	border: none;
 	background-color: transparent;
+
+	border: 10px solid royalblue;
 
 	.burger-btn-line {
 		display: inline-block;

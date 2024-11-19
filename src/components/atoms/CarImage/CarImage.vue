@@ -17,7 +17,7 @@ export default {
 	</a>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .car-image-wrapper-link {
 	&:not([href]) {
 		cursor: default;

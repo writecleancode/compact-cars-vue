@@ -8,9 +8,6 @@ export default {
 			type: Number,
 			default: 0,
 		},
-		closeMobileNav: {
-			type: Function,
-		},
 	},
 };
 </script>
@@ -25,10 +22,10 @@ export default {
 			<li><a href="" class="nav-link">Add car</a></li>
 		</ul>
 	</nav>
-	<div class="background-tint" v-on:click="closeMobileNav"></div>
+	<div class="background-tint" v-on:click="$emit('closeMobileNav')"></div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .wrapper {
 	position: absolute;
 	z-index: 2;

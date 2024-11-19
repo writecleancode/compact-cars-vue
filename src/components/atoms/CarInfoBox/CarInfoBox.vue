@@ -18,7 +18,7 @@ export default {
 	</div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .styled-info-title {
 	margin-bottom: 0.2rem;
 	font-size: 1.6rem;

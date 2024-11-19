@@ -6,7 +6,7 @@ export default {
 		isNavActive: {
 			type: Boolean,
 		},
-		closeMobileNav: {
+		handleMobileNav: {
 			type: Function,
 		},
 	},
@@ -21,10 +21,10 @@ export default {
 	<div class="header-wrapper">
 		<h1 class="h1">Segment C Hatchback cars <span>(late 1990's, early 2000's)</span></h1>
 	</div>
-	<BurgerButton v-bind:isNavActive v-bind:closeMobileNav />
+	<BurgerButton v-bind:isNavActive v-on:handle-mobile-nav="handleMobileNav" />
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .header-wrapper {
 	position: relative;
 	/* padding: ${({ theme }) => `1.4rem calc(${theme.burgerButton.width} + ${theme.burgerButton.padding} * 2 + 1.6rem) 1.2rem`}; */
