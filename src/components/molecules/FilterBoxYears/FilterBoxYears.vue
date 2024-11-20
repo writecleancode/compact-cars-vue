@@ -10,6 +10,7 @@ export default {
 			type: Function,
 		},
 	},
+	
 	components: {
 		FilterBox,
 	},

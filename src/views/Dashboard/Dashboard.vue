@@ -6,20 +6,6 @@ import LoadingAnimation from '@/components/atoms/LoadingAnimation/LoadingAnimati
 import CarCard from '@/components/molecules/CarCard/CarCard.vue';
 
 export default {
-	setup() {
-		const openModal = () => console.log('modal opened');
-
-		return {
-			selectOptions,
-			openModal,
-		};
-	},
-	components: {
-		SearchInput,
-		SortSelect,
-		LoadingAnimation,
-		CarCard,
-	},
 	props: {
 		isLoading: {
 			type: Boolean,
@@ -46,6 +32,22 @@ export default {
 		handleSelectedValueChange: {
 			type: Function,
 		},
+	},
+
+	setup() {
+		const openModal = () => console.log('modal opened');
+
+		return {
+			selectOptions,
+			openModal,
+		};
+	},
+
+	components: {
+		SearchInput,
+		SortSelect,
+		LoadingAnimation,
+		CarCard,
 	},
 };
 </script>

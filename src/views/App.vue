@@ -10,7 +10,7 @@ import Dashboard from '@/views/Dashboard/Dashboard.vue';
 import SuccessNotification from '@/components/atoms/SuccessNotification/SuccessNotification.vue';
 
 export default {
-	data() {
+	setup() {
 		let filteredCars = [];
 
 		const getCarName = car => `${car.brand} ${car.model}`;
