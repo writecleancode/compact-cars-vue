@@ -2,6 +2,8 @@
 import CarImage from '@/components/atoms/CarImage/CarImage.vue';
 import CarInfoBox from '@/components/atoms/CarInfoBox/CarInfoBox.vue';
 import CompareButton from '@/components/atoms/CompareButton/CompareButton.vue';
+import StyledButton from '@/components/atoms/StyledButton/StyledButton.vue';
+import TrashIcon from '@/assets/icons/TrashIcon.vue';
 
 export default {
 	props: {
@@ -18,6 +20,8 @@ export default {
 		CarImage,
 		CarInfoBox,
 		CompareButton,
+		StyledButton,
+		TrashIcon,
 	},
 };
 </script>
@@ -33,6 +37,9 @@ export default {
 		</div>
 		<div class="buttons-wrapper" v-if="car.id">
 			<CompareButton v-bind:isCompared="isCompared" />
+			<StyledButton class="delete-button" aria-label="delete car">
+				<TrashIcon />
+			</StyledButton>
 		</div>
 	</div>
 </template>
@@ -76,6 +83,19 @@ export default {
 		right: 0.8rem;
 		bottom: 0.8rem;
 		gap: 0.6rem;
+	}
+}
+
+.delete-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.4rem 0.6rem;
+	fill: #fff;
+	transition: fill 0.3s;
+
+	&:hover {
+		fill: #555;
 	}
 }
 
