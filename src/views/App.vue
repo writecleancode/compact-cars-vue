@@ -182,7 +182,7 @@ export default {
 </script>
 
 <template>
-	<div class="wrapper">
+	<div class="app-wrapper">
 		<Header v-bind:isNavActive v-bind:handleMobileNav />
 		<NavBar v-bind:isNavActive v-bind:comparedCarsNumber="comparedCars.length" v-on:close-mobile-nav="closeMobileNav" />
 		<FiltersManagement v-bind:usersFilterPreferences v-bind:handleFilterPreferences />
@@ -207,7 +207,7 @@ export default {
 
 <style lang="scss" scoped>
 @media (min-width: 900px) {
-	.wrapper {
+	.app-wrapper {
 		display: grid;
 		grid-template-columns: 1fr auto;
 		grid-template-rows: auto 1fr;
@@ -224,7 +224,7 @@ export default {
 }
 
 @media (min-width: 1200px) {
-	.wrapper {
+	.app-wrapper {
 		grid-template-columns: 300px 1fr auto;
 	}
 
@@ -234,13 +234,13 @@ export default {
 }
 
 @media (min-width: 1400px) {
-	.wrapper {
+	.app-wrapper {
 		grid-template-columns: 320px 1fr auto;
 	}
 }
 
 @media (min-width: 1600px) {
-	.wrapper {
+	.app-wrapper {
 		grid-template-columns: 320px 1fr 320px;
 	}
 }

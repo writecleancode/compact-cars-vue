@@ -1,5 +1,11 @@
 <script>
+import SearchIcon from '@/assets/icons/SearchIcon.vue';
+
 export default {
+	components: {
+		SearchIcon,
+	},
+
 	props: {
 		value: {
 			type: String,
@@ -16,9 +22,9 @@ export default {
 			placeholder="find car"
 			type="text"
 			class="search-input"
-			v-on:input="e => $emit('handleInputChange', e)" />
+			v-on:input="$emit('handleInputChange', $event)" />
 		<label for="search" aria-label="find car by name" class="search-icon-wrapper">
-			<!-- search icon -->
+			<SearchIcon />
 		</label>
 	</div>
 </template>
