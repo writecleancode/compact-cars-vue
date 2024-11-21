@@ -210,7 +210,7 @@ export default {
 <template>
 	<div class="app-wrapper">
 		<Header v-bind:isNavActive v-bind:handleMobileNav />
-		<NavBar v-bind:isNavActive v-bind:comparedCarsNumber="comparedCars.length" v-on:close-mobile-nav="closeMobileNav" />
+		<NavBar v-bind:isNavActive v-bind:comparedCarsNumber="comparedCars.length" v-bind:closeMobileNav />
 		<FiltersManagement v-bind:usersFilterPreferences v-bind:handleFilterPreferences />
 		<div class="content-wrapper">
 			<Dashboard
