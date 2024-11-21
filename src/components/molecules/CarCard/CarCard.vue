@@ -14,6 +14,12 @@ export default {
 			type: Boolean,
 			default: false,
 		},
+		handleRemoveCar: {
+			type: Function,
+		},
+		handleCompareStatus: {
+			type: Function,
+		},
 	},
 
 	components: {
@@ -36,8 +42,8 @@ export default {
 			<CarInfoBox title="Facelift" v-bind:content="car.facelift || 'unknown'" />
 		</div>
 		<div class="buttons-wrapper" v-if="car.id">
-			<CompareButton v-bind:isCompared="isCompared" />
-			<StyledButton class="delete-button" aria-label="delete car">
+			<CompareButton v-bind:isCompared="isCompared" v-on:handle-compare-status="handleCompareStatus(car.id)" />
+			<StyledButton class="delete-button" aria-label="delete car" v-on:handle-click="handleRemoveCar(car.id)">
 				<TrashIcon />
 			</StyledButton>
 		</div>

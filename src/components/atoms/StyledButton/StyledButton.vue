@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-	<button class="styled-button" v-bind:class="{ 'margin-top': hasExtraMargin }">
+	<button class="styled-button" v-bind:class="{ 'margin-top': hasExtraMargin }" v-on:click="$emit('handleClick')">
 		<slot />
 	</button>
 </template>

@@ -32,6 +32,30 @@ export default {
 
 		const handleMobileNav = () => (isNavActive.value = !isNavActive.value);
 
+		const removeCar = clickedCarId => {
+			const filteredCars = cars.value.filter(car => car.id !== clickedCarId);
+			cars.value = filteredCars;
+		};
+
+		const removeCarFromComparison = clickedCarId => {
+			const filteredCars = comparedCars.value.filter(car => car.id !== clickedCarId);
+			comparedCars.value = filteredCars;
+		};
+
+		const handleCompareStatus = clickedCarId => {
+			if (comparedCars.value.some(car => car.id === clickedCarId)) {
+				removeCarFromComparison(clickedCarId);
+			} else {
+				const clickedCar = cars.value.find(car => car.id === clickedCarId);
+				clickedCar && comparedCars.value.push(clickedCar);
+			}
+		};
+
+		const handleRemoveCar = clickedCarId => {
+			removeCar(clickedCarId);
+			removeCarFromComparison(clickedCarId);
+		};
+
 		const findCars = inputValue => {
 			const carsToCheck = cars.value === filteredCars ? cars.value : filteredCars;
 
@@ -165,6 +189,8 @@ export default {
 			selectedSortValue,
 			closeMobileNav,
 			handleMobileNav,
+			handleCompareStatus,
+			handleRemoveCar,
 			handleSearchInputChange,
 			handleSelectedValueChange,
 			handleFilterPreferences,
@@ -193,6 +219,8 @@ export default {
 				v-bind:carsToDisplay
 				v-bind:comparedCars
 				v-bind:searchPhrase
+				v-bind:handleCompareStatus
+				v-bind:handleRemoveCar
 				v-bind:handleSearchInputChange
 				v-bind:selectedSortValue
 				v-bind:handleSelectedValueChange />

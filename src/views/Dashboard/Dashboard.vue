@@ -23,6 +23,12 @@ export default {
 		searchPhrase: {
 			type: String,
 		},
+		handleCompareStatus: {
+			type: Function,
+		},
+		handleRemoveCar: {
+			type: Function,
+		},
 		handleSearchInputChange: {
 			type: Function,
 		},
@@ -74,7 +80,9 @@ export default {
 					v-for="car in carsToDisplay"
 					:key="car.id"
 					v-bind:car
-					v-bind:isCompared="comparedCars.some(comparedCar => comparedCar.id === car.id)" />
+					v-bind:isCompared="comparedCars.some(comparedCar => comparedCar.id === car.id)"
+					v-bind:handleRemoveCar
+					v-bind:handleCompareStatus />
 			</template>
 			<p class="no-cars-info" v-else>There are no cars to display...</p>
 		</div>
