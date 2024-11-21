@@ -7,7 +7,7 @@ export default {
 		defaultOption: {
 			type: String,
 		},
-		selectedSortValue: {
+		selectedValue: {
 			type: String,
 		},
 	},
@@ -17,12 +17,12 @@ export default {
 <template>
 	<div class="select-wrapper">
 		<select
-			aria-label="sort cars"
 			class="styled-select"
-			V-bind:value="selectedSortValue"
-			v-on:change="e => $emit('handleSelectedValueChange', e)">
+			v-bind:value="selectedValue"
+			v-on:change="$emit('handleSelectedValueChange', $event)"
+			aria-label="sort cars">
 			<option v-if="defaultOption" value="" disabled>{{ defaultOption }}</option>
-			<option v-for="option in options" v-bind:value="option.value">{{ option.text }}</option>
+			<option v-for="option in options" :key="option.value" v-bind:value="option.value">{{ option.text }}</option>
 		</select>
 	</div>
 </template>
