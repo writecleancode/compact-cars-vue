@@ -83,8 +83,8 @@ export default {
 		transition: opacity 0.3s;
 	}
 
-	&.active,
-	&.active::before {
+	&.router-link-active,
+	&.router-link-active::before {
 		opacity: 1;
 	}
 }
