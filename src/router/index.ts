@@ -1,4 +1,4 @@
-import { createMemoryHistory, createRouter } from 'vue-router';
+import { createWebHistory, createRouter } from 'vue-router';
 
 import AddCar from '@/views/AddCar/AddCar.vue';
 import CarComparison from '@/views/CarComparison/CarComparison.vue';
@@ -11,6 +11,6 @@ const routes = [
 ];
 
 export const router = createRouter({
-	history: createMemoryHistory(),
+	history: createWebHistory(),
 	routes,
 });
