@@ -3,6 +3,7 @@ import { cars as carsData } from '@/data/cars.ts';
 import { filterBrands, filterYears } from '@/data/filters';
 import { onMounted, ref, watch } from 'vue';
 import debounce from 'lodash.debounce';
+import { v4 as uuid } from 'uuid';
 import Header from '@/components/atoms/Header/Header.vue';
 import NavBar from '@/components/organisms/NavBar/NavBar.vue';
 import FiltersManagement from '@/components/organisms/FiltersManagement/FiltersManagement.vue';
@@ -16,6 +17,20 @@ export default {
 		const getCarName = car => `${car.brand} ${car.model}`;
 		const getCarProductionYear = car => car.productionStartYear;
 
+		const initialFormValues = {
+			brand: 'Daewoo',
+			model: 'Nubira',
+			generation: 'I (J100)',
+			productionStartYear: 1997,
+			productionEndYear: 2003,
+			facelift: '1999',
+			img: {
+				small: 'https://www.datocms-assets.com/112049/1730745382-daewoo_nubira_i_320.jpg',
+				medium: 'https://www.datocms-assets.com/112049/1730745382-daewoo_nubira_i_1280.jpg',
+				big: 'https://www.datocms-assets.com/112049/1729758737-daewoo_nubira_i.jpg',
+			},
+		};
+
 		const isLoading = ref(true);
 		const isNavActive = ref(false);
 		const cars = ref(carsData);
@@ -27,6 +42,8 @@ export default {
 		const successNotifications = ref([]);
 		const searchPhrase = ref('');
 		const selectedSortValue = ref('');
+
+		const formValues = ref({ ...initialFormValues });
 
 		const closeMobileNav = () => (isNavActive.value = false);
 
@@ -156,6 +173,58 @@ export default {
 				!usersFilterPreferences.value[optionType][clickedOptionIndex].isActive;
 		};
 
+		const addCar = newCar => {
+			cars.value.unshift(newCar);
+		};
+
+		const handleInputChange = e => {
+			if (e.target.name === 'img') {
+				formValue.value.img = {
+					small: e.target.value,
+					medium: e.target.value,
+				};
+			} else {
+				formValues.value[e.target.name] = e.target.value;
+			}
+		};
+
+		const clearForm = () => {
+			formValues.value = {
+				brand: '',
+				model: '',
+				generation: '',
+				productionStartYear: 2000,
+				productionEndYear: 2000,
+				facelift: '',
+				img: {
+					small: '',
+					medium: '',
+				},
+			};
+		};
+
+		const removeSuccessNotification = id => {
+			successNotifications.value = successNotifications.value.filter(el => el !== id);
+		};
+
+		const handleSuccessNotifications = () => {
+			const id = uuid();
+			successNotifications.value.push(id);
+
+			setTimeout(() => removeSuccessNotification(id), 2000);
+		};
+
+		const handleSubmitForm = () => {
+			const newCar = {
+				id: uuid(),
+				...formValues.value,
+			};
+			console.log(newCar);
+			addCar(newCar);
+			clearForm();
+			handleSuccessNotifications();
+		};
+
 		onMounted(() => {
 			handleDisplayCars();
 			isLoading.value = false;
@@ -194,6 +263,9 @@ export default {
 			handleSearchInputChange,
 			handleSelectedValueChange,
 			handleFilterPreferences,
+			formValues,
+			handleInputChange,
+			handleSubmitForm,
 		};
 	},
 
@@ -223,7 +295,10 @@ export default {
 				v-bind:handleRemoveCar
 				v-bind:handleSearchInputChange
 				v-bind:selectedSortValue
-				v-bind:handleSelectedValueChange />
+				v-bind:handleSelectedValueChange
+				v-bind:formValues
+				v-bind:handleInputChange
+				v-bind:handleSubmitForm />
 		</main>
 		<template v-if="successNotifications.length > 0">
 			<SuccessNotification v-for="successNotification in successNotifications" :key="successNotification">

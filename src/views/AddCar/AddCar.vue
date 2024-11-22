@@ -1,15 +1,103 @@
-<template>
-    <div>
-        Add Car
-    </div>
-</template>
-
 <script>
-    export default {
-        
-    }
+import Form from '@/components/organisms/Form/Form.vue';
+import StyledTitle from '@/components/atoms/StyledTitle/StyledTitle.vue';
+import CarCard from '@/components/molecules/CarCard/CarCard.vue';
+
+export default {
+	components: {
+		Form,
+		StyledTitle,
+		CarCard,
+	},
+
+	props: {
+		formValues: {
+			type: Object,
+		},
+		handleInputChange: {
+			type: Function,
+		},
+		handleSubmitForm: {
+			type: Function,
+		},
+	},
+};
 </script>
 
-<style lang="scss" scoped>
+<template>
+	<div class="add-car-wrapper" v-on:submit.prevent="handleSubmitForm">
+		<Form v-bind:formValues v-bind:handleInputChange />
+		<div class="preview-wrapper">
+			<StyledTitle class="preview-title">Live preview</StyledTitle>
+			<CarCard v-bind:car="formValues" />
+		</div>
+	</div>
+</template>
 
+<style lang="scss" scoped>
+.add-car-wrapper {
+	padding: 2.4rem;
+}
+
+.preview-wrapper {
+	margin-top: 5.6rem;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+.preview-title {
+	margin-bottom: 2.4rem;
+	color: #3e3e3e;
+	text-align: center;
+}
+
+@media (min-width: 620px) {
+	.add-car-wrapper {
+		display: flex;
+		gap: 3.2rem;
+
+		& > * {
+			flex-basis: 100%;
+		}
+	}
+
+	.preview-wrapper {
+		margin-left: 0;
+		margin-right: 0;
+		width: auto;
+	}
+}
+
+@media (min-width: 760px) {
+	.preview-wrapper {
+		margin-top: 4rem;
+	}
+}
+
+@media (min-width: 900px) {
+	.add-car-wrapper {
+		justify-content: space-evenly;
+		align-items: center;
+		margin: 0 auto;
+		min-height: 100%;
+		max-width: 960px;
+
+		& > * {
+			flex-basis: initial;
+		}
+
+		.preview-wrapper {
+			flex-grow: 1;
+			margin-top: 0;
+			max-width: 260px;
+		}
+	}
+}
+
+@media (min-width: 1600px) {
+	.preview-wrapper {
+		max-width: 290px;
+	}
+}
 </style>

@@ -1,16 +1,5 @@
-<script>
-export default {
-	props: {
-		hasExtraMargin: {
-			type: Boolean,
-			default: false,
-		},
-	},
-};
-</script>
-
 <template>
-	<button class="styled-button" v-bind:class="{ 'margin-top': hasExtraMargin }" v-on:click="$emit('handleClick')">
+	<button class="styled-button" v-on:click="$emit('handleClick')">
 		<slot />
 	</button>
 </template>
@@ -28,10 +17,6 @@ export default {
 	&:hover {
 		background-color: transparent;
 		color: #555555;
-	}
-
-	&.margin-top {
-		margin-top: 1.6rem;
 	}
 }
 </style>
