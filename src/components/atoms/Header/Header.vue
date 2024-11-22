@@ -18,10 +18,10 @@ export default {
 </script>
 
 <template>
-	<div class="header-wrapper">
+	<header class="header-wrapper">
 		<h1 class="h1">Segment C Hatchback cars <span>(late 1990's, early 2000's)</span></h1>
 		<BurgerButton v-bind:isNavActive v-on:handle-mobile-nav="handleMobileNav" />
-	</div>
+	</header>
 </template>
 
 <style lang="scss" scoped>

@@ -18,11 +18,17 @@ export default {
 <template>
 	<nav class="wrapper" v-bind:class="{ active: isNavActive }">
 		<ul class="nav-links-list">
-			<li><a href="" class="nav-link">Dashboard</a></li>
 			<li>
-				<a href="" class="nav-link">Comparison {{ comparedCarsNumber > 0 ? `(${comparedCarsNumber})` : ' ' }}</a>
+				<RouterLink to="/" class="nav-link">Dashboard</RouterLink>
 			</li>
-			<li><a href="" class="nav-link">Add car</a></li>
+			<li>
+				<RouterLink to="/car-comparison" class="nav-link"
+					>Comparison {{ comparedCarsNumber > 0 ? `(${comparedCarsNumber})` : ' ' }}</RouterLink
+				>
+			</li>
+			<li>
+				<RouterLink to="/add-car" class="nav-link">Add car</RouterLink>
+			</li>
 		</ul>
 	</nav>
 	<div class="background-tint" v-on:click="closeMobileNav"></div>

@@ -212,8 +212,8 @@ export default {
 		<Header v-bind:isNavActive v-bind:handleMobileNav />
 		<NavBar v-bind:isNavActive v-bind:comparedCarsNumber="comparedCars.length" v-bind:closeMobileNav />
 		<FiltersManagement v-bind:usersFilterPreferences v-bind:handleFilterPreferences />
-		<div class="content-wrapper">
-			<Dashboard
+		<main class="content-wrapper">
+			<RouterView
 				v-bind:isLoading
 				v-bind:cars
 				v-bind:carsToDisplay
@@ -224,7 +224,7 @@ export default {
 				v-bind:handleSearchInputChange
 				v-bind:selectedSortValue
 				v-bind:handleSelectedValueChange />
-		</div>
+		</main>
 		<template v-if="successNotifications.length > 0">
 			<SuccessNotification v-for="successNotification in successNotifications" :key="successNotification">
 				✔ Car added to the list
