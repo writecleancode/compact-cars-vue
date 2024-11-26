@@ -34,8 +34,6 @@ export default {
 
 		const isLoading = ref(true);
 		const isNavActive = ref(false);
-		// const currentRoute = ref(useRoute());
-		const currentRoute = useRoute();
 		const cars = ref(carsData);
 		const carsToDisplay = ref([]);
 		const comparedCars = ref([]);
@@ -247,10 +245,6 @@ export default {
 
 		watch(cars, () => {
 			handleDisplayCars();
-		});
-
-		watch(currentRoute, () => {
-			closeMobileNav();
 		});
 
 		return {

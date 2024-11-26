@@ -12,12 +12,23 @@ export default {
 			type: Function,
 		},
 	},
+
+	setup({ closeMobileNav }) {
+		const handleNavLinksClick = e => {
+			if (e.target.tagName.toLowerCase() === 'div') return;
+			closeMobileNav();
+		};
+
+		return {
+			handleNavLinksClick,
+		};
+	},
 };
 </script>
 
 <template>
 	<nav class="wrapper" v-bind:class="{ active: isNavActive }">
-		<ul class="nav-links-list">
+		<ul class="nav-links-list" v-on:click="handleNavLinksClick">
 			<li>
 				<RouterLink to="/" class="nav-link">Dashboard</RouterLink>
 			</li>
