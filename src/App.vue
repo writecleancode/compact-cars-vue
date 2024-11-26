@@ -9,6 +9,7 @@ import NavBar from '@/components/organisms/NavBar/NavBar.vue';
 import FiltersManagement from '@/components/organisms/FiltersManagement/FiltersManagement.vue';
 import Dashboard from '@/views/Dashboard/Dashboard.vue';
 import SuccessNotification from '@/components/atoms/SuccessNotification/SuccessNotification.vue';
+import { useRoute, useRouter } from 'vue-router';
 
 export default {
 	setup() {
@@ -33,6 +34,8 @@ export default {
 
 		const isLoading = ref(true);
 		const isNavActive = ref(false);
+		// const currentRoute = ref(useRoute());
+		const currentRoute = useRoute();
 		const cars = ref(carsData);
 		const carsToDisplay = ref([]);
 		const comparedCars = ref([]);
@@ -244,6 +247,10 @@ export default {
 
 		watch(cars, () => {
 			handleDisplayCars();
+		});
+
+		watch(currentRoute, () => {
+			closeMobileNav();
 		});
 
 		return {
