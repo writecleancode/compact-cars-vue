@@ -1,4 +1,4 @@
-type carImageType = {
+type CarImageType = {
 	small: string;
 	medium: string;
 	big?: string;
@@ -12,5 +12,15 @@ export type CarType = {
 	productionStartYear: number;
 	productionEndYear: number;
 	facelift: string;
-	img: carImageType;
+	img: CarImageType;
+};
+
+export type FormValuesType = {
+	brand: string;
+	model: string;
+	generation: string;
+	productionStartYear: number;
+	productionEndYear: number;
+	facelift: string;
+	img: CarImageType;
 };

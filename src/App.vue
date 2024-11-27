@@ -1,6 +1,9 @@
 <script lang="ts">
 import { cars as carsData } from '@/data/cars.ts';
 import { filterBrands, filterYears } from '@/data/filters';
+import { useNav } from '@/composables/useNav';
+import { useNotifications } from '@/composables/useNotifications';
+import { useForm } from './composables/useForm';
 import { onMounted, ref, watch } from 'vue';
 import debounce from 'lodash.debounce';
 import { v4 as uuid } from 'uuid';
@@ -9,7 +12,6 @@ import NavBar from '@/components/organisms/NavBar/NavBar.vue';
 import FiltersManagement from '@/components/organisms/FiltersManagement/FiltersManagement.vue';
 import Dashboard from '@/views/Dashboard/Dashboard.vue';
 import SuccessNotification from '@/components/atoms/SuccessNotification/SuccessNotification.vue';
-import { useRoute, useRouter } from 'vue-router';
 
 export default {
 	setup() {
@@ -18,37 +20,18 @@ export default {
 		const getCarName = car => `${car.brand} ${car.model}`;
 		const getCarProductionYear = car => car.productionStartYear;
 
-		const initialFormValues = {
-			brand: 'Daewoo',
-			model: 'Nubira',
-			generation: 'I (J100)',
-			productionStartYear: 1997,
-			productionEndYear: 2003,
-			facelift: '1999',
-			img: {
-				small: 'https://www.datocms-assets.com/112049/1730745382-daewoo_nubira_i_320.jpg',
-				medium: 'https://www.datocms-assets.com/112049/1730745382-daewoo_nubira_i_1280.jpg',
-				big: 'https://www.datocms-assets.com/112049/1729758737-daewoo_nubira_i.jpg',
-			},
-		};
-
+		const { isNavActive, handleMobileNav, closeMobileNav } = useNav();
+		const { successNotifications, handleSuccessNotifications } = useNotifications();
+		const { formValues, handleInputChange, clearForm } = useForm();
 		const isLoading = ref(true);
-		const isNavActive = ref(false);
 		const cars = ref(carsData);
 		const carsToDisplay = ref([]);
 		const comparedCars = ref([]);
 		const filterYearsData = filterYears.map(option => ({ value: option, isActive: false }));
 		const filterBrandsData = filterBrands.map(option => ({ value: option, isActive: false }));
 		const usersFilterPreferences = ref({ brands: filterBrandsData, years: filterYearsData });
-		const successNotifications = ref([]);
 		const searchPhrase = ref('');
 		const selectedSortValue = ref('');
-
-		const formValues = ref({ ...initialFormValues });
-
-		const closeMobileNav = () => (isNavActive.value = false);
-
-		const handleMobileNav = () => (isNavActive.value = !isNavActive.value);
 
 		const removeCar = clickedCarId => {
 			const filteredCars = cars.value.filter(car => car.id !== clickedCarId);
@@ -178,49 +161,11 @@ export default {
 			cars.value.unshift(newCar);
 		};
 
-		const handleInputChange = e => {
-			if (e.target.name === 'img') {
-				formValue.value.img = {
-					small: e.target.value,
-					medium: e.target.value,
-				};
-			} else {
-				formValues.value[e.target.name] = e.target.value;
-			}
-		};
-
-		const clearForm = () => {
-			formValues.value = {
-				brand: '',
-				model: '',
-				generation: '',
-				productionStartYear: 2000,
-				productionEndYear: 2000,
-				facelift: '',
-				img: {
-					small: '',
-					medium: '',
-				},
-			};
-		};
-
-		const removeSuccessNotification = id => {
-			successNotifications.value = successNotifications.value.filter(el => el !== id);
-		};
-
-		const handleSuccessNotifications = () => {
-			const id = uuid();
-			successNotifications.value.push(id);
-
-			setTimeout(() => removeSuccessNotification(id), 2000);
-		};
-
 		const handleSubmitForm = () => {
 			const newCar = {
 				id: uuid(),
 				...formValues.value,
 			};
-			console.log(newCar);
 			addCar(newCar);
 			clearForm();
 			handleSuccessNotifications();
@@ -229,10 +174,6 @@ export default {
 		onMounted(() => {
 			handleDisplayCars();
 			isLoading.value = false;
-		});
-
-		watch(isNavActive, () => {
-			isNavActive.value ? document.body.classList.add('prevent-scroll') : document.body.classList.remove('prevent-scroll');
 		});
 
 		watch(
@@ -245,6 +186,10 @@ export default {
 
 		watch(cars, () => {
 			handleDisplayCars();
+		});
+
+		watch(formValues, () => {
+			console.log(formValues);
 		});
 
 		return {
