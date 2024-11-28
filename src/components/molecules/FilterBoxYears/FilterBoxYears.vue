@@ -1,22 +1,27 @@
 <script>
+import { useCarsContext } from '@/composables/useCars';
 import FilterBox from '@/components/molecules/FilterBox/FilterBox.vue';
 
 export default {
-	props: {
-		options: {
-			type: Object,
-		},
-		handleFilterPreferences: {
-			type: Function,
-		},
-	},
-	
 	components: {
 		FilterBox,
+	},
+
+	setup() {
+		const { usersFilterPreferences, handleFilterPreferences } = useCarsContext();
+
+		return {
+			usersFilterPreferences,
+			handleFilterPreferences,
+		};
 	},
 };
 </script>
 
 <template>
-	<FilterBox title="Choose production year(s):" v-bind:options v-on:handle-filter="handleFilterPreferences" v-bind:isYears="true" />
+	<FilterBox
+		title="Choose production year(s):"
+		v-bind:options="usersFilterPreferences.years"
+		v-on:handle-filter="handleFilterPreferences"
+		v-bind:isYears="true" />
 </template>

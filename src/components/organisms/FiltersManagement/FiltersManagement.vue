@@ -8,22 +8,13 @@ export default {
 		FilterBoxYears,
 		FilterBoxBrands,
 	},
-
-	setup() {
-		const { usersFilterPreferences, handleFilterPreferences } = useCarsContext();
-
-		return {
-			usersFilterPreferences,
-			handleFilterPreferences,
-		};
-	},
 };
 </script>
 
 <template>
 	<div class="filters-wrapper">
-		<FilterBoxYears v-bind:options="usersFilterPreferences.years" v-bind:handleFilterPreferences />
-		<FilterBoxBrands v-bind:options="usersFilterPreferences.brands" v-bind:handleFilterPreferences />
+		<FilterBoxYears />
+		<FilterBoxBrands />
 	</div>
 </template>
 

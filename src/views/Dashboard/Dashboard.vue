@@ -1,12 +1,16 @@
 <script>
 import { selectOptions } from '@/data/select';
 import { useCarsContext } from '@/composables/useCars';
+import { useModal } from '@/composables/useModal';
 import { onMounted, ref, watch } from 'vue';
 import debounce from 'lodash.debounce';
 import SearchInput from '@/components/atoms/SearchInput/SearchInput.vue';
 import SortSelect from '@/components/atoms/SortSelect/SortSelect.vue';
 import LoadingAnimation from '@/components/atoms/LoadingAnimation/LoadingAnimation.vue';
 import CarCard from '@/components/molecules/CarCard/CarCard.vue';
+import Modal from '@/components/organisms/Modal/Modal.vue';
+import FilterBoxYears from '@/components/molecules/FilterBoxYears/FilterBoxYears.vue';
+import FilterBoxBrands from '@/components/molecules/FilterBoxBrands/FilterBoxBrands.vue';
 
 export default {
 	components: {
@@ -14,11 +18,15 @@ export default {
 		SortSelect,
 		LoadingAnimation,
 		CarCard,
+		Modal,
+		FilterBoxYears,
+		FilterBoxBrands,
 	},
 
 	setup() {
 		const { cars, carsToDisplay, comparedCars, usersFilterPreferences, findCars, filterCars, setCarsToDisplay, sortCars } =
 			useCarsContext();
+		const { isModalOpen, openModal, closeModal } = useModal();
 		const isLoading = ref(true);
 		const searchPhrase = ref('');
 		const selectedSortValue = ref('');
@@ -48,8 +56,6 @@ export default {
 			sortCars(selectedValue);
 		};
 
-		const openModal = () => console.log('modal opened');
-
 		onMounted(() => {
 			handleDisplayCars();
 			isLoading.value = false;
@@ -77,8 +83,9 @@ export default {
 			selectOptions,
 			selectedSortValue,
 			handleSelectedValueChange,
-			
+			isModalOpen,
 			openModal,
+			closeModal,
 		};
 	},
 };
@@ -110,13 +117,11 @@ export default {
 			</template>
 			<p class="no-cars-info" v-else>There are no cars to display...</p>
 		</div>
-
-		<!-- 
-			<Modal isOpen={isModalOpen} closeModal={closeModal}>
-				<FilterBoxYears />
-				<FilterBoxBrands />
-			</Modal>
-		--></div>
+		<Modal v-bind:isOpen="isModalOpen" v-bind:closeModal>
+			<FilterBoxYears />
+			<FilterBoxBrands />
+		</Modal>
+	</div>
 </template>
 
 <style lang="scss" scoped>
