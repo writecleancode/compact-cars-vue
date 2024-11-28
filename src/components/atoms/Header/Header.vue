@@ -1,14 +1,15 @@
 <script>
 import BurgerButton from '@/components/atoms/BurgerButton/BurgerButton.vue';
+import { useNavContext } from '@/composables/useNav';
 
 export default {
-	props: {
-		isNavActive: {
-			type: Boolean,
-		},
-		handleMobileNav: {
-			type: Function,
-		},
+	setup() {
+		const { isNavActive, handleMobileNav } = useNavContext();
+
+		return {
+			isNavActive,
+			handleMobileNav,
+		};
 	},
 
 	components: {

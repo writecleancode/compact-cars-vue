@@ -1,26 +1,26 @@
 <script>
+import { useNavContext } from '@/composables/useNav';
+
 export default {
 	props: {
-		isNavActive: {
-			type: Boolean,
-		},
 		comparedCarsNumber: {
 			type: Number,
 			default: 0,
 		},
-		closeMobileNav: {
-			type: Function,
-		},
 	},
 
-	setup({ closeMobileNav }) {
+	setup() {
+		const { isNavActive, closeMobileNav } = useNavContext();
+
 		const handleNavLinksClick = e => {
 			if (e.target.tagName.toLowerCase() === 'div') return;
 			closeMobileNav();
 		};
 
 		return {
+			isNavActive,
 			handleNavLinksClick,
+			closeMobileNav,
 		};
 	},
 };

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { useNav } from '@/composables/useNav';
+import { useNavProvider } from '@/composables/useNav';
 import { useNotifications } from '@/composables/useNotifications';
 import { useForm } from '@/composables/useForm';
 import { useCars } from '@/composables/useCars';
@@ -14,7 +14,7 @@ import SuccessNotification from '@/components/atoms/SuccessNotification/SuccessN
 
 export default {
 	setup() {
-		const { isNavActive, handleMobileNav, closeMobileNav } = useNav();
+		useNavProvider();
 		const { successNotifications, handleSuccessNotifications } = useNotifications();
 		const { formValues, handleInputChange, clearForm } = useForm();
 		const {
@@ -89,7 +89,6 @@ export default {
 
 		return {
 			isLoading,
-			isNavActive,
 			cars,
 			carsToDisplay,
 			comparedCars,
@@ -97,8 +96,6 @@ export default {
 			successNotifications,
 			searchPhrase,
 			selectedSortValue,
-			closeMobileNav,
-			handleMobileNav,
 			handleCompareStatus,
 			handleRemoveCar,
 			handleSearchInputChange,
@@ -122,8 +119,8 @@ export default {
 
 <template>
 	<div class="app-wrapper">
-		<Header v-bind:isNavActive v-bind:handleMobileNav />
-		<NavBar v-bind:isNavActive v-bind:comparedCarsNumber="comparedCars.length" v-bind:closeMobileNav />
+		<Header />
+		<NavBar v-bind:comparedCarsNumber="comparedCars.length" />
 		<FiltersManagement v-bind:usersFilterPreferences v-bind:handleFilterPreferences />
 		<main class="content-wrapper">
 			<RouterView
