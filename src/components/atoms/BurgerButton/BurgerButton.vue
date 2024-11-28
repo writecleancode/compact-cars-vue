@@ -1,9 +1,14 @@
 <script>
+import { useNavContext } from '@/composables/useNav';
+
 export default {
-	props: {
-		isNavActive: {
-			type: Boolean,
-		},
+	setup() {
+		const { isNavActive, handleMobileNav } = useNavContext();
+
+		return {
+			isNavActive,
+			handleMobileNav,
+		};
 	},
 };
 </script>
@@ -13,7 +18,7 @@ export default {
 		class="burger-btn"
 		v-bind:class="{ active: isNavActive }"
 		v-bind:aria-label="`${isNavActive ? 'close navigation' : 'open navigation'}`"
-		v-on:click="$emit('handleMobileNav')">
+		v-on:click="handleMobileNav">
 		<span className="burger-btn-line burger-btn-line--top"></span>
 		<span className="burger-btn-line burger-btn-line--middle"></span>
 		<span className="burger-btn-line burger-btn-line--bottom"></span>

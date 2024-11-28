@@ -1,17 +1,7 @@
 <script>
 import BurgerButton from '@/components/atoms/BurgerButton/BurgerButton.vue';
-import { useNavContext } from '@/composables/useNav';
 
 export default {
-	setup() {
-		const { isNavActive, handleMobileNav } = useNavContext();
-
-		return {
-			isNavActive,
-			handleMobileNav,
-		};
-	},
-
 	components: {
 		BurgerButton,
 	},
@@ -21,7 +11,7 @@ export default {
 <template>
 	<header class="header-wrapper">
 		<h1 class="h1">Segment C Hatchback cars <span>(late 1990's, early 2000's)</span></h1>
-		<BurgerButton v-bind:isNavActive v-on:handle-mobile-nav="handleMobileNav" />
+		<BurgerButton />
 	</header>
 </template>
 
