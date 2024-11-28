@@ -1,5 +1,5 @@
 <template>
-	<button class="styled-button" v-on:click="$emit('handleClick')">
+	<button class="styled-button">
 		<slot />
 	</button>
 </template>

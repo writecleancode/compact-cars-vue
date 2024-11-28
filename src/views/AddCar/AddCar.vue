@@ -1,6 +1,7 @@
 <script>
 import { useForm } from '@/composables/useForm';
 import { useNotificationsContext } from '@/composables/useNotifications';
+import { useCarsContext } from '@/composables/useCars';
 import { v4 as uuid } from 'uuid';
 import Form from '@/components/organisms/Form/Form.vue';
 import StyledTitle from '@/components/atoms/StyledTitle/StyledTitle.vue';
@@ -19,9 +20,10 @@ export default {
 		},
 	},
 
-	setup({ addCar }) {
+	setup() {
 		const { formValues, handleInputChange, clearForm } = useForm();
 		const { handleSuccessNotifications } = useNotificationsContext();
+		const { addCar } = useCarsContext();
 
 		const handleSubmitForm = () => {
 			const newCar = {
@@ -43,8 +45,8 @@ export default {
 </script>
 
 <template>
-	<div class="add-car-wrapper" v-on:submit.prevent="handleSubmitForm">
-		<Form v-bind:formValues v-bind:handleInputChange />
+	<div class="add-car-wrapper">
+		<Form v-bind:formValues v-bind:handleInputChange v-on:submit.prevent="handleSubmitForm" />
 		<div class="preview-wrapper">
 			<StyledTitle class="preview-title">Live preview</StyledTitle>
 			<CarCard v-bind:car="formValues" />

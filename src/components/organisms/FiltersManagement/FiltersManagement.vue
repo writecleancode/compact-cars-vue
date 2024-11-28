@@ -1,20 +1,21 @@
 <script>
+import { useCarsContext } from '@/composables/useCars';
 import FilterBoxYears from '@/components/molecules/FilterBoxYears/FilterBoxYears.vue';
 import FilterBoxBrands from '@/components/molecules/FilterBoxBrands/FilterBoxBrands.vue';
 
 export default {
-	props: {
-		usersFilterPreferences: {
-			type: Object,
-		},
-		handleFilterPreferences: {
-			type: Function,
-		},
-	},
-
 	components: {
 		FilterBoxYears,
 		FilterBoxBrands,
+	},
+
+	setup() {
+		const { usersFilterPreferences, handleFilterPreferences } = useCarsContext();
+
+		return {
+			usersFilterPreferences,
+			handleFilterPreferences,
+		};
 	},
 };
 </script>

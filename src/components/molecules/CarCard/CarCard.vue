@@ -1,4 +1,5 @@
 <script>
+import { useCarsContext } from '@/composables/useCars';
 import CarImage from '@/components/atoms/CarImage/CarImage.vue';
 import CarInfoBox from '@/components/atoms/CarInfoBox/CarInfoBox.vue';
 import CompareButton from '@/components/atoms/CompareButton/CompareButton.vue';
@@ -6,6 +7,14 @@ import StyledButton from '@/components/atoms/StyledButton/StyledButton.vue';
 import TrashIcon from '@/assets/icons/TrashIcon.vue';
 
 export default {
+	components: {
+		CarImage,
+		CarInfoBox,
+		CompareButton,
+		StyledButton,
+		TrashIcon,
+	},
+
 	props: {
 		car: {
 			type: Object,
@@ -17,17 +26,15 @@ export default {
 		handleRemoveCar: {
 			type: Function,
 		},
-		handleCompareStatus: {
-			type: Function,
-		},
 	},
 
-	components: {
-		CarImage,
-		CarInfoBox,
-		CompareButton,
-		StyledButton,
-		TrashIcon,
+	setup() {
+		const { handleCompareStatus, handleRemoveCar } = useCarsContext();
+
+		return {
+			handleCompareStatus,
+			handleRemoveCar,
+		};
 	},
 };
 </script>
@@ -42,8 +49,8 @@ export default {
 			<CarInfoBox title="Facelift" v-bind:content="car.facelift || 'unknown'" />
 		</div>
 		<div class="buttons-wrapper" v-if="car.id">
-			<CompareButton v-bind:isCompared="isCompared" v-on:handle-compare-status="handleCompareStatus(car.id)" />
-			<StyledButton class="delete-button" aria-label="delete car" v-on:handle-click="handleRemoveCar(car.id)">
+			<CompareButton v-bind:isCompared="isCompared" v-on:click="handleCompareStatus(car.id)" />
+			<StyledButton class="delete-button" aria-label="delete car" v-on:click="handleRemoveCar(car.id)">
 				<TrashIcon />
 			</StyledButton>
 		</div>

@@ -1,9 +1,13 @@
 <script>
+import { useCarsContext } from '@/composables/useCars';
+
 export default {
-	props: {
-		comparedCars: {
-			type: Array,
-		},
+	setup() {
+		const { comparedCars } = useCarsContext();
+
+		return {
+			comparedCars,
+		};
 	},
 };
 </script>

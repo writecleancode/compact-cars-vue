@@ -1,7 +1,8 @@
 import type { CarType } from '@/types/types';
+import { createProvider } from '@/utils/createProvider';
 import { cars as carsData } from '@/data/cars';
 import { filterBrands, filterYears } from '@/data/filters';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 export const useCars = () => {
 	const filterYearsData = filterYears.map(option => ({ value: option, isActive: false }));
@@ -12,7 +13,7 @@ export const useCars = () => {
 	const getCarName = (car: CarType) => `${car.brand} ${car.model}`;
 	const getCarProductionYear = (car: CarType) => car.productionStartYear;
 
-	const cars = ref<CarType[]>(carsData);
+	const cars = ref<CarType[]>([]);
 	const carsToDisplay = ref<CarType[]>([]);
 	const comparedCars = ref<CarType[]>([]);
 	const usersFilterPreferences = ref({ brands: filterBrandsData, years: filterYearsData });
@@ -118,6 +119,10 @@ export const useCars = () => {
 			!usersFilterPreferences.value[optionType][clickedOptionIndex].isActive;
 	};
 
+	onMounted(() => {
+		cars.value = carsData;
+	});
+
 	return {
 		cars,
 		carsToDisplay,
@@ -133,3 +138,5 @@ export const useCars = () => {
 		addCar,
 	};
 };
+
+export const [useCarsProvider, useCarsContext] = createProvider('Cars', useCars);

@@ -1,59 +1,85 @@
 <script>
 import { selectOptions } from '@/data/select';
+import { useCarsContext } from '@/composables/useCars';
+import { onMounted, ref, watch } from 'vue';
+import debounce from 'lodash.debounce';
 import SearchInput from '@/components/atoms/SearchInput/SearchInput.vue';
 import SortSelect from '@/components/atoms/SortSelect/SortSelect.vue';
 import LoadingAnimation from '@/components/atoms/LoadingAnimation/LoadingAnimation.vue';
 import CarCard from '@/components/molecules/CarCard/CarCard.vue';
 
 export default {
-	props: {
-		isLoading: {
-			type: Boolean,
-			default: true,
-		},
-		cars: {
-			type: Array,
-		},
-		carsToDisplay: {
-			type: Array,
-		},
-		comparedCars: {
-			type: Array,
-		},
-		searchPhrase: {
-			type: String,
-		},
-		handleCompareStatus: {
-			type: Function,
-		},
-		handleRemoveCar: {
-			type: Function,
-		},
-		handleSearchInputChange: {
-			type: Function,
-		},
-		selectedSortValue: {
-			type: String,
-		},
-		handleSelectedValueChange: {
-			type: Function,
-		},
-	},
-
-	setup() {
-		const openModal = () => console.log('modal opened');
-
-		return {
-			selectOptions,
-			openModal,
-		};
-	},
-
 	components: {
 		SearchInput,
 		SortSelect,
 		LoadingAnimation,
 		CarCard,
+	},
+
+	setup() {
+		const { cars, carsToDisplay, comparedCars, usersFilterPreferences, findCars, filterCars, setCarsToDisplay, sortCars } =
+			useCarsContext();
+		const isLoading = ref(true);
+		const searchPhrase = ref('');
+		const selectedSortValue = ref('');
+
+		const handleDisplayCars = () => {
+			let matchingCars;
+
+			matchingCars = filterCars();
+			matchingCars = findCars(searchPhrase.value);
+
+			setCarsToDisplay(matchingCars);
+		};
+
+		const handleSearchCars = debounce(inputValue => {
+			setCarsToDisplay(findCars(inputValue));
+		}, 500);
+
+		const handleSearchInputChange = e => {
+			const inputValue = e.target.value;
+			searchPhrase.value = inputValue;
+			handleSearchCars(inputValue);
+		};
+
+		const handleSelectedValueChange = e => {
+			const selectedValue = e.target.value;
+			selectedSortValue.value = selectedValue;
+			sortCars(selectedValue);
+		};
+
+		const openModal = () => console.log('modal opened');
+
+		onMounted(() => {
+			handleDisplayCars();
+			isLoading.value = false;
+		});
+
+		watch(
+			usersFilterPreferences,
+			() => {
+				handleDisplayCars();
+			},
+			{ deep: true }
+		);
+
+		watch(cars, () => {
+			handleDisplayCars();
+		});
+
+		return {
+			cars,
+			carsToDisplay,
+			comparedCars,
+			isLoading,
+			searchPhrase,
+			handleSearchInputChange,
+			selectOptions,
+			selectedSortValue,
+			handleSelectedValueChange,
+			
+			openModal,
+		};
 	},
 };
 </script>
@@ -80,9 +106,7 @@ export default {
 					v-for="car in carsToDisplay"
 					:key="car.id"
 					v-bind:car
-					v-bind:isCompared="comparedCars.some(comparedCar => comparedCar.id === car.id)"
-					v-bind:handleRemoveCar
-					v-bind:handleCompareStatus />
+					v-bind:isCompared="comparedCars.some(comparedCar => comparedCar.id === car.id)" />
 			</template>
 			<p class="no-cars-info" v-else>There are no cars to display...</p>
 		</div>
