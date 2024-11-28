@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-	<Teleport to="body" class="modal-container">
+	<Teleport to="body">
 		<div class="modal-overlay" v-bind:class="{ active: isOpen }" v-on:click="closeModal">
 			<div class="modal-wrapper">
 				<slot />
