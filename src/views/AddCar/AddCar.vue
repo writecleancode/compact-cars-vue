@@ -1,4 +1,7 @@
 <script>
+import { useForm } from '@/composables/useForm';
+import { useNotificationsContext } from '@/composables/useNotifications';
+import { v4 as uuid } from 'uuid';
 import Form from '@/components/organisms/Form/Form.vue';
 import StyledTitle from '@/components/atoms/StyledTitle/StyledTitle.vue';
 import CarCard from '@/components/molecules/CarCard/CarCard.vue';
@@ -11,15 +14,30 @@ export default {
 	},
 
 	props: {
-		formValues: {
-			type: Object,
-		},
-		handleInputChange: {
+		addCar: {
 			type: Function,
 		},
-		handleSubmitForm: {
-			type: Function,
-		},
+	},
+
+	setup({ addCar }) {
+		const { formValues, handleInputChange, clearForm } = useForm();
+		const { handleSuccessNotifications } = useNotificationsContext();
+
+		const handleSubmitForm = () => {
+			const newCar = {
+				id: uuid(),
+				...formValues.value,
+			};
+			addCar(newCar);
+			clearForm();
+			handleSuccessNotifications();
+		};
+
+		return {
+			formValues,
+			handleInputChange,
+			handleSubmitForm,
+		};
 	},
 };
 </script>

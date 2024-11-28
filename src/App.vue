@@ -1,11 +1,9 @@
 <script lang="ts">
 import { useNavProvider } from '@/composables/useNav';
-import { useNotifications } from '@/composables/useNotifications';
-import { useForm } from '@/composables/useForm';
+import { useNotificationsProvider, useNotificationsContext } from '@/composables/useNotifications';
 import { useCars } from '@/composables/useCars';
 import { onMounted, ref, watch } from 'vue';
 import debounce from 'lodash.debounce';
-import { v4 as uuid } from 'uuid';
 import Header from '@/components/atoms/Header/Header.vue';
 import NavBar from '@/components/organisms/NavBar/NavBar.vue';
 import FiltersManagement from '@/components/organisms/FiltersManagement/FiltersManagement.vue';
@@ -15,8 +13,8 @@ import SuccessNotification from '@/components/atoms/SuccessNotification/SuccessN
 export default {
 	setup() {
 		useNavProvider();
-		const { successNotifications, handleSuccessNotifications } = useNotifications();
-		const { formValues, handleInputChange, clearForm } = useForm();
+		const { successNotifications } = useNotificationsProvider();
+
 		const {
 			cars,
 			carsToDisplay,
@@ -60,16 +58,6 @@ export default {
 			handleSearchCars(inputValue);
 		};
 
-		const handleSubmitForm = () => {
-			const newCar = {
-				id: uuid(),
-				...formValues.value,
-			};
-			addCar(newCar);
-			clearForm();
-			handleSuccessNotifications();
-		};
-
 		onMounted(() => {
 			handleDisplayCars();
 			isLoading.value = false;
@@ -101,9 +89,7 @@ export default {
 			handleSearchInputChange,
 			handleSelectedValueChange,
 			handleFilterPreferences,
-			formValues,
-			handleInputChange,
-			handleSubmitForm,
+			addCar,
 		};
 	},
 
@@ -134,9 +120,7 @@ export default {
 				v-bind:handleSearchInputChange
 				v-bind:selectedSortValue
 				v-bind:handleSelectedValueChange
-				v-bind:formValues
-				v-bind:handleInputChange
-				v-bind:handleSubmitForm />
+				v-bind:addCar />
 		</main>
 		<template v-if="successNotifications.length > 0">
 			<SuccessNotification v-for="successNotification in successNotifications" :key="successNotification">

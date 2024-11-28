@@ -1,3 +1,4 @@
+import { createProvider } from '@/utils/createProvider';
 import { v4 as uuid } from 'uuid';
 import { ref } from 'vue';
 
@@ -20,3 +21,5 @@ export const useNotifications = () => {
 		handleSuccessNotifications,
 	};
 };
+
+export const [useNotificationsProvider, useNotificationsContext] = createProvider('Notifications', useNotifications);

@@ -21,6 +21,4 @@ export const useNav = () => {
 	};
 };
 
-const [useNavProvider, useNavContext] = createProvider('Nav', useNav);
-
-export { useNavProvider, useNavContext };
+export const [useNavProvider, useNavContext] = createProvider('Nav', useNav);
