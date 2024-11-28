@@ -1,3 +1,4 @@
+import type { CarType } from '@/types/types';
 import { cars as carsData } from '@/data/cars';
 import { filterBrands, filterYears } from '@/data/filters';
 import { ref } from 'vue';
@@ -6,32 +7,32 @@ export const useCars = () => {
 	const filterYearsData = filterYears.map(option => ({ value: option, isActive: false }));
 	const filterBrandsData = filterBrands.map(option => ({ value: option, isActive: false }));
 
-	let filteredCars = [];
+	let filteredCars: CarType[] = [];
 
-	const getCarName = car => `${car.brand} ${car.model}`;
-	const getCarProductionYear = car => car.productionStartYear;
+	const getCarName = (car: CarType) => `${car.brand} ${car.model}`;
+	const getCarProductionYear = (car: CarType) => car.productionStartYear;
 
-	const cars = ref(carsData);
-	const carsToDisplay = ref([]);
-	const comparedCars = ref([]);
+	const cars = ref<CarType[]>(carsData);
+	const carsToDisplay = ref<CarType[]>([]);
+	const comparedCars = ref<CarType[]>([]);
 	const usersFilterPreferences = ref({ brands: filterBrandsData, years: filterYearsData });
 
-	const removeCar = clickedCarId => {
+	const removeCar = (clickedCarId: string) => {
 		const filteredCars = cars.value.filter(car => car.id !== clickedCarId);
 		cars.value = filteredCars;
 	};
 
-	const removeCarFromComparison = clickedCarId => {
+	const removeCarFromComparison = (clickedCarId: string) => {
 		const filteredCars = comparedCars.value.filter(car => car.id !== clickedCarId);
 		comparedCars.value = filteredCars;
 	};
 
-	const handleRemoveCar = clickedCarId => {
+	const handleRemoveCar = (clickedCarId: string) => {
 		removeCar(clickedCarId);
 		removeCarFromComparison(clickedCarId);
 	};
 
-	const handleCompareStatus = clickedCarId => {
+	const handleCompareStatus = (clickedCarId: string) => {
 		if (comparedCars.value.some(car => car.id === clickedCarId)) {
 			removeCarFromComparison(clickedCarId);
 		} else {
@@ -40,7 +41,7 @@ export const useCars = () => {
 		}
 	};
 
-	const findCars = inputValue => {
+	const findCars = (inputValue: string) => {
 		const carsToCheck = cars.value === filteredCars ? cars.value : filteredCars;
 
 		const matchingCars = inputValue
@@ -54,7 +55,7 @@ export const useCars = () => {
 		filteredCars = cars.value;
 
 		if (usersFilterPreferences.value.brands.some(option => option.isActive)) {
-			const filteredByBrand = [];
+			const filteredByBrand: CarType[] = [];
 			const activeFilterClasses = usersFilterPreferences.value.brands.filter(option => option.isActive);
 
 			cars.value.forEach(car => {
@@ -77,22 +78,22 @@ export const useCars = () => {
 		return filteredCars;
 	};
 
-	const setCarsToDisplay = cars => {
+	const setCarsToDisplay = (cars: CarType[]) => {
 		carsToDisplay.value = cars;
 	};
 
-	const addCar = newCar => {
+	const addCar = (newCar: CarType) => {
 		cars.value.unshift(newCar);
 	};
 
 	const sortCars = (sortCriteria = 'byAlphabet') => {
-		const sortedCars = cars.value.toSorted((carA, carB) => {
+		cars.value.sort((carA: CarType | string | number, carB: CarType | string | number) => {
 			if (sortCriteria.toLowerCase().includes('alphabet')) {
-				carA = getCarName(carA);
-				carB = getCarName(carB);
+				carA = getCarName(carA as CarType);
+				carB = getCarName(carB as CarType);
 			} else if (sortCriteria.toLowerCase().includes('year')) {
-				carA = getCarProductionYear(carA);
-				carB = getCarProductionYear(carB);
+				carA = getCarProductionYear(carA as CarType);
+				carB = getCarProductionYear(carB as CarType);
 			}
 
 			if (sortCriteria.toLowerCase().includes('reverse')) {
@@ -107,11 +108,9 @@ export const useCars = () => {
 				return 0;
 			}
 		});
-
-		cars.value = sortedCars;
 	};
 
-	const handleFilterPreferences = clickedOption => {
+	const handleFilterPreferences = (clickedOption: number | string) => {
 		const optionType = typeof clickedOption === 'number' ? 'years' : 'brands';
 		const clickedOptionIndex = usersFilterPreferences.value[optionType].map(option => option.value).indexOf(clickedOption);
 
