@@ -2,6 +2,10 @@
 import StyledTitle from '@/components/atoms/StyledTitle/StyledTitle.vue';
 
 export default {
+	components: {
+		StyledTitle,
+	},
+
 	props: {
 		title: {
 			type: String,
@@ -12,10 +16,6 @@ export default {
 		isYears: {
 			type: Boolean,
 		},
-	},
-
-	components: {
-		StyledTitle,
 	},
 };
 </script>
