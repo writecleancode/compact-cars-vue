@@ -1,4 +1,7 @@
 <script>
+import { onClickOutside } from '@vueuse/core';
+import { useTemplateRef } from 'vue';
+
 export default {
 	props: {
 		isOpen: {
@@ -9,13 +12,19 @@ export default {
 			type: Function,
 		},
 	},
+
+	setup({ closeModal }) {
+		const modal = useTemplateRef('my-modal');
+
+		onClickOutside(modal, closeModal);
+	},
 };
 </script>
 
 <template>
 	<Teleport to="body">
-		<div class="modal-overlay" v-bind:class="{ active: isOpen }" v-on:click.stop="closeModal">
-			<div id="modal" class="modal-wrapper" v-on:click.stop>
+		<div v-if="isOpen" class="modal-overlay" v-bind:class="{ active: isOpen }">
+			<div class="modal-wrapper" ref="my-modal">
 				<slot />
 				<button class="close-modal-btn" v-on:click="closeModal">Close</button>
 			</div>
