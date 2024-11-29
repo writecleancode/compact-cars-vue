@@ -18,14 +18,16 @@ const initialFormValues = {
 export const useForm = () => {
 	const formValues = ref<FormValuesType>({ ...initialFormValues });
 
-	const handleInputChange = (e: InputEvent & { target: HTMLInputElement }) => {
-		const inputName = e.target.name as keyof FormValuesType;
-		const inputValue = e.target.type === 'number' ? Number(e.target.value) : e.target.value;
+	const handleInputChange = (e: InputEvent) => {
+		const eventTarget = e.target as HTMLInputElement;
+
+		const inputName = eventTarget.name as keyof FormValuesType;
+		const inputValue = eventTarget.type === 'number' ? Number(eventTarget.value) : eventTarget.value;
 
 		if (inputName === 'img') {
 			formValues.value.img = {
-				small: e.target.value,
-				medium: e.target.value,
+				small: eventTarget.value,
+				medium: eventTarget.value,
 			};
 		} else {
 			(formValues.value[inputName] as typeof inputValue) = inputValue;

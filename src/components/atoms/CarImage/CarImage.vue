@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 export default {
 	props: {
 		imgUrl: Object,
@@ -8,10 +8,10 @@ export default {
 </script>
 
 <template>
-	<a v-bind:href="imgUrl.big || imgUrl.medium || undefined" target="_blank" class="car-image-wrapper-link">
+	<a v-bind:href="imgUrl?.big || imgUrl?.medium || undefined" target="_blank" class="car-image-wrapper-link">
 		<img
-			v-bind:srcset="`${imgUrl.small || 'src/assets/img/unknown_car.jpg'}, ${imgUrl.medium || 'src/assets/img/unknown_car.jpg'} 2x`"
-			v-bind:src="imgUrl.small || 'src/assets/img/unknown_car.jpg'"
+			v-bind:srcset="`${imgUrl?.small || 'src/assets/img/unknown_car.jpg'}, ${imgUrl?.medium || 'src/assets/img/unknown_car.jpg'} 2x`"
+			v-bind:src="imgUrl?.small || 'src/assets/img/unknown_car.jpg'"
 			v-bind:alt="altText || ''"
 			class="car-img" />
 	</a>

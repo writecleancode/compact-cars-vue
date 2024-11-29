@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import SearchIcon from '@/assets/icons/SearchIcon.vue';
 
 export default {

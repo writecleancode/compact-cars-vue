@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import BurgerButton from '@/components/atoms/BurgerButton/BurgerButton.vue';
 
 export default {

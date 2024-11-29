@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { useNavContext } from '@/composables/useNav';
 
 export default {

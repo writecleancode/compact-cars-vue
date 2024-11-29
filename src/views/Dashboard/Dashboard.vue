@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+import type { CarType } from '@/types/types';
 import { selectOptions } from '@/data/select';
 import { useCarsContext } from '@/composables/useCars';
 import { useModal } from '@/composables/useModal';
@@ -40,17 +41,17 @@ export default {
 			setCarsToDisplay(matchingCars);
 		};
 
-		const handleSearchCars = debounce(inputValue => {
+		const handleSearchCars = debounce((inputValue: string) => {
 			setCarsToDisplay(findCars(inputValue));
 		}, 500);
 
-		const handleSearchInputChange = e => {
+		const handleSearchInputChange = (e: InputEvent & { target: HTMLInputElement }) => {
 			const inputValue = e.target.value;
 			searchPhrase.value = inputValue;
 			handleSearchCars(inputValue);
 		};
 
-		const handleSelectedValueChange = e => {
+		const handleSelectedValueChange = (e: Event & { target: HTMLSelectElement }) => {
 			const selectedValue = e.target.value;
 			selectedSortValue.value = selectedValue;
 			sortCars(selectedValue);

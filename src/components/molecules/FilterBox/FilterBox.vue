@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import StyledTitle from '@/components/atoms/StyledTitle/StyledTitle.vue';
 
 export default {

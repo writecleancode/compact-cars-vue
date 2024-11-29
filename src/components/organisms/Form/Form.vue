@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+import type { PropType } from 'vue';
 import FormField from '@/components/molecules/FormField/FormField.vue';
 import StyledButton from '@/components/atoms/StyledButton/StyledButton.vue';
 
@@ -11,9 +12,11 @@ export default {
 	props: {
 		formValues: {
 			type: Object,
+			required: true,
 		},
 		handleInputChange: {
-			type: Function,
+			type: Function as PropType<(e: InputEvent) => void>,
+			required: true,
 		},
 		handleSubmitForm: {
 			type: Function,

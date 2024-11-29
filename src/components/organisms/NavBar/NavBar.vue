@@ -1,6 +1,5 @@
-<script>
+<script lang="ts">
 import { useNavContext } from '@/composables/useNav';
-import { useViewportWidth } from '@/composables/useViewportWidth';
 
 export default {
 	props: {
@@ -13,8 +12,9 @@ export default {
 	setup() {
 		const { isNavActive, closeMobileNav } = useNavContext();
 
-		const handleNavLinksClick = e => {
-			if (e.target.tagName.toLowerCase() === 'div') return;
+		const handleNavLinksClick = (e: MouseEvent) => {
+			const target = e.target as HTMLElement;
+			if (target.tagName.toLowerCase() === 'div') return;
 			closeMobileNav();
 		};
 

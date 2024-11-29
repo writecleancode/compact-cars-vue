@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { useForm } from '@/composables/useForm';
 import { useNotificationsContext } from '@/composables/useNotifications';
 import { useCarsContext } from '@/composables/useCars';

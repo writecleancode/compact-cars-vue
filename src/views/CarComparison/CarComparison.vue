@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { useCarsContext } from '@/composables/useCars';
 
 export default {

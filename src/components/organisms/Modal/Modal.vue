@@ -1,6 +1,6 @@
-<script>
-import { onClickOutside } from '@vueuse/core';
-import { useTemplateRef } from 'vue';
+<script lang="ts">
+import { onClickOutside, type MaybeElement, type OnClickOutsideHandler } from '@vueuse/core';
+import { useTemplateRef, type PropType } from 'vue';
 
 export default {
 	props: {
@@ -9,14 +9,14 @@ export default {
 			default: false,
 		},
 		closeModal: {
-			type: Function,
+			type: Function as PropType<() => void>,
 		},
 	},
 
 	setup({ closeModal }) {
-		const modal = useTemplateRef('my-modal');
+		const modal = useTemplateRef<MaybeElement>('my-modal');
 
-		onClickOutside(modal, closeModal);
+		onClickOutside(modal, closeModal as OnClickOutsideHandler);
 	},
 };
 </script>

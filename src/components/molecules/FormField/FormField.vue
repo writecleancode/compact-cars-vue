@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+import type { PropType } from 'vue';
 import StyledLabel from '@/components/atoms/StyledLabel/StyledLabel.vue';
 import StyledInput from '@/components/atoms/StyledInput/StyledInput.vue';
 
@@ -28,7 +29,8 @@ export default {
 			type: [String, Number],
 		},
 		handleInputChange: {
-			type: Function,
+			type: Function as PropType<(e: InputEvent) => void>,
+			required: true,
 		},
 	},
 };

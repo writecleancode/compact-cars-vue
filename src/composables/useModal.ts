@@ -10,8 +10,8 @@ export const useModal = () => {
 	const openModal = () => (isModalOpen.value = true);
 	const closeModal = () => (isModalOpen.value = false);
 
-	const handleOpenModel = (e: MouseEvent & { target: HTMLElement }) => {
-		openModalBtn.value = e.target;
+	const handleOpenModel = (e: MouseEvent) => {
+		openModalBtn.value = e.target as HTMLElement;
 		openModal();
 	};
 
