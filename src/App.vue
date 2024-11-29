@@ -35,7 +35,7 @@ export default {
 		<Header />
 		<NavBar v-bind:comparedCarsNumber="comparedCars.length" />
 		<FiltersManagement />
-		<main class="content-wrapper">
+		<main id="main" class="content-wrapper">
 			<RouterView />
 		</main>
 		<template v-if="successNotifications.length > 0">

@@ -1,9 +1,11 @@
 import { nextTick, ref, watch } from 'vue';
+import { useViewportWidth } from './useViewportWidth';
 
 export const useModal = () => {
 	const isModalOpen = ref(false);
 	const appRootElement = document.getElementById('app');
 	const openModalBtn = ref<HTMLElement | null>(null);
+	const { isDesktopViewport } = useViewportWidth('1200px');
 
 	const openModal = () => (isModalOpen.value = true);
 	const closeModal = () => (isModalOpen.value = false);
@@ -35,6 +37,10 @@ export const useModal = () => {
 
 	watch(isModalOpen, () => {
 		handleModalAccessibility();
+	});
+
+	watch(isDesktopViewport, () => {
+		isDesktopViewport && closeModal();
 	});
 
 	return {

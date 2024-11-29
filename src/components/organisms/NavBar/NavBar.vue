@@ -1,5 +1,6 @@
 <script>
 import { useNavContext } from '@/composables/useNav';
+import { useViewportWidth } from '@/composables/useViewportWidth';
 
 export default {
 	props: {

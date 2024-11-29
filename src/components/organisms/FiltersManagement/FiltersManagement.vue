@@ -11,10 +11,10 @@ export default {
 </script>
 
 <template>
-	<div class="filters-wrapper">
+	<aside class="filters-wrapper">
 		<FilterBoxYears />
 		<FilterBoxBrands />
-	</div>
+	</aside>
 </template>
 
 <style lang="scss" scoped>
