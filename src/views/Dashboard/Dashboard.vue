@@ -26,7 +26,7 @@ export default {
 	setup() {
 		const { cars, carsToDisplay, comparedCars, usersFilterPreferences, findCars, filterCars, setCarsToDisplay, sortCars } =
 			useCarsContext();
-		const { isModalOpen, openModal, closeModal } = useModal();
+		const { isModalOpen, handleOpenModel, closeModal } = useModal();
 		const isLoading = ref(true);
 		const searchPhrase = ref('');
 		const selectedSortValue = ref('');
@@ -84,7 +84,7 @@ export default {
 			selectedSortValue,
 			handleSelectedValueChange,
 			isModalOpen,
-			openModal,
+			handleOpenModel,
 			closeModal,
 		};
 	},
@@ -103,7 +103,7 @@ export default {
 					v-on:handle-selected-value-change="handleSelectedValueChange" />
 			</div>
 			<div class="filters-wrapper">
-				<button class="manage-filters-btn" v-on:click="openModal">manage filters</button>
+				<button class="manage-filters-btn" v-on:click="handleOpenModel">manage filters</button>
 			</div>
 		</div>
 		<LoadingAnimation v-if="isLoading" />

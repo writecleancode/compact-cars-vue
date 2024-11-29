@@ -24,13 +24,13 @@ export default {
 	<div class="wrapper">
 		<StyledTitle v-bind:isFilterTitle="true">{{ title }}</StyledTitle>
 		<ul class="filter-items">
-			<li
-				class="filter-item"
-				v-bind:class="{ 'active-option': option.isActive, 'min-width': isYears }"
-				v-for="option in options"
-				:key="option.value"
-				v-on:click="$emit('handleFilter', option.value)">
-				{{ option.value }}
+			<li v-for="option in options" :key="option.value">
+				<button
+					class="filter-item-btn"
+					v-bind:class="{ 'active-option': option.isActive, 'min-width': isYears }"
+					v-on:click="$emit('handleFilter', option.value)">
+					{{ option.value }}
+				</button>
 			</li>
 		</ul>
 	</div>
@@ -51,14 +51,14 @@ export default {
 	list-style: none;
 }
 
-.filter-item {
+.filter-item-btn {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	padding: 0.4rem 1.6rem;
+	border: none;
 	background-color: #d9d9d9;
 	font-size: 1.6rem;
-	cursor: pointer;
 
 	&.min-width {
 		min-width: 72px;

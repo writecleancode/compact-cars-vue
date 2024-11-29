@@ -32,13 +32,17 @@ export default {
 	font-weight: bold;
 	transition: background-color 0.3s, color 0.3s;
 
-	&:hover {
+	&:hover,
+	&:focus-visible {
 		background-color: transparent;
 		color: #555555;
 	}
 
-	&:hover .compare-btn-bar {
-		background-color: #555;
+	&:hover,
+	&:focus-visible {
+		.compare-btn-bar {
+			background-color: #555;
+		}
 	}
 }
 

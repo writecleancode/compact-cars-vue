@@ -14,7 +14,8 @@
 	font-weight: bold;
 	transition: background-color 0.3s, color 0.3s;
 
-	&:hover {
+	&:hover,
+	&:focus-visible {
 		background-color: transparent;
 		color: #555555;
 	}

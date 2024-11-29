@@ -107,7 +107,8 @@ export default {
 	fill: #fff;
 	transition: fill 0.3s;
 
-	&:hover {
+	&:hover,
+	&:focus-visible {
 		fill: #555;
 	}
 }
