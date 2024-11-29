@@ -4,7 +4,7 @@
 
 
 
-Compact Cars - This app was created to practice using **Vue in practice**. I originally wrote this App in React and now rewrote it from scratch with Vue to compared the difference between React and Vue.
+Compact Cars - This app was created to practice using **Vue**. I originally wrote this App in React and now rewrote it **from scratch with Vue** to compare the difference between React and Vue.
 
 
 
@@ -45,8 +45,6 @@ All photos have been cropped and their size has been reduced accordingly (to min
 2. Typescript
 
 3. Vue
-
-    - Vue Router
 
 4. Figma
 
