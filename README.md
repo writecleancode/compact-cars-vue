@@ -1,33 +1,118 @@
-# compact-cars-vue
+# Compact Cars - WORK IN PROGRESS
 
-This template should help get you started developing with Vue 3 in Vite.
+🌐 **LIVE DEMO - available soon**
 
-## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Type Support for `.vue` Imports in TS
+Compact Cars - This app was created to practice using **Vue in practice**. I originally wrote this App in React and now rewrote it from scratch with Vue to compared the difference between React and Vue.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
 
-## Customize configuration
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+# Table of contents
 
-## Project Setup
+1. [General info](#general-info)
 
-```sh
+2. [Technologies](#technologies)
+
+3. [Setup](#setup)
+
+4. [Application View](application-view)
+
+
+
+## GENERAL INFO
+
+This application is not any interesting for everyone who's not a car enthusiast. It's just more of a "testing ground" for me while learning Vue.
+
+The app was written based on a mobile-first approach and it's fully responsive 📱💻🖥
+
+Accessibility is at a high level ♿
+
+The app has it's own favicon ⚡
+
+Lines of code rewritten from tutorials: 0 ✔
+
+The layout was designed by me in Figma 🖍
+
+All photos have been cropped and their size has been reduced accordingly (to minimize file size) 🖼✂
+
+
+
+## TECHNOLOGIES
+
+1. Vite
+
+2. Typescript
+
+3. Vue
+
+    - Vue Router
+
+4. Figma
+
+---
+
+More accurate informations about technologies used
+
+Build tool:
+- **Vite**
+
+Language:
+- **Typescript**
+
+Framework:
+- **Vue**
+
+Main Vue features:
+- **composables: useModal, useViewportWidth**
+- **providers made from composables: useCars, useForm, useNav, useNotifications**
+
+React libraries used:
+- **Vue Router**
+
+Styles:
+- **SCSS**
+
+Components structure:
+- **Atomic Design**
+
+Designed with:
+- **Figma**
+
+Images editing:
+- **GIMP**
+
+
+## SETUP
+
+1. Clone the repository:
+
+```
+git clone https://github.com/writecleancode/compact-cars-vue
+```
+
+2. Navigate to the project directory:
+
+```
+cd compact-cars-vue
+```
+
+3. Install the dependencies:
+
+```
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+4. Start the development server:
 
-```sh
+```
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+5. Open your browser and visit http://localhost:5173 to view the application.
 
-```sh
-npm run build
-```
+
+
+## APPLICATION VIEW
+
+Coming soon...
