@@ -22,6 +22,9 @@ export default {
 		const { comparedCars } = useCarsProvider();
 		const { successNotifications } = useNotificationsProvider();
 
+		const basePath = import.meta.env.VITE_BASE_PATH;
+		console.log(basePath);
+
 		return {
 			comparedCars,
 			successNotifications,
