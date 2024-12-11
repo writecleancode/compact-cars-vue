@@ -4,6 +4,8 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueDevTools from 'vite-plugin-vue-devtools';
 
+const baseUrl = process.env.NODE_ENV === 'development' ? './' : '/compact-cars-vue/';
+
 // https://vite.dev/config/
 export default defineConfig({
 	plugins: [vue(), vueDevTools()],
@@ -12,5 +14,5 @@ export default defineConfig({
 			'@': fileURLToPath(new URL('./src', import.meta.url)),
 		},
 	},
-	base: '/compact-cars-vue/',
+	base: baseUrl,
 });
