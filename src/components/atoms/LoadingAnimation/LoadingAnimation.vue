@@ -1,6 +1,6 @@
 <template>
 	<div class="loading-animation-wrapper">
-		<img src="@/assets/img/wheel.webp" alt="" class="spinning-wheel" />
+		<img src="/assets/img/wheel.webp" alt="" class="spinning-wheel" />
 		<p>Loading...</p>
 	</div>
 </template>
