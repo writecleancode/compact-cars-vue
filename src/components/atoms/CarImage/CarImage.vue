@@ -7,9 +7,10 @@ export default {
 
 	setup() {
 		const basePath = import.meta.env.VITE_BASE_PATH;
+		const unknownCarUrl = `${basePath}assets/img/unknown_car.jpg`
 
 		return {
-			basePath,
+			unknownCarUrl,
 		};
 	},
 };
@@ -18,10 +19,8 @@ export default {
 <template>
 	<a v-bind:href="imgUrl?.big || imgUrl?.medium || undefined" target="_blank" class="car-image-wrapper-link">
 		<img
-			v-bind:srcset="`${imgUrl?.small || `${basePath}/assets/img/unknown_car.jpg`}, ${
-				imgUrl?.medium || `${basePath}/assets/img/unknown_car.jpg`
-			} 2x`"
-			v-bind:src="imgUrl?.small || `${basePath}/assets/img/unknown_car.jpg`"
+			v-bind:srcset="`${imgUrl?.small || unknownCarUrl}, ${imgUrl?.medium || unknownCarUrl} 2x`"
+			v-bind:src="imgUrl?.small || unknownCarUrl"
 			v-bind:alt="altText || ''"
 			class="car-img" />
 	</a>
