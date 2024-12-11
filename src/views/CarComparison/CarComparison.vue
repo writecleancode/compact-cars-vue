@@ -189,71 +189,71 @@ export default {
 @media (-webkit-max-device-pixel-ratio: 1) {
 	.styled-table {
 		&[data-brand='Alfa Romeo'] {
-			background-image: url('@/assets/img/emblems/emblem_alfa-romeo_80p.png');
+			background-image: url('/assets/img/emblems/emblem_alfa-romeo_80p.png');
 		}
 
 		&[data-brand='Audi'] {
-			background-image: url('@/assets/img/emblems/emblem_audi_80p.png');
+			background-image: url('/assets/img/emblems/emblem_audi_80p.png');
 		}
 
 		&[data-brand='BMW'] {
-			background-image: url('@/assets/img/emblems/emblem_bmw_80p.png');
+			background-image: url('/assets/img/emblems/emblem_bmw_80p.png');
 		}
 
 		&[data-brand='Citroen'] {
-			background-image: url('@/assets/img/emblems/emblem_citroen_80p.png');
+			background-image: url('/assets/img/emblems/emblem_citroen_80p.png');
 		}
 
 		&[data-brand='Daewoo'] {
-			background-image: url('@/assets/img/emblems/emblem_daewoo_80p.png');
+			background-image: url('/assets/img/emblems/emblem_daewoo_80p.png');
 		}
 
 		&[data-brand='Fiat'] {
-			background-image: url('@/assets/img/emblems/emblem_fiat_80p.png');
+			background-image: url('/assets/img/emblems/emblem_fiat_80p.png');
 		}
 
 		&[data-brand='Ford'] {
-			background-image: url('@/assets/img/emblems/emblem_ford_80p.png');
+			background-image: url('/assets/img/emblems/emblem_ford_80p.png');
 		}
 
 		&[data-brand='Honda'] {
-			background-image: url('@/assets/img/emblems/emblem_honda_80p.png');
+			background-image: url('/assets/img/emblems/emblem_honda_80p.png');
 		}
 
 		&[data-brand='Lancia'] {
-			background-image: url('@/assets/img/emblems/emblem_lancia_80p.png');
+			background-image: url('/assets/img/emblems/emblem_lancia_80p.png');
 		}
 
 		&[data-brand='Mazda'] {
-			background-image: url('@/assets/img/emblems/emblem_mazda_80p.png');
+			background-image: url('/assets/img/emblems/emblem_mazda_80p.png');
 		}
 
 		&[data-brand='Nissan'] {
-			background-image: url('@/assets/img/emblems/emblem_nissan_80p.png');
+			background-image: url('/assets/img/emblems/emblem_nissan_80p.png');
 		}
 
 		&[data-brand='Opel'] {
-			background-image: url('@/assets/img/emblems/emblem_opel_80p.png');
+			background-image: url('/assets/img/emblems/emblem_opel_80p.png');
 		}
 
 		&[data-brand='Peugeot'] {
-			background-image: url('@/assets/img/emblems/emblem_peugeot_80p.png');
+			background-image: url('/assets/img/emblems/emblem_peugeot_80p.png');
 		}
 
 		&[data-brand='Renault'] {
-			background-image: url('@/assets/img/emblems/emblem_renault_80p.png');
+			background-image: url('/assets/img/emblems/emblem_renault_80p.png');
 		}
 
 		&[data-brand='Seat'] {
-			background-image: url('@/assets/img/emblems/emblem_seat_80p.png');
+			background-image: url('/assets/img/emblems/emblem_seat_80p.png');
 		}
 
 		&[data-brand='Toyota'] {
-			background-image: url('@/assets/img/emblems/emblem_toyota_80p.png');
+			background-image: url('/assets/img/emblems/emblem_toyota_80p.png');
 		}
 
 		&[data-brand='Volkswagen'] {
-			background-image: url('@/assets/img/emblems/emblem_volkswagen_80p.png');
+			background-image: url('/assets/img/emblems/emblem_volkswagen_80p.png');
 		}
 	}
 }
