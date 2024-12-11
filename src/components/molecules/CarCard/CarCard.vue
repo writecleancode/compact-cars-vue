@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { CarType } from '@/types/types';
 import { useCarsContext } from '@/composables/useCars';
-import type { PropType } from 'vue';
+import { type PropType } from 'vue';
 import CarImage from '@/components/atoms/CarImage/CarImage.vue';
 import CarInfoBox from '@/components/atoms/CarInfoBox/CarInfoBox.vue';
 import CompareButton from '@/components/atoms/CompareButton/CompareButton.vue';
@@ -31,21 +31,12 @@ export default {
 		},
 	},
 
-	setup({ car }) {
+	setup() {
 		const { handleCompareStatus, handleRemoveCar } = useCarsContext();
-		const { id, brand, model, generation, productionStartYear, productionEndYear, facelift, img } = car;
 
 		return {
 			handleCompareStatus,
 			handleRemoveCar,
-			id,
-			brand,
-			model,
-			generation,
-			productionStartYear,
-			productionEndYear,
-			facelift,
-			img,
 		};
 	},
 };
@@ -53,16 +44,16 @@ export default {
 
 <template>
 	<div class="wrapper">
-		<p class="car-name">{{ brand || 'unknown' }} {{ model || 'unknown' }}</p>
-		<CarImage v-bind:imgUrl="img" v-bind:altText="`${brand} ${model}`" />
+		<p class="car-name">{{ car.brand || 'unknown' }} {{ car.model || 'unknown' }}</p>
+		<CarImage v-bind:imgUrl="car.img" v-bind:altText="`${car.brand} ${car.model}`" />
 		<div class="car-info-wrapper">
-			<CarInfoBox title="Generation" v-bind:content="generation || 'unknown'" />
-			<CarInfoBox title="Production years" v-bind:content="`${productionStartYear} - ${productionEndYear}`" />
-			<CarInfoBox title="Facelift" v-bind:content="facelift || 'unknown'" />
+			<CarInfoBox title="Generation" v-bind:content="car.generation || 'unknown'" />
+			<CarInfoBox title="Production years" v-bind:content="`${car.productionStartYear} - ${car.productionEndYear}`" />
+			<CarInfoBox title="Facelift" v-bind:content="car.facelift || 'unknown'" />
 		</div>
-		<div class="buttons-wrapper" v-if="id">
-			<CompareButton v-bind:isCompared="isCompared" v-on:click="handleCompareStatus(id)" />
-			<StyledButton class="delete-button" aria-label="delete car" v-on:click="handleRemoveCar(id)">
+		<div class="buttons-wrapper" v-if="car.id">
+			<CompareButton v-bind:isCompared="isCompared" v-on:click="handleCompareStatus(car.id)" />
+			<StyledButton class="delete-button" aria-label="delete car" v-on:click="handleRemoveCar(car.id)">
 				<TrashIcon />
 			</StyledButton>
 		</div>
