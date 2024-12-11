@@ -12,5 +12,5 @@ export default defineConfig({
 			'@': fileURLToPath(new URL('./src', import.meta.url)),
 		},
 	},
-	base: '/compact-cars-vue/',
+	base: process.env.BASE_PATH,
 });

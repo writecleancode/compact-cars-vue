@@ -4,6 +4,8 @@ import AddCar from '@/views/AddCar/AddCar.vue';
 import CarComparison from '@/views/CarComparison/CarComparison.vue';
 import Dashboard from '@/views/Dashboard/Dashboard.vue';
 
+const basePath = import.meta.env.BASE_PATH;
+
 const routes = [
 	{ path: '/', component: Dashboard },
 	{ path: '/car-comparison', component: CarComparison },
@@ -11,6 +13,6 @@ const routes = [
 ];
 
 export const router = createRouter({
-	history: createWebHistory('/compact-cars-vue/'),
+	history: createWebHistory(basePath),
 	routes,
 });
