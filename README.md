@@ -1,10 +1,10 @@
 # Compact Cars - WORK IN PROGRESS
 
-🌐 **LIVE DEMO - available soon**
+🌐 [**LIVE DEMO**](https://writecleancode.github.io/compact-cars-vue/)
 
 
 
-Compact Cars - This app was created to practice using **Vue**. I originally wrote this App in React and now rewrote it **from scratch with Vue** to compare the difference between React and Vue.
+Compact Cars - The purpose of creating this app was to practice using **Vue** framework.
 
 
 
@@ -22,7 +22,7 @@ Compact Cars - This app was created to practice using **Vue**. I originally wrot
 
 ## GENERAL INFO
 
-This application is not any interesting for everyone who's not a car enthusiast. It's just more of a "testing ground" for me while learning Vue.
+This application is not any interesting for everyone who's not a car enthusiast. It's just more of a "testing ground" for me while learning Vue. I originally wrote this App in React and now rewrote it **from scratch with Vue** to compare the difference between React and Vue.
 
 The app was written based on a mobile-first approach and it's fully responsive 📱💻🖥
 
@@ -113,4 +113,16 @@ npm run dev
 
 ## APPLICATION VIEW
 
-Coming soon...
+![preview1](https://github.com/user-attachments/assets/368ab7f0-6465-4420-8edd-81b8a4bd4716)
+***
+***
+![preview2](https://github.com/user-attachments/assets/3e809765-3e36-4b91-8043-e1ef9497feb3)
+***
+***
+![preview3](https://github.com/user-attachments/assets/050aa3d6-4b5c-4d64-9640-2ec47523e6e9)
+***
+***
+![preview4](https://github.com/user-attachments/assets/9fe2556e-06bb-421e-99d2-7d02bb405859)
+
+
+
