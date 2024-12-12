@@ -65,7 +65,6 @@ export default {
 		watch(
 			[usersFilterPreferences, cars],
 			() => {
-				console.log('działa');
 				handleDisplayCars();
 			},
 			{ deep: true }
