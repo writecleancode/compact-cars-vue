@@ -1,4 +1,4 @@
-# Compact Cars - WORK IN PROGRESS
+# Compact Cars
 
 🌐 [**LIVE DEMO**](https://writecleancode.github.io/compact-cars-vue/)
 
