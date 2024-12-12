@@ -63,16 +63,12 @@ export default {
 		});
 
 		watch(
-			usersFilterPreferences,
+			[usersFilterPreferences, cars],
 			() => {
 				handleDisplayCars();
 			},
 			{ deep: true }
 		);
-
-		watch(cars, () => {
-			handleDisplayCars();
-		});
 
 		return {
 			cars,
