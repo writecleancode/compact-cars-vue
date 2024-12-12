@@ -3,9 +3,9 @@ import { useForm } from '@/composables/useForm';
 import { useNotificationsContext } from '@/composables/useNotifications';
 import { useCarsContext } from '@/composables/useCars';
 import { v4 as uuid } from 'uuid';
-import Form from '@/components/organisms/Form/Form.vue';
-import StyledTitle from '@/components/atoms/StyledTitle/StyledTitle.vue';
-import CarCard from '@/components/molecules/CarCard/CarCard.vue';
+import Form from '@/components/organisms/Form.vue';
+import StyledTitle from '@/components/atoms/StyledTitle.vue';
+import CarCard from '@/components/molecules/CarCard.vue';
 
 export default {
 	components: {

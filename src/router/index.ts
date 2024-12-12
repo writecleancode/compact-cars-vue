@@ -1,8 +1,8 @@
 import { createWebHistory, createRouter } from 'vue-router';
 
-import AddCar from '@/views/AddCar/AddCar.vue';
-import CarComparison from '@/views/CarComparison/CarComparison.vue';
-import Dashboard from '@/views/Dashboard/Dashboard.vue';
+import AddCar from '@/views/AddCar.vue';
+import CarComparison from '@/views/CarComparison.vue';
+import Dashboard from '@/views/Dashboard.vue';
 
 const basePath = import.meta.env.VITE_BASE_PATH;
 

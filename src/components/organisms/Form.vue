@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { PropType } from 'vue';
-import FormField from '@/components/molecules/FormField/FormField.vue';
-import StyledButton from '@/components/atoms/StyledButton/StyledButton.vue';
+import FormField from '@/components/molecules/FormField.vue';
+import StyledButton from '@/components/atoms/StyledButton.vue';
 
 export default {
 	components: {

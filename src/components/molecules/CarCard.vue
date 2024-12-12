@@ -2,10 +2,10 @@
 import type { CarType } from '@/types/types';
 import { useCarsContext } from '@/composables/useCars';
 import { type PropType } from 'vue';
-import CarImage from '@/components/atoms/CarImage/CarImage.vue';
-import CarInfoBox from '@/components/atoms/CarInfoBox/CarInfoBox.vue';
-import CompareButton from '@/components/atoms/CompareButton/CompareButton.vue';
-import StyledButton from '@/components/atoms/StyledButton/StyledButton.vue';
+import CarImage from '@/components/atoms/CarImage.vue';
+import CarInfoBox from '@/components/atoms/CarInfoBox.vue';
+import CompareButton from '@/components/atoms/CompareButton.vue';
+import StyledButton from '@/components/atoms/StyledButton.vue';
 import TrashIcon from '@/assets/icons/TrashIcon.vue';
 
 export default {

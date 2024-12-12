@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { PropType } from 'vue';
-import StyledLabel from '@/components/atoms/StyledLabel/StyledLabel.vue';
-import StyledInput from '@/components/atoms/StyledInput/StyledInput.vue';
+import StyledLabel from '@/components/atoms/StyledLabel.vue';
+import StyledInput from '@/components/atoms/StyledInput.vue';
 
 export default {
 	components: {

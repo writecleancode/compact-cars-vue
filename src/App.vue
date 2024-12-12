@@ -2,11 +2,11 @@
 import { useNavProvider } from '@/composables/useNav';
 import { useCarsProvider } from '@/composables/useCars';
 import { useNotificationsProvider } from '@/composables/useNotifications';
-import Header from '@/components/atoms/Header/Header.vue';
-import NavBar from '@/components/organisms/NavBar/NavBar.vue';
-import FiltersManagement from '@/components/organisms/FiltersManagement/FiltersManagement.vue';
-import Dashboard from '@/views/Dashboard/Dashboard.vue';
-import SuccessNotification from '@/components/atoms/SuccessNotification/SuccessNotification.vue';
+import Header from '@/components/atoms/Header.vue';
+import NavBar from '@/components/organisms/NavBar.vue';
+import FiltersManagement from '@/components/organisms/FiltersManagement.vue';
+import Dashboard from '@/views/Dashboard.vue';
+import SuccessNotification from '@/components/atoms/SuccessNotification.vue';
 
 export default {
 	components: {

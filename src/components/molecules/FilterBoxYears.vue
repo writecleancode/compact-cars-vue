@@ -1,6 +1,6 @@
 <script lang="ts">
 import { useCarsContext } from '@/composables/useCars';
-import FilterBox from '@/components/molecules/FilterBox/FilterBox.vue';
+import FilterBox from '@/components/molecules/FilterBox.vue';
 
 export default {
 	components: {

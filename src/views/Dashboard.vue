@@ -5,13 +5,13 @@ import { useCarsContext } from '@/composables/useCars';
 import { useModal } from '@/composables/useModal';
 import { onMounted, ref, watch } from 'vue';
 import debounce from 'lodash.debounce';
-import SearchInput from '@/components/atoms/SearchInput/SearchInput.vue';
-import SortSelect from '@/components/atoms/SortSelect/SortSelect.vue';
-import LoadingAnimation from '@/components/atoms/LoadingAnimation/LoadingAnimation.vue';
-import CarCard from '@/components/molecules/CarCard/CarCard.vue';
-import Modal from '@/components/organisms/Modal/Modal.vue';
-import FilterBoxYears from '@/components/molecules/FilterBoxYears/FilterBoxYears.vue';
-import FilterBoxBrands from '@/components/molecules/FilterBoxBrands/FilterBoxBrands.vue';
+import SearchInput from '@/components/atoms/SearchInput.vue';
+import SortSelect from '@/components/atoms/SortSelect.vue';
+import LoadingAnimation from '@/components/atoms/LoadingAnimation.vue';
+import CarCard from '@/components/molecules/CarCard.vue';
+import Modal from '@/components/organisms/Modal.vue';
+import FilterBoxYears from '@/components/molecules/FilterBoxYears.vue';
+import FilterBoxBrands from '@/components/molecules/FilterBoxBrands.vue';
 
 export default {
 	components: {

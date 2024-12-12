@@ -1,5 +1,5 @@
 <script lang="ts">
-import BurgerButton from '@/components/atoms/BurgerButton/BurgerButton.vue';
+import BurgerButton from '@/components/atoms/BurgerButton.vue';
 
 export default {
 	components: {

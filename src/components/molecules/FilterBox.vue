@@ -1,5 +1,5 @@
 <script lang="ts">
-import StyledTitle from '@/components/atoms/StyledTitle/StyledTitle.vue';
+import StyledTitle from '@/components/atoms/StyledTitle.vue';
 
 export default {
 	components: {
