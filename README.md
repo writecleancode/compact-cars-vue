@@ -122,4 +122,11 @@ npm run dev
 ![preview3](https://github.com/user-attachments/assets/050aa3d6-4b5c-4d64-9640-2ec47523e6e9)
 ***
 ***
+<<<<<<< HEAD
 ![preview4](https://github.com/user-attachments/assets/9fe2556e-06bb-421e-99d2-7d02bb405859)
+=======
+![preview4](https://github.com/user-attachments/assets/9fe2556e-06bb-421e-99d2-7d02bb405859)
+
+
+
+>>>>>>> 09ce5042b57d44ee0033df2afe4b1542693a5358
