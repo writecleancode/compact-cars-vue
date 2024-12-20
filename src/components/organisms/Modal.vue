@@ -23,7 +23,7 @@ export default {
 
 <template>
 	<Teleport to="body">
-		<div v-if="isOpen" class="modal-overlay" v-bind:class="{ active: isOpen }">
+		<div v-if="isOpen" class="modal-overlay" :class="{ active: isOpen }">
 			<div class="modal-wrapper" ref="my-modal">
 				<slot />
 				<button id="close-modal-btn" class="close-modal-btn" v-on:click="closeModal">Close</button>

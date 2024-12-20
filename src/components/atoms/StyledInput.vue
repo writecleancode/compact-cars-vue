@@ -22,7 +22,7 @@ export default {
 </script>
 
 <template>
-	<input class="styled-input" v-bind:name v-bind:id v-bind:type v-bind:min v-bind:value />
+	<input class="styled-input" :name :id :type :min :value />
 </template>
 
 <style lang="scss" scoped>

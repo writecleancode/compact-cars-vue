@@ -22,12 +22,12 @@ export default {
 
 <template>
 	<div class="wrapper">
-		<StyledTitle v-bind:isFilterTitle="true">{{ title }}</StyledTitle>
+		<StyledTitle :isFilterTitle="true">{{ title }}</StyledTitle>
 		<ul class="filter-items">
 			<li v-for="option in options" :key="option.value">
 				<button
 					class="filter-item-btn"
-					v-bind:class="{ 'active-option': option.isActive, 'min-width': isYears }"
+					:class="{ 'active-option': option.isActive, 'min-width': isYears }"
 					v-on:click="$emit('handleFilter', option.value)">
 					{{ option.value }}
 				</button>

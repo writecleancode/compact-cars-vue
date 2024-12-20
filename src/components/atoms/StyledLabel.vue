@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-	<label v-bind:for class="styled-label">
+	<label :for class="styled-label">
 		<slot />
 	</label>
 </template>

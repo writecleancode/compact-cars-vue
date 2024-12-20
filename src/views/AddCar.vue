@@ -1,11 +1,12 @@
 <script lang="ts">
-import { useForm } from '@/composables/useForm';
-import { useNotificationsContext } from '@/composables/useNotifications';
-import { useCarsContext } from '@/composables/useCars';
-import { v4 as uuid } from 'uuid';
 import Form from '@/components/organisms/Form.vue';
 import StyledTitle from '@/components/atoms/StyledTitle.vue';
 import CarCard from '@/components/molecules/CarCard.vue';
+
+import { useForm } from '@/composables/useForm';
+import { useNotificationsContext } from '@/providers/useNotifications';
+import { useCarsContext } from '@/providers/useCars';
+import { v4 as uuid } from 'uuid';
 
 export default {
 	components: {
@@ -46,10 +47,10 @@ export default {
 
 <template>
 	<div class="add-car-wrapper">
-		<Form v-bind:formValues v-bind:handleInputChange v-on:submit.prevent="handleSubmitForm" />
+		<Form :formValues :handleInputChange v-on:submit.prevent="handleSubmitForm" />
 		<div class="preview-wrapper">
 			<StyledTitle class="preview-title">Live preview</StyledTitle>
-			<CarCard v-bind:car="formValues" />
+			<CarCard :car="formValues" />
 		</div>
 	</div>
 </template>

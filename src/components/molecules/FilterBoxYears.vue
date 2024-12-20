@@ -1,6 +1,7 @@
 <script lang="ts">
-import { useCarsContext } from '@/composables/useCars';
 import FilterBox from '@/components/molecules/FilterBox.vue';
+
+import { useCarsContext } from '@/providers/useCars';
 
 export default {
 	components: {
@@ -21,7 +22,7 @@ export default {
 <template>
 	<FilterBox
 		title="Choose production year(s):"
-		v-bind:options="usersFilterPreferences.years"
+		:options="usersFilterPreferences.years"
 		v-on:handle-filter="handleFilterPreferences"
-		v-bind:isYears="true" />
+		:isYears="true" />
 </template>

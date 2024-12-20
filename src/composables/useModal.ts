@@ -4,14 +4,14 @@ import { useViewportWidth } from './useViewportWidth';
 export const useModal = () => {
 	const isModalOpen = ref(false);
 	const appRootElement = document.getElementById('app');
-	const openModalBtn = ref<HTMLElement | null>(null);
+	const openModalBtn = ref<HTMLButtonElement | null>(null);
 	const { isDesktopViewport } = useViewportWidth('1200px');
 
 	const openModal = () => (isModalOpen.value = true);
 	const closeModal = () => (isModalOpen.value = false);
 
 	const handleOpenModel = (e: MouseEvent) => {
-		openModalBtn.value = e.target as HTMLElement;
+		openModalBtn.value = e.target as HTMLButtonElement;
 		openModal();
 	};
 

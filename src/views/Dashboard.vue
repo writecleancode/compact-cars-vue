@@ -1,17 +1,18 @@
 <script lang="ts">
-import type { CarType } from '@/types/types';
-import { selectOptions } from '@/data/select';
-import { useCarsContext } from '@/composables/useCars';
-import { useModal } from '@/composables/useModal';
-import { onMounted, ref, watch } from 'vue';
-import debounce from 'lodash.debounce';
-import SearchInput from '@/components/atoms/SearchInput.vue';
-import SortSelect from '@/components/atoms/SortSelect.vue';
+import SearchInput from '@/components/molecules/SearchInput.vue';
+import SortSelect from '@/components/molecules/SortSelect.vue';
 import LoadingAnimation from '@/components/atoms/LoadingAnimation.vue';
 import CarCard from '@/components/molecules/CarCard.vue';
 import Modal from '@/components/organisms/Modal.vue';
 import FilterBoxYears from '@/components/molecules/FilterBoxYears.vue';
 import FilterBoxBrands from '@/components/molecules/FilterBoxBrands.vue';
+
+import type { CarType } from '@/types/types';
+import { selectOptions } from '@/data/select';
+import { useCarsContext } from '@/providers/useCars';
+import { useModal } from '@/composables/useModal';
+import { onMounted, ref, watch } from 'vue';
+import debounce from 'lodash.debounce';
 
 export default {
 	components: {
@@ -92,11 +93,11 @@ export default {
 	<div>
 		<div class="controls-wrapper">
 			<div class="search-wrapper">
-				<SearchInput v-bind:value="searchPhrase" v-on:handle-input-change="handleSearchInputChange" />
+				<SearchInput :value="searchPhrase" v-on:handle-input-change="handleSearchInputChange" />
 				<SortSelect
-					v-bind:options="selectOptions"
+					:options="selectOptions"
 					defaultOption="sort cars"
-					v-bind:selectedValue="selectedSortValue"
+					:selectedValue="selectedSortValue"
 					v-on:handle-selected-value-change="handleSelectedValueChange" />
 			</div>
 			<div class="filters-wrapper">
@@ -109,12 +110,12 @@ export default {
 				<CarCard
 					v-for="car in carsToDisplay"
 					:key="car.id"
-					v-bind:car
-					v-bind:isCompared="comparedCars.some(comparedCar => comparedCar.id === car.id)" />
+					:car
+					:isCompared="comparedCars.some(comparedCar => comparedCar.id === car.id)" />
 			</template>
 			<p class="no-cars-info" v-else>There are no cars to display...</p>
 		</div>
-		<Modal v-bind:isOpen="isModalOpen" v-bind:closeModal>
+		<Modal :isOpen="isModalOpen" :closeModal>
 			<FilterBoxYears />
 			<FilterBoxBrands />
 		</Modal>

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { useCarsContext } from '@/composables/useCars';
+import { useCarsContext } from '@/providers/useCars';
 
 export default {
 	setup() {
@@ -19,7 +19,7 @@ export default {
 				<tbody>
 					<tr>
 						<th></th>
-						<td v-for="car in comparedCars" v-bind:data-brand="car.brand" :key="car.id"></td>
+						<td v-for="car in comparedCars" :data-brand="car.brand" :key="car.id"></td>
 					</tr>
 					<tr>
 						<th>Brand</th>

@@ -1,8 +1,8 @@
 import { createProvider } from '@/utils/createProvider';
-import { useViewportWidth } from './useViewportWidth';
+import { useViewportWidth } from '../composables/useViewportWidth';
 import { ref, watch } from 'vue';
 
-export const useNav = () => {
+const useNav = () => {
 	const initialNavState = false;
 	const { isDesktopViewport } = useViewportWidth('900px');
 

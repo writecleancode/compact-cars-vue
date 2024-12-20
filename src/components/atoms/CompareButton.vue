@@ -11,9 +11,9 @@ export default {
 <template>
 	<button
 		class="compare-btn"
-		v-bind:class="{ 'is-compared': isCompared }"
-		v-bind:title="isCompared ? 'remove car from comparison' : 'add car to comparison'"
-		v-bind:aria-label="isCompared ? 'remove car from comparison' : 'add car to comparison'">
+		:class="{ 'is-compared': isCompared }"
+		:title="isCompared ? 'remove car from comparison' : 'add car to comparison'"
+		:aria-label="isCompared ? 'remove car from comparison' : 'add car to comparison'">
 		<span class="compare-btn-bar compare-btn-bar--vertical"></span>
 		<span class="compare-btn-bar compare-btn-bar--horizontal"></span>
 	</button>

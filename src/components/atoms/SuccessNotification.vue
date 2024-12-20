@@ -1,5 +1,7 @@
 <template>
-	<span class="success-notification"><slot /></span>
+	<span class="success-notification">
+		<slot />
+	</span>
 </template>
 
 <style lang="scss" scoped>

@@ -1,6 +1,7 @@
 <script lang="ts">
-import { useCarsContext } from '@/composables/useCars';
 import FilterBox from '@/components/molecules/FilterBox.vue';
+
+import { useCarsContext } from '@/providers/useCars';
 
 export default {
 	components: {
@@ -19,5 +20,5 @@ export default {
 </script>
 
 <template>
-	<FilterBox title="Choose brand(s):" v-bind:options="usersFilterPreferences.brands" v-on:handle-filter="handleFilterPreferences" />
+	<FilterBox title="Choose brand(s):" :options="usersFilterPreferences.brands" v-on:handle-filter="handleFilterPreferences" />
 </template>

@@ -2,7 +2,7 @@ import { createProvider } from '@/utils/createProvider';
 import { v4 as uuid } from 'uuid';
 import { ref } from 'vue';
 
-export const useNotifications = () => {
+const useNotifications = () => {
 	const successNotifications = ref<string[]>([]);
 
 	const removeSuccessNotification = (id: string) => {

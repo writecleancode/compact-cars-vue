@@ -1,5 +1,5 @@
 <script lang="ts">
-import { useNavContext } from '@/composables/useNav';
+import { useNavContext } from '@/providers/useNav';
 
 export default {
 	props: {
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <template>
-	<nav class="wrapper" v-bind:class="{ active: isNavActive }">
+	<nav class="wrapper" :class="{ active: isNavActive }">
 		<ul class="nav-links-list" v-on:click="handleNavLinksClick">
 			<li>
 				<RouterLink to="/" class="nav-link">Dashboard</RouterLink>

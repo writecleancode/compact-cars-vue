@@ -1,5 +1,5 @@
 <script lang="ts">
-import { useNavContext } from '@/composables/useNav';
+import { useNavContext } from '@/providers/useNav';
 
 export default {
 	setup() {
@@ -16,8 +16,8 @@ export default {
 <template>
 	<button
 		class="burger-btn"
-		v-bind:class="{ active: isNavActive }"
-		v-bind:aria-label="`${isNavActive ? 'close navigation' : 'open navigation'}`"
+		:class="{ active: isNavActive }"
+		:aria-label="`${isNavActive ? 'close navigation' : 'open navigation'}`"
 		v-on:click="handleMobileNav">
 		<span className="burger-btn-line burger-btn-line--top"></span>
 		<span className="burger-btn-line burger-btn-line--middle"></span>

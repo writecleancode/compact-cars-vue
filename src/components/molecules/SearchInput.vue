@@ -39,6 +39,8 @@ export default {
 }
 
 .search-input {
+	position: relative;
+	z-index: 1;
 	flex-grow: 1;
 	padding: 0.8rem 1.6rem;
 	border: none;

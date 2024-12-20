@@ -4,7 +4,7 @@ import { cars as carsData } from '@/data/cars';
 import { filterBrands, filterYears } from '@/data/filters';
 import { onMounted, ref } from 'vue';
 
-export const useCars = () => {
+const useCars = () => {
 	const filterYearsData = filterYears.map(option => ({ value: option, isActive: false }));
 	const filterBrandsData = filterBrands.map(option => ({ value: option, isActive: false }));
 

@@ -16,13 +16,9 @@ export default {
 
 <template>
 	<div class="select-wrapper">
-		<select
-			class="styled-select"
-			v-bind:value="selectedValue"
-			v-on:change="$emit('handleSelectedValueChange', $event)"
-			aria-label="sort cars">
+		<select class="styled-select" :value="selectedValue" v-on:change="$emit('handleSelectedValueChange', $event)" aria-label="sort cars">
 			<option v-if="defaultOption" value="" disabled>{{ defaultOption }}</option>
-			<option v-for="option in options" :key="option.value" v-bind:value="option.value">{{ option.text }}</option>
+			<option v-for="option in options" :key="option.value" :value="option.value">{{ option.text }}</option>
 		</select>
 	</div>
 </template>
