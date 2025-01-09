@@ -1,28 +1,16 @@
-<script lang="ts">
+<script setup lang="ts">
 import SearchIcon from '@/assets/icons/SearchIcon.vue';
 
-export default {
-	components: {
-		SearchIcon,
+const props = defineProps({
+	value: {
+		type: String,
 	},
-
-	props: {
-		value: {
-			type: String,
-		},
-	},
-};
+});
 </script>
 
 <template>
 	<div class="search-input-wrapper">
-		<input
-			name="search"
-			id="search"
-			placeholder="find car"
-			type="text"
-			class="search-input"
-			@input="$emit('handleInputChange', $event)" />
+		<input name="search" id="search" placeholder="find car" type="text" class="search-input" @input="$emit('handleInputChange', $event)" />
 		<label for="search" aria-label="find car by name" class="search-icon-wrapper">
 			<SearchIcon />
 		</label>

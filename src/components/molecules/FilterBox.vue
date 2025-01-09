@@ -1,23 +1,17 @@
-<script lang="ts">
+<script setup lang="ts">
 import StyledTitle from '@/components/atoms/StyledTitle.vue';
 
-export default {
-	components: {
-		StyledTitle,
+const props = defineProps({
+	title: {
+		type: String,
 	},
-
-	props: {
-		title: {
-			type: String,
-		},
-		options: {
-			type: Object,
-		},
-		isYears: {
-			type: Boolean,
-		},
+	options: {
+		type: Object,
 	},
-};
+	isYears: {
+		type: Boolean,
+	},
+});
 </script>
 
 <template>

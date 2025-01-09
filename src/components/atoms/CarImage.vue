@@ -1,19 +1,11 @@
-<script lang="ts">
-export default {
-	props: {
-		imgUrl: Object,
-		altText: String,
-	},
+<script setup lang="ts">
+const props = defineProps({
+	imgUrl: Object,
+	altText: String,
+});
 
-	setup() {
-		const basePath = import.meta.env.VITE_BASE_PATH;
-		const unknownCarUrl = `${basePath}assets/img/unknown_car.jpg`;
-
-		return {
-			unknownCarUrl,
-		};
-	},
-};
+const basePath = import.meta.env.VITE_BASE_PATH;
+const unknownCarUrl = `${basePath}assets/img/unknown_car.jpg`;
 </script>
 
 <template>

@@ -1,23 +1,10 @@
-<script lang="ts">
+<script setup lang="ts">
 import FilterBoxYears from '@/components/molecules/FilterBoxYears.vue';
 import FilterBoxBrands from '@/components/molecules/FilterBoxBrands.vue';
 
 import { useRoute } from 'vue-router';
 
-export default {
-	components: {
-		FilterBoxYears,
-		FilterBoxBrands,
-	},
-
-	setup() {
-		const currentRoute = useRoute();
-
-		return {
-			currentRoute,
-		};
-	},
-};
+const currentRoute = useRoute();
 </script>
 
 <template>

@@ -1,11 +1,9 @@
-<script lang="ts">
-export default {
-	props: {
-		for: {
-			type: String,
-		},
+<script setup lang="ts">
+const props = defineProps({
+	for: {
+		type: String,
 	},
-};
+});
 </script>
 
 <template>

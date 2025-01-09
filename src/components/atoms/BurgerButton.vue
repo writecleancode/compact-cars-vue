@@ -1,16 +1,7 @@
-<script lang="ts">
+<script setup lang="ts">
 import { useNavContext } from '@/providers/useNav';
 
-export default {
-	setup() {
-		const { isNavActive, handleMobileNav } = useNavContext();
-
-		return {
-			isNavActive,
-			handleMobileNav,
-		};
-	},
-};
+const { isNavActive, handleMobileNav } = useNavContext();
 </script>
 
 <template>

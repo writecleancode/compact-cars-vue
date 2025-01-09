@@ -1,24 +1,22 @@
-<script lang="ts">
-export default {
-	props: {
-		name: {
-			type: String,
-		},
-		id: {
-			type: String,
-		},
-		type: {
-			type: String,
-			default: 'text',
-		},
-		min: {
-			type: Number,
-		},
-		value: {
-			type: [String, Number],
-		},
+<script setup lang="ts">
+const props = defineProps({
+	name: {
+		type: String,
 	},
-};
+	id: {
+		type: String,
+	},
+	type: {
+		type: String,
+		default: 'text',
+	},
+	min: {
+		type: Number,
+	},
+	value: {
+		type: [String, Number],
+	},
+});
 </script>
 
 <template>

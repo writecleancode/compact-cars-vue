@@ -1,11 +1,5 @@
-<script lang="ts">
+<script setup lang="ts">
 import BurgerButton from '@/components/atoms/BurgerButton.vue';
-
-export default {
-	components: {
-		BurgerButton,
-	},
-};
 </script>
 
 <template>

@@ -1,22 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import FilterBox from '@/components/molecules/FilterBox.vue';
 
 import { useCarsContext } from '@/providers/useCars';
 
-export default {
-	components: {
-		FilterBox,
-	},
-
-	setup() {
-		const { usersFilterPreferences, handleFilterPreferences } = useCarsContext();
-
-		return {
-			usersFilterPreferences,
-			handleFilterPreferences,
-		};
-	},
-};
+const { usersFilterPreferences, handleFilterPreferences } = useCarsContext();
 </script>
 
 <template>

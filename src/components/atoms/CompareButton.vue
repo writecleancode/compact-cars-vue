@@ -1,11 +1,9 @@
-<script lang="ts">
-export default {
-	props: {
-		isCompared: {
-			type: Boolean,
-		},
+<script setup lang="ts">
+const props = defineProps({
+	isCompared: {
+		type: Boolean,
 	},
-};
+});
 </script>
 
 <template>

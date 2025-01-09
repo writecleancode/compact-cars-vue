@@ -1,29 +1,19 @@
-<script lang="ts">
+<script setup lang="ts">
 import { useNavContext } from '@/providers/useNav';
 
-export default {
-	props: {
-		comparedCarsNumber: {
-			type: Number,
-			default: 0,
-		},
+const props = defineProps({
+	comparedCarsNumber: {
+		type: Number,
+		default: 0,
 	},
+});
 
-	setup() {
-		const { isNavActive, closeMobileNav } = useNavContext();
+const { isNavActive, closeMobileNav } = useNavContext();
 
-		const handleNavLinksClick = (e: MouseEvent) => {
-			const target = e.target as HTMLElement;
-			if (target.tagName.toLowerCase() === 'div') return;
-			closeMobileNav();
-		};
-
-		return {
-			isNavActive,
-			handleNavLinksClick,
-			closeMobileNav,
-		};
-	},
+const handleNavLinksClick = (e: MouseEvent) => {
+	const target = e.target as HTMLElement;
+	if (target.tagName.toLowerCase() === 'div') return;
+	closeMobileNav();
 };
 </script>
 

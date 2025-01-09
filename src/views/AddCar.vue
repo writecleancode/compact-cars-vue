@@ -1,4 +1,4 @@
-<script lang="ts">
+<script setup lang="ts">
 import Form from '@/components/organisms/Form.vue';
 import StyledTitle from '@/components/atoms/StyledTitle.vue';
 import CarCard from '@/components/molecules/CarCard.vue';
@@ -8,40 +8,24 @@ import { useNotificationsContext } from '@/providers/useNotifications';
 import { useCarsContext } from '@/providers/useCars';
 import { v4 as uuid } from 'uuid';
 
-export default {
-	components: {
-		Form,
-		StyledTitle,
-		CarCard,
+const props = defineProps({
+	addCar: {
+		type: Function,
 	},
+});
 
-	props: {
-		addCar: {
-			type: Function,
-		},
-	},
+const { formValues, handleInputChange, clearForm } = useForm();
+const { handleSuccessNotifications } = useNotificationsContext();
+const { addCar } = useCarsContext();
 
-	setup() {
-		const { formValues, handleInputChange, clearForm } = useForm();
-		const { handleSuccessNotifications } = useNotificationsContext();
-		const { addCar } = useCarsContext();
-
-		const handleSubmitForm = () => {
-			const newCar = {
-				id: uuid(),
-				...formValues.value,
-			};
-			addCar(newCar);
-			clearForm();
-			handleSuccessNotifications();
-		};
-
-		return {
-			formValues,
-			handleInputChange,
-			handleSubmitForm,
-		};
-	},
+const handleSubmitForm = () => {
+	const newCar = {
+		id: uuid(),
+		...formValues.value,
+	};
+	addCar(newCar);
+	clearForm();
+	handleSuccessNotifications();
 };
 </script>
 

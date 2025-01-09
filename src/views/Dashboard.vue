@@ -1,4 +1,4 @@
-<script lang="ts">
+<script setup lang="ts">
 import SearchInput from '@/components/molecules/SearchInput.vue';
 import SortSelect from '@/components/molecules/SortSelect.vue';
 import LoadingAnimation from '@/components/atoms/LoadingAnimation.vue';
@@ -7,86 +7,55 @@ import Modal from '@/components/organisms/Modal.vue';
 import FilterBoxYears from '@/components/molecules/FilterBoxYears.vue';
 import FilterBoxBrands from '@/components/molecules/FilterBoxBrands.vue';
 
-import type { CarType } from '@/types/types';
 import { selectOptions } from '@/data/select';
 import { useCarsContext } from '@/providers/useCars';
 import { useModal } from '@/composables/useModal';
 import { onMounted, ref, watch } from 'vue';
 import debounce from 'lodash.debounce';
 
-export default {
-	components: {
-		SearchInput,
-		SortSelect,
-		LoadingAnimation,
-		CarCard,
-		Modal,
-		FilterBoxYears,
-		FilterBoxBrands,
-	},
+const { cars, carsToDisplay, comparedCars, usersFilterPreferences, findCars, filterCars, setCarsToDisplay, sortCars } = useCarsContext();
+const { isModalOpen, handleOpenModel, closeModal } = useModal();
+const isLoading = ref(true);
+const searchPhrase = ref('');
+const selectedSortValue = ref('');
 
-	setup() {
-		const { cars, carsToDisplay, comparedCars, usersFilterPreferences, findCars, filterCars, setCarsToDisplay, sortCars } =
-			useCarsContext();
-		const { isModalOpen, handleOpenModel, closeModal } = useModal();
-		const isLoading = ref(true);
-		const searchPhrase = ref('');
-		const selectedSortValue = ref('');
+const handleDisplayCars = () => {
+	let matchingCars;
 
-		const handleDisplayCars = () => {
-			let matchingCars;
+	matchingCars = filterCars();
+	matchingCars = findCars(searchPhrase.value);
 
-			matchingCars = filterCars();
-			matchingCars = findCars(searchPhrase.value);
-
-			setCarsToDisplay(matchingCars);
-		};
-
-		const handleSearchCars = debounce((inputValue: string) => {
-			setCarsToDisplay(findCars(inputValue));
-		}, 500);
-
-		const handleSearchInputChange = (e: InputEvent & { target: HTMLInputElement }) => {
-			const inputValue = e.target.value;
-			searchPhrase.value = inputValue;
-			handleSearchCars(inputValue);
-		};
-
-		const handleSelectedValueChange = (e: Event & { target: HTMLSelectElement }) => {
-			const selectedValue = e.target.value;
-			selectedSortValue.value = selectedValue;
-			sortCars(selectedValue);
-		};
-
-		onMounted(() => {
-			handleDisplayCars();
-			isLoading.value = false;
-		});
-
-		watch(
-			[usersFilterPreferences, cars],
-			() => {
-				handleDisplayCars();
-			},
-			{ deep: true }
-		);
-
-		return {
-			cars,
-			carsToDisplay,
-			comparedCars,
-			isLoading,
-			searchPhrase,
-			handleSearchInputChange,
-			selectOptions,
-			selectedSortValue,
-			handleSelectedValueChange,
-			isModalOpen,
-			handleOpenModel,
-			closeModal,
-		};
-	},
+	setCarsToDisplay(matchingCars);
 };
+
+const handleSearchCars = debounce((inputValue: string) => {
+	setCarsToDisplay(findCars(inputValue));
+}, 500);
+
+const handleSearchInputChange = (e: InputEvent & { target: HTMLInputElement }) => {
+	const inputValue = e.target.value;
+	searchPhrase.value = inputValue;
+	handleSearchCars(inputValue);
+};
+
+const handleSelectedValueChange = (e: Event & { target: HTMLSelectElement }) => {
+	const selectedValue = e.target.value;
+	selectedSortValue.value = selectedValue;
+	sortCars(selectedValue);
+};
+
+onMounted(() => {
+	handleDisplayCars();
+	isLoading.value = false;
+});
+
+watch(
+	[usersFilterPreferences, cars],
+	() => {
+		handleDisplayCars();
+	},
+	{ deep: true }
+);
 </script>
 
 <template>

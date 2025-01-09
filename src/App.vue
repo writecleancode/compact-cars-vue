@@ -1,4 +1,4 @@
-<script lang="ts">
+<script setup lang="ts">
 import Header from '@/components/molecules/Header.vue';
 import NavBar from '@/components/organisms/NavBar.vue';
 import FiltersManagement from '@/components/organisms/FiltersManagement.vue';
@@ -10,28 +10,11 @@ import { useNavProvider } from '@/providers/useNav';
 import { useCarsProvider } from '@/providers/useCars';
 import { useNotificationsProvider } from '@/providers/useNotifications';
 
-export default {
-	components: {
-		Header,
-		NavBar,
-		FiltersManagement,
-		Dashboard,
-		SuccessNotification,
-	},
+handlePageReload();
 
-	setup() {
-		handlePageReload();
-
-		useNavProvider();
-		const { comparedCars } = useCarsProvider();
-		const { successNotifications } = useNotificationsProvider();
-
-		return {
-			comparedCars,
-			successNotifications,
-		};
-	},
-};
+useNavProvider();
+const { comparedCars } = useCarsProvider();
+const { successNotifications } = useNotificationsProvider();
 </script>
 
 <template>

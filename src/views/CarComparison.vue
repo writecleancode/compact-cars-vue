@@ -1,15 +1,7 @@
-<script lang="ts">
+<script setup lang="ts">
 import { useCarsContext } from '@/providers/useCars';
 
-export default {
-	setup() {
-		const { comparedCars } = useCarsContext();
-
-		return {
-			comparedCars,
-		};
-	},
-};
+const { comparedCars } = useCarsContext();
 </script>
 
 <template>

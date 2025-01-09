@@ -1,45 +1,29 @@
-<script lang="ts">
+<script setup lang="ts">
 import CarImage from '@/components/atoms/CarImage.vue';
 import CarInfoBox from '@/components/atoms/CarInfoBox.vue';
 import CompareButton from '@/components/atoms/CompareButton.vue';
 import StyledButton from '@/components/atoms/StyledButton.vue';
 import TrashIcon from '@/assets/icons/TrashIcon.vue';
+
+import { type PropType } from 'vue';
 import type { CarType } from '@/types/types';
 import { useCarsContext } from '@/providers/useCars';
-import { type PropType } from 'vue';
 
-export default {
-	components: {
-		CarImage,
-		CarInfoBox,
-		CompareButton,
-		StyledButton,
-		TrashIcon,
+const props = defineProps({
+	car: {
+		type: Object as PropType<CarType>,
+		required: true,
 	},
-
-	props: {
-		car: {
-			type: Object as PropType<CarType>,
-			required: true,
-		},
-		isCompared: {
-			type: Boolean,
-			default: false,
-		},
-		handleRemoveCar: {
-			type: Function,
-		},
+	isCompared: {
+		type: Boolean,
+		default: false,
 	},
-
-	setup() {
-		const { handleCompareStatus, handleRemoveCar } = useCarsContext();
-
-		return {
-			handleCompareStatus,
-			handleRemoveCar,
-		};
+	handleRemoveCar: {
+		type: Function,
 	},
-};
+});
+
+const { handleCompareStatus, handleRemoveCar } = useCarsContext();
 </script>
 
 <template>

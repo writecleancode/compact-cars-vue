@@ -1,12 +1,10 @@
-<script lang="ts">
-export default {
-	props: {
-		isFilterTitle: {
-			type: Boolean,
-			default: false,
-		},
+<script setup lang="ts">
+const props = defineProps({
+	isFilterTitle: {
+		type: Boolean,
+		default: false,
 	},
-};
+});
 </script>
 
 <template>

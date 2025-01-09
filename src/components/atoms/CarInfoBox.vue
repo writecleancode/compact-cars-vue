@@ -1,14 +1,12 @@
-<script lang="ts">
-export default {
-	props: {
-		title: {
-			type: String,
-		},
-		content: {
-			type: String,
-		},
+<script setup lang="ts">
+const props = defineProps({
+	title: {
+		type: String,
 	},
-};
+	content: {
+		type: String,
+	},
+});
 </script>
 
 <template>

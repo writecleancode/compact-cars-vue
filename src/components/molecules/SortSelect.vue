@@ -1,17 +1,15 @@
-<script lang="ts">
-export default {
-	props: {
-		options: {
-			type: Object,
-		},
-		defaultOption: {
-			type: String,
-		},
-		selectedValue: {
-			type: String,
-		},
+<script setup lang="ts">
+const props = defineProps({
+	options: {
+		type: Object,
 	},
-};
+	defaultOption: {
+		type: String,
+	},
+	selectedValue: {
+		type: String,
+	},
+});
 </script>
 
 <template>
