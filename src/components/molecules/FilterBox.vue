@@ -28,7 +28,7 @@ export default {
 				<button
 					class="filter-item-btn"
 					:class="{ 'active-option': option.isActive, 'min-width': isYears }"
-					v-on:click="$emit('handleFilter', option.value)">
+					@click="$emit('handleFilter', option.value)">
 					{{ option.value }}
 				</button>
 			</li>

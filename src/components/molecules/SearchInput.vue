@@ -22,7 +22,7 @@ export default {
 			placeholder="find car"
 			type="text"
 			class="search-input"
-			v-on:input="$emit('handleInputChange', $event)" />
+			@input="$emit('handleInputChange', $event)" />
 		<label for="search" aria-label="find car by name" class="search-icon-wrapper">
 			<SearchIcon />
 		</label>

@@ -18,7 +18,7 @@ export default {
 		class="burger-btn"
 		:class="{ active: isNavActive }"
 		:aria-label="`${isNavActive ? 'close navigation' : 'open navigation'}`"
-		v-on:click="handleMobileNav">
+		@click="handleMobileNav">
 		<span className="burger-btn-line burger-btn-line--top"></span>
 		<span className="burger-btn-line burger-btn-line--middle"></span>
 		<span className="burger-btn-line burger-btn-line--bottom"></span>

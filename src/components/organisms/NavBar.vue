@@ -29,7 +29,7 @@ export default {
 
 <template>
 	<nav class="wrapper" :class="{ active: isNavActive }">
-		<ul class="nav-links-list" v-on:click="handleNavLinksClick">
+		<ul class="nav-links-list" @click="handleNavLinksClick">
 			<li>
 				<RouterLink to="/" class="nav-link">Dashboard</RouterLink>
 			</li>
@@ -43,7 +43,7 @@ export default {
 			</li>
 		</ul>
 	</nav>
-	<div class="background-tint" v-on:click="closeMobileNav"></div>
+	<div class="background-tint" @click="closeMobileNav"></div>
 </template>
 
 <style lang="scss" scoped>

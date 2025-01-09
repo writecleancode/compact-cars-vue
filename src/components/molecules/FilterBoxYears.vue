@@ -23,6 +23,6 @@ export default {
 	<FilterBox
 		title="Choose production year(s):"
 		:options="usersFilterPreferences.years"
-		v-on:handle-filter="handleFilterPreferences"
+		@handle-filter="handleFilterPreferences"
 		:isYears="true" />
 </template>

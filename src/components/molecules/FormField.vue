@@ -40,7 +40,7 @@ export default {
 <template>
 	<div class="form-field-wrapper">
 		<StyledLabel :for="name">{{ label }}</StyledLabel>
-		<StyledInput :name :id :type :min :value v-on:input="handleInputChange" />
+		<StyledInput :name :id :type :min :value @input="handleInputChange" />
 	</div>
 </template>
 

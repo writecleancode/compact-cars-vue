@@ -20,5 +20,5 @@ export default {
 </script>
 
 <template>
-	<FilterBox title="Choose brand(s):" :options="usersFilterPreferences.brands" v-on:handle-filter="handleFilterPreferences" />
+	<FilterBox title="Choose brand(s):" :options="usersFilterPreferences.brands" @handle-filter="handleFilterPreferences" />
 </template>
