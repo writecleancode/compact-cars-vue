@@ -5,6 +5,7 @@ import FiltersManagement from '@/components/organisms/FiltersManagement.vue';
 import Dashboard from '@/views/Dashboard.vue';
 import SuccessNotification from '@/components/atoms/SuccessNotification.vue';
 
+import { handlePageReload } from './utils/ghPagesReloadHandler';
 import { useNavProvider } from '@/providers/useNav';
 import { useCarsProvider } from '@/providers/useCars';
 import { useNotificationsProvider } from '@/providers/useNotifications';
@@ -19,6 +20,8 @@ export default {
 	},
 
 	setup() {
+		handlePageReload();
+
 		useNavProvider();
 		const { comparedCars } = useCarsProvider();
 		const { successNotifications } = useNotificationsProvider();
