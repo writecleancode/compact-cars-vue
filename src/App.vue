@@ -2,7 +2,6 @@
 import Header from '@/components/molecules/Header.vue';
 import NavBar from '@/components/organisms/NavBar.vue';
 import FiltersManagement from '@/components/organisms/FiltersManagement.vue';
-import Dashboard from '@/views/Dashboard.vue';
 import SuccessNotification from '@/components/atoms/SuccessNotification.vue';
 
 import { handlePageReload } from './utils/ghPagesReloadHandler';

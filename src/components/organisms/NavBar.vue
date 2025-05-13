@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import { useNavContext } from '@/providers/useNav';
 
-const props = defineProps({
-	comparedCarsNumber: {
-		type: Number,
-		default: 0,
-	},
-});
+const { comparedCarsNumber = 0 } = defineProps<{
+	comparedCarsNumber: number
+}>();
 
 const { isNavActive, closeMobileNav } = useNavContext();
 

@@ -1,22 +1,11 @@
 <script setup lang="ts">
-const props = defineProps({
-	name: {
-		type: String,
-	},
-	id: {
-		type: String,
-	},
-	type: {
-		type: String,
-		default: 'text',
-	},
-	min: {
-		type: Number,
-	},
-	value: {
-		type: [String, Number],
-	},
-});
+const { type = 'text' } = defineProps<{
+	name: string,
+	id: string,
+	type: string,
+	min: number,
+	value: string | number,
+}>();
 </script>
 
 <template>

@@ -1,9 +1,7 @@
 <script setup lang="ts">
-const props = defineProps({
-	for: {
-		type: String,
-	},
-});
+defineProps<{
+	for: string,
+}>();
 </script>
 
 <template>

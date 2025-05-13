@@ -1,10 +1,7 @@
 <script setup lang="ts">
-const props = defineProps({
-	isFilterTitle: {
-		type: Boolean,
-		default: false,
-	},
-});
+const { isFilterTitle = false } = defineProps<{
+	isFilterTitle: boolean,
+}>();
 </script>
 
 <template>

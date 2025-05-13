@@ -1,17 +1,12 @@
 <script setup lang="ts">
 import StyledTitle from '@/components/atoms/StyledTitle.vue';
+import type { SelectOptionType } from '@/types/types'
 
-const props = defineProps({
-	title: {
-		type: String,
-	},
-	options: {
-		type: Object,
-	},
-	isYears: {
-		type: Boolean,
-	},
-});
+const { isYears = false } = defineProps<{
+	title: string,
+	options: SelectOptionType[],
+	isYears: boolean,
+}>();
 </script>
 
 <template>

@@ -1,4 +1,4 @@
-type CarImageType = {
+export type CarImageType = {
 	small: string;
 	medium: string;
 	big?: string;
@@ -29,6 +29,12 @@ export type FormValuesType = {
 	facelift: string;
 	img: CarImageType;
 };
+
+export type SelectOptionType = {
+	value: string,
+	text: string,
+	isActive?: string,
+}
 
 export type UsersFilterPreferencesType = {
 	brands: FilterValueType<string>[]

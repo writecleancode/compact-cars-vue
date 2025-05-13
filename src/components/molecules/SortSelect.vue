@@ -1,15 +1,11 @@
 <script setup lang="ts">
-const props = defineProps({
-	options: {
-		type: Object,
-	},
-	defaultOption: {
-		type: String,
-	},
-	selectedValue: {
-		type: String,
-	},
-});
+import type { SelectOptionType } from '@/types/types';
+
+defineProps<{
+	options: SelectOptionType[],
+	defaultOption: string,
+	selectedValue: string,
+}>();
 </script>
 
 <template>

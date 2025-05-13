@@ -8,12 +8,6 @@ import { useNotificationsContext } from '@/providers/useNotifications';
 import { useCarsContext } from '@/providers/useCars';
 import { v4 as uuid } from 'uuid';
 
-const props = defineProps({
-	addCar: {
-		type: Function,
-	},
-});
-
 const { formValues, handleInputChange, clearForm } = useForm();
 const { handleSuccessNotifications } = useNotificationsContext();
 const { addCar } = useCarsContext();

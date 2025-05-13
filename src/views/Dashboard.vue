@@ -7,6 +7,7 @@ import Modal from '@/components/organisms/Modal.vue';
 import FilterBoxYears from '@/components/molecules/FilterBoxYears.vue';
 import FilterBoxBrands from '@/components/molecules/FilterBoxBrands.vue';
 
+import type { SelectOptionType } from '@/types/types';
 import { useCarsContext } from '@/providers/useCars';
 import { useModal } from '@/composables/useModal';
 import { onMounted, ref, watch } from 'vue';
@@ -17,7 +18,7 @@ const { cars, carsToDisplay, comparedCars, usersFilterPreferences, findCars, fil
 const { isModalOpen, handleOpenModel, closeModal } = useModal();
 const isLoading = ref(true);
 const searchPhrase = ref('');
-const selectOptions = ref([])
+const selectOptions = ref<SelectOptionType[]>([])
 const selectedSortValue = ref('');
 
 const handleDisplayCars = () => {
@@ -47,7 +48,7 @@ const handleSelectedValueChange = (e: Event & { target: HTMLSelectElement }) => 
 
 const getSortOptions = async () => {
 	try {
-		const response = await axios.get('https://my-json-server.typicode.com/writecleancode/compact-cars-vue/selectOptions')
+		const response = await axios.get<SelectOptionType[]>('https://my-json-server.typicode.com/writecleancode/compact-cars-vue/selectOptions')
 		selectOptions.value = response.data;
 	} catch (err) {
 		console.log(err)

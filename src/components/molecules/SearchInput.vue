@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import SearchIcon from '@/assets/icons/SearchIcon.vue';
 
-const props = defineProps({
-	value: {
-		type: String,
-	},
-});
+defineProps<{
+	value: string,
+}>();
 </script>
 
 <template>

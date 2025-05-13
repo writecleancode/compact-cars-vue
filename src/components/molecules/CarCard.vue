@@ -5,23 +5,14 @@ import CompareButton from '@/components/atoms/CompareButton.vue';
 import StyledButton from '@/components/atoms/StyledButton.vue';
 import TrashIcon from '@/assets/icons/TrashIcon.vue';
 
-import { type PropType } from 'vue';
 import type { CarType } from '@/types/types';
 import { useCarsContext } from '@/providers/useCars';
 
-const props = defineProps({
-	car: {
-		type: Object as PropType<CarType>,
-		required: true,
-	},
-	isCompared: {
-		type: Boolean,
-		default: false,
-	},
-	handleRemoveCar: {
-		type: Function,
-	},
-});
+const { isCompared = false } = defineProps<{
+	car: CarType,
+	isCompared: boolean,
+	handleRemoveCar: (clickedCarId: string) => void,
+}>();
 
 const { handleCompareStatus, handleRemoveCar } = useCarsContext();
 </script>

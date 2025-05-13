@@ -1,8 +1,10 @@
 <script setup lang="ts">
-const props = defineProps({
-	imgUrl: Object,
-	altText: String,
-});
+import type { CarImageType } from '@/types/types';
+
+defineProps<{
+	imgUrl: CarImageType,
+	altText: string,
+}>();
 
 const basePath = import.meta.env.VITE_BASE_PATH;
 const unknownCarUrl = `${basePath}assets/img/unknown_car.jpg`;
