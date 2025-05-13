@@ -3,7 +3,7 @@ const { type = 'text' } = defineProps<{
 	name: string,
 	id: string,
 	type: string,
-	min: number,
+	min?: number,
 	value: string | number,
 }>();
 </script>

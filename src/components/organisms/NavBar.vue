@@ -15,7 +15,7 @@ const handleNavLinksClick = (e: MouseEvent) => {
 </script>
 
 <template>
-	<nav class="wrapper" :class="{ active: isNavActive }">
+	<nav class="nav-bar-wrapper" :class="{ active: isNavActive }">
 		<ul class="nav-links-list" @click="handleNavLinksClick">
 			<li>
 				<RouterLink to="/" class="nav-link">Dashboard</RouterLink>
@@ -34,7 +34,7 @@ const handleNavLinksClick = (e: MouseEvent) => {
 </template>
 
 <style lang="scss" scoped>
-.wrapper {
+.nav-bar-wrapper {
 	position: absolute;
 	z-index: 2;
 	translate: -100%;
@@ -47,6 +47,24 @@ const handleNavLinksClick = (e: MouseEvent) => {
 	background-color: #fff;
 	visibility: hidden;
 	transition: translate 0.2s, visibility 0.2s 0.2s;
+
+	@media (min-width: 900px) {
+		position: static;
+		z-index: initial;
+		translate: initial;
+		grid-column: 2 / 3;
+		grid-row: 2 / 3;
+		padding-right: 0.8rem;
+		border-left: 1px solid #d8d8d8;
+		height: auto;
+		min-height: initial;
+		visibility: visible;
+		transition: initial;
+	}
+
+	@media (min-width: 1200px) {
+		grid-column: 3 / 4;
+	}
 }
 
 .nav-links-list {
@@ -100,6 +118,10 @@ const handleNavLinksClick = (e: MouseEvent) => {
 	opacity: 0;
 	visibility: hidden;
 	transition: opacity 0.1s, visibility 0.2s 0.2s;
+
+	@media (min-width: 900px) {
+		display: none;
+	}
 }
 
 .active {
@@ -113,32 +135,6 @@ const handleNavLinksClick = (e: MouseEvent) => {
 		opacity: 1;
 		visibility: visible;
 		transition: opacity 0.1s;
-	}
-}
-
-@media (min-width: 900px) {
-	.wrapper {
-		position: static;
-		z-index: initial;
-		translate: initial;
-		grid-column: 2 / 3;
-		grid-row: 2 / 3;
-		padding-right: 0.8rem;
-		border-left: 1px solid #d8d8d8;
-		height: auto;
-		min-height: initial;
-		visibility: visible;
-		transition: initial;
-	}
-
-	.background-tint {
-		display: none;
-	}
-}
-
-@media (min-width: 1200px) {
-	.wrapper {
-		grid-column: 3 / 4;
 	}
 }
 </style>

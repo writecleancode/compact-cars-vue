@@ -8,7 +8,7 @@ const currentRoute = useRoute();
 </script>
 
 <template>
-	<aside class="filters-wrapper">
+	<aside class="filters-management-wrapper">
 		<FilterBoxYears />
 		<FilterBoxBrands />
 		<div class="filters-wrapper-unactive-tint" :class="{ active: currentRoute.fullPath !== '/' }"></div>
@@ -21,7 +21,7 @@ const currentRoute = useRoute();
 }
 
 @media (min-width: 1200px) {
-	.filters-wrapper {
+	.filters-management-wrapper {
 		position: relative;
 		display: flex;
 		flex-direction: column;

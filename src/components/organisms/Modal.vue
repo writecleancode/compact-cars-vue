@@ -33,6 +33,10 @@ onClickOutside(modal, closeModal as OnClickOutsideHandler);
 
 	&.active {
 		display: block;
+
+		@media (min-width: 1200px) {
+			display: none;
+		}
 	}
 }
 
@@ -42,19 +46,8 @@ onClickOutside(modal, closeModal as OnClickOutsideHandler);
 	background-color: #fff;
 	box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
 	overflow-y: auto;
-}
 
-.close-modal-btn {
-	display: inline-block;
-	padding: 0.4rem 0.8rem;
-	width: 100%;
-	font-size: 1.5rem;
-	text-transform: uppercase;
-	font-weight: bold;
-}
-
-@media (min-width: 640px) and (min-height: 560px) {
-	.modal-wrapper {
+	@media (min-width: 640px) and (min-height: 560px) {
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -65,11 +58,12 @@ onClickOutside(modal, closeModal as OnClickOutsideHandler);
 	}
 }
 
-@media (min-width: 1200px) {
-	.modal-overlay {
-		&.active {
-			display: none;
-		}
-	}
+.close-modal-btn {
+	display: inline-block;
+	padding: 0.4rem 0.8rem;
+	width: 100%;
+	font-size: 1.5rem;
+	text-transform: uppercase;
+	font-weight: bold;
 }
 </style>

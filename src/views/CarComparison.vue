@@ -47,6 +47,10 @@ const { comparedCars } = useCarsContext();
 <style lang="scss" scoped>
 .car-comparison-wrapper {
 	padding: 1.2rem;
+
+	@media (min-width: 440px) {
+		margin-top: 1.6rem;
+	}
 }
 
 .table-wrapper {
@@ -170,12 +174,6 @@ const { comparedCars } = useCarsContext();
 	margin-top: 7.2rem;
 	font-size: 1.8rem;
 	text-align: center;
-}
-
-@media (min-width: 440px) {
-	.car-comparison-wrapper {
-		margin-top: 1.6rem;
-	}
 }
 
 @media (-webkit-max-device-pixel-ratio: 1) {

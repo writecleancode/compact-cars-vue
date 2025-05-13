@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-	<div>
+	<div class="car-info-box">
 		<p class="styled-info-title">{{ title }}</p>
 		<p class="styled-info-content">{{ content }}</p>
 	</div>

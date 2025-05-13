@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import StyledTitle from '@/components/atoms/StyledTitle.vue';
-import type { SelectOptionType } from '@/types/types'
+import type { FilterValueType } from '@/types/types'
 
 const { isYears = false } = defineProps<{
 	title: string,
-	options: SelectOptionType[],
-	isYears: boolean,
+	options: FilterValueType<string | number>[],
+	isYears?: boolean,
 }>();
 </script>
 
 <template>
-	<div class="wrapper">
+	<div class="filter-box-wrapper">
 		<StyledTitle :isFilterTitle="true">{{ title }}</StyledTitle>
 		<ul class="filter-items">
 			<li v-for="option in options" :key="option.value">
@@ -26,11 +26,15 @@ const { isYears = false } = defineProps<{
 </template>
 
 <style lang="scss" scoped>
-.wrapper {
+.filter-box-wrapper {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	margin-bottom: 4.8rem;
+
+	@media (min-width: 1200px) {
+		margin-bottom: 0;
+	}
 }
 
 .filter-items {
@@ -55,12 +59,6 @@ const { isYears = false } = defineProps<{
 
 	&.active-option {
 		background-color: #bdeeb1;
-	}
-}
-
-@media (min-width: 1200px) {
-	.wrapper {
-		margin-bottom: 0;
 	}
 }
 </style>

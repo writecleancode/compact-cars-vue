@@ -36,23 +36,8 @@ const handleSubmitForm = () => {
 <style lang="scss" scoped>
 .add-car-wrapper {
 	padding: 2.4rem;
-}
 
-.preview-wrapper {
-	margin-top: 5.6rem;
-	margin-left: auto;
-	margin-right: auto;
-	width: 50%;
-}
-
-.preview-title {
-	margin-bottom: 2.4rem;
-	color: #3e3e3e;
-	text-align: center;
-}
-
-@media (min-width: 620px) {
-	.add-car-wrapper {
+	@media (min-width: 620px) {
 		display: flex;
 		gap: 3.2rem;
 
@@ -61,21 +46,7 @@ const handleSubmitForm = () => {
 		}
 	}
 
-	.preview-wrapper {
-		margin-left: 0;
-		margin-right: 0;
-		width: auto;
-	}
-}
-
-@media (min-width: 760px) {
-	.preview-wrapper {
-		margin-top: 4rem;
-	}
-}
-
-@media (min-width: 900px) {
-	.add-car-wrapper {
+	@media (min-width: 900px) {
 		justify-content: space-evenly;
 		align-items: center;
 		margin: 0 auto;
@@ -85,18 +56,39 @@ const handleSubmitForm = () => {
 		& > * {
 			flex-basis: initial;
 		}
-
-		.preview-wrapper {
-			flex-grow: 1;
-			margin-top: 0;
-			max-width: 260px;
-		}
 	}
 }
 
-@media (min-width: 1600px) {
-	.preview-wrapper {
+.preview-wrapper {
+	margin-top: 5.6rem;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+
+	@media (min-width: 620px) {
+		margin-left: 0;
+		margin-right: 0;
+		width: auto;
+	}
+
+	@media (min-width: 760px) {
+		margin-top: 4rem;
+	}
+
+	@media (min-width: 900px) {
+		flex-grow: 1;
+		margin-top: 0;
+		max-width: 260px;
+	}
+
+	@media (min-width: 1600px) {
 		max-width: 290px;
 	}
+}
+
+.preview-title {
+	margin-bottom: 2.4rem;
+	color: #3e3e3e;
+	text-align: center;
 }
 </style>

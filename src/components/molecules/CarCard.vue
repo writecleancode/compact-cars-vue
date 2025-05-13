@@ -10,15 +10,15 @@ import { useCarsContext } from '@/providers/useCars';
 
 const { isCompared = false } = defineProps<{
 	car: CarType,
-	isCompared: boolean,
-	handleRemoveCar: (clickedCarId: string) => void,
+	isCompared?: boolean,
+	handleRemoveCar?: (clickedCarId: string) => void,
 }>();
 
 const { handleCompareStatus, handleRemoveCar } = useCarsContext();
 </script>
 
 <template>
-	<div class="wrapper">
+	<div class="car-card-wrapper">
 		<p class="car-name">{{ car.brand || 'unknown' }} {{ car.model || 'unknown' }}</p>
 		<CarImage :imgUrl="car.img" :altText="`${car.brand} ${car.model}`" />
 		<div class="car-info-wrapper">
@@ -36,7 +36,7 @@ const { handleCompareStatus, handleRemoveCar } = useCarsContext();
 </template>
 
 <style lang="scss" scoped>
-.wrapper {
+.car-card-wrapper {
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -53,6 +53,10 @@ const { handleCompareStatus, handleRemoveCar } = useCarsContext();
 	font-size: 1.8rem;
 	font-weight: bold;
 	text-align: center;
+
+	@media (min-width: 1600px) {
+		margin-bottom: 0.8rem;
+	}
 }
 
 .car-info-wrapper {
@@ -88,12 +92,6 @@ const { handleCompareStatus, handleRemoveCar } = useCarsContext();
 	&:hover,
 	&:focus-visible {
 		fill: #555;
-	}
-}
-
-@media (min-width: 1600px) {
-	.car-name {
-		margin-bottom: 0.8rem;
 	}
 }
 </style>

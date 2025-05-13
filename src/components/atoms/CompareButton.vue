@@ -6,17 +6,17 @@ const { isCompared = false } = defineProps<{
 
 <template>
 	<button
-		class="compare-btn"
+		class="compare-button"
 		:class="{ 'is-compared': isCompared }"
 		:title="isCompared ? 'remove car from comparison' : 'add car to comparison'"
 		:aria-label="isCompared ? 'remove car from comparison' : 'add car to comparison'">
-		<span class="compare-btn-bar compare-btn-bar--vertical"></span>
-		<span class="compare-btn-bar compare-btn-bar--horizontal"></span>
+		<span class="button-bar vertical"></span>
+		<span class="button-bar horizontal"></span>
 	</button>
 </template>
 
 <style lang="scss" scoped>
-.compare-btn {
+.compare-button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -36,26 +36,26 @@ const { isCompared = false } = defineProps<{
 
 	&:hover,
 	&:focus-visible {
-		.compare-btn-bar {
+		.button-bar {
 			background-color: #555;
 		}
 	}
 }
 
-.compare-btn-bar {
+.button-bar {
 	position: absolute;
 	border-radius: 100px;
 	background-color: #fff;
 	transition: background-color 0.3s, rotate 0.3s;
 
-	&--vertical {
+	&.vertical {
 		display: inline-block;
 		width: 2px;
 		height: 16px;
 		rotate: 0;
 	}
 
-	&--horizontal {
+	&.horizontal {
 		display: inline-block;
 		width: 16px;
 		height: 2px;
@@ -64,12 +64,12 @@ const { isCompared = false } = defineProps<{
 }
 
 .is-compared {
-	.compare-btn-bar {
-		&--vertical {
+	.button-bar {
+		&.vertical {
 			rotate: 630deg;
 		}
 
-		&--horizontal {
+		&.horizontal {
 			rotate: 360deg;
 		}
 	}

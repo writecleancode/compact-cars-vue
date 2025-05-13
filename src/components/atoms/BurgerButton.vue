@@ -6,20 +6,20 @@ const { isNavActive, handleMobileNav } = useNavContext();
 
 <template>
 	<button
-		class="burger-btn"
+		class="burger-button"
 		:class="{ active: isNavActive }"
 		:aria-label="`${isNavActive ? 'close navigation' : 'open navigation'}`"
 		@click="handleMobileNav">
-		<span className="burger-btn-line burger-btn-line--top"></span>
-		<span className="burger-btn-line burger-btn-line--middle"></span>
-		<span className="burger-btn-line burger-btn-line--bottom"></span>
+		<span className="button-line top"></span>
+		<span className="button-line middle"></span>
+		<span className="button-line bottom"></span>
 	</button>
 </template>
 
 <style lang="scss" scoped>
 @use '@/assets/styles/variables.scss' as *;
 
-.burger-btn {
+.burger-button {
 	position: absolute;
 	top: 50%;
 	right: 8px;
@@ -31,69 +31,57 @@ const { isNavActive, handleMobileNav } = useNavContext();
 	border: none;
 	background-color: transparent;
 
-	.burger-btn-line {
+	@media (min-width: 900px) {
+		display: none;
+	}
+
+	.button-line {
 		display: inline-block;
 		width: $burger-button-width;
 		height: 3px;
 		background-color: #3b3b3b;
 
-		&--top,
-		&--bottom {
+		&.top,
+		&.bottom {
+			translate: 0 0;
+			rotate: none;
+			scale: 1 1;
 			transition: translate 0.1s 0.1s, rotate 0.1s, scale 0.1s 0.05s;
 		}
 
-		&--middle {
+		&.middle {
 			opacity: 1;
 			transition-property: opacity;
 			transition-delay: 0.1s;
-		}
-
-		&--top {
-			translate: 0 0;
-			rotate: none;
-			scale: 1 1;
-		}
-
-		&--bottom {
-			translate: 0 0;
-			rotate: none;
-			scale: 1 1;
 		}
 	}
 }
 
 .active {
-	&.burger-btn {
-		.burger-btn-line {
-			&--top,
-			&--bottom {
+	&.burger-button {
+		.button-line {
+			&.top,
+			&.bottom {
 				transition: translate 0.1s, rotate 0.1s 0.1s, scale 0.1s 0.05s;
+				scale: 1.05 1;
 			}
 
-			&--middle {
+			&.middle {
 				opacity: 0;
 				transition-property: opacity;
 				transition-delay: 0.1s;
 			}
 
-			&--top {
+			&.top {
 				translate: 0 8px;
-				rotate: 45deg;
-				scale: 1.05 1;
+				rotate: 45deg;				
 			}
 
-			&--bottom {
+			&.bottom {
 				translate: 0 -8px;
 				rotate: -45deg;
-				scale: 1.05 1;
 			}
 		}
-	}
-}
-
-@media (min-width: 900px) {
-	.burger-btn {
-		display: none;
 	}
 }
 </style>

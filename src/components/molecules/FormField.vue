@@ -2,12 +2,12 @@
 import StyledLabel from '@/components/atoms/StyledLabel.vue';
 import StyledInput from '@/components/atoms/StyledInput.vue';
 
-defineProps<{
+const { type = 'text' } = defineProps<{
 	label: string,
 	name: string,
 	id: string,
-	type: string,
-	min: number
+	type?: string,
+	min?: number
 	value: string | number
 	handleInputChange: (e: InputEvent) => void,
 }>();

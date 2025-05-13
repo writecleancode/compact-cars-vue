@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { isFilterTitle = false } = defineProps<{
-	isFilterTitle: boolean,
+	isFilterTitle?: boolean,
 }>();
 </script>
 

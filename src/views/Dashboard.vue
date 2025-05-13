@@ -71,7 +71,7 @@ watch(
 </script>
 
 <template>
-	<div>
+	<div class="dashboard-wrapper">
 		<div class="controls-wrapper">
 			<div class="search-wrapper">
 				<SearchInput :value="searchPhrase" v-on:handle-input-change="handleSearchInputChange" />
@@ -104,15 +104,51 @@ watch(
 </template>
 
 <style lang="scss" scoped>
+.controls-wrapper {
+	@media (min-width: 640px) {
+		position: relative;
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+		padding: 0.8rem;
+		background-color: #d9d9d9;
+	}
+
+	@media (min-width: 900px) {
+		background-color: initial;
+		padding: 1.6rem 2.4rem;
+	}
+
+	@media (min-width: 1600px) {
+		padding: 2.4rem 3.2rem;
+	}
+}
+
 .search-wrapper {
 	display: flex;
 	gap: 1.6rem;
 	padding: 0.8rem;
 	background-color: #d9d9d9;
+
+	@media (min-width: 440px) {
+		justify-content: space-between;
+	}
+
+	@media (min-width: 640px) {
+		padding: 0;
+	}
 }
 
 .filters-wrapper {
 	padding: 0.8rem 0.8rem 0.4rem;
+
+	@media (min-width: 640px) {
+		padding: 0;
+	}
+
+	@media (min-width: 1200px) {
+		display: none;
+	}
 }
 
 .manage-filters-btn {
@@ -125,6 +161,13 @@ watch(
 	display: block;
 	padding: 0.3rem;
 	width: 100%;
+
+	
+	@media (min-width: 640px) {
+		padding: 0.4rem 1.2rem;
+		width: auto;
+		height: 100%;
+	}
 }
 
 .car-cards-wrapper {
@@ -132,96 +175,42 @@ watch(
 	grid-template-columns: repeat(2, 1fr);
 	gap: 1rem;
 	padding: 1.2rem;
+
+	@media (min-width: 614px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@media (min-width: 900px) {
+		gap: 1.2rem;
+		padding-left: 2.4rem;
+		padding-right: 2.4rem;
+	}
+
+	@media (min-width: 1500px) {
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1.6rem;
+	}
+
+	@media (min-width: 1600px) {
+		gap: 2rem;
+		padding-left: 3.2rem;
+		padding-right: 3.2rem;
+	}
 }
 
 .no-cars-info {
 	grid-column: 1 / 3;
 	margin-top: 5.6rem;
 	text-align: center;
-}
 
-@media (min-width: 440px) {
-	.search-wrapper {
-		justify-content: space-between;
-	}
-}
-
-@media (min-width: 614px) {
-	.car-cards-wrapper {
-		grid-template-columns: repeat(3, 1fr);
-	}
-
-	.no-cars-info {
+	@media (min-width: 614px) {
 		grid-column: 1 / 4;
 		font-size: 1.7rem;
 	}
-}
 
-@media (min-width: 640px) {
-	.controls-wrapper {
-		position: relative;
-		display: flex;
-		flex-direction: row-reverse;
-		justify-content: space-between;
-		padding: 0.8rem;
-		background-color: #d9d9d9;
-	}
-
-	.search-wrapper {
-		padding: 0;
-	}
-
-	.filters-wrapper {
-		padding: 0;
-	}
-
-	.manage-filters-btn {
-		padding: 0.4rem 1.2rem;
-		width: auto;
-		height: 100%;
-	}
-}
-
-@media (min-width: 900px) {
-	.controls-wrapper {
-		background-color: initial;
-		padding: 1.6rem 2.4rem;
-	}
-
-	.car-cards-wrapper {
-		gap: 1.2rem;
-		padding-left: 2.4rem;
-		padding-right: 2.4rem;
-	}
-}
-
-@media (min-width: 1200px) {
-	.filters-wrapper {
-		display: none;
-	}
-}
-
-@media (min-width: 1500px) {
-	.car-cards-wrapper {
-		grid-template-columns: repeat(4, 1fr);
-		gap: 1.6rem;
-	}
-
-	.no-cars-info {
+	@media (min-width: 1500px) {
 		grid-column: 1 / 5;
 		font-size: 1.8rem;
-	}
-}
-
-@media (min-width: 1600px) {
-	.controls-wrapper {
-		padding: 2.4rem 3.2rem;
-	}
-
-	.car-cards-wrapper {
-		gap: 2rem;
-		padding-left: 3.2rem;
-		padding-right: 3.2rem;
 	}
 }
 </style>

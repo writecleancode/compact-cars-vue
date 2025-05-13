@@ -22,6 +22,13 @@ defineProps<{
 	background-color: #f6f6f6;
 	min-width: 0;
 	max-width: 260px;
+
+	@media (min-width: 640px) {
+		position: absolute;
+		left: 50%;
+		translate: -50%;
+		min-width: 260px;
+	}
 }
 
 .search-input {
@@ -47,15 +54,6 @@ defineProps<{
 		width: 1.6;
 		height: 1.6;
 		fill: #464646;
-	}
-}
-
-@media (min-width: 640px) {
-	.search-input-wrapper {
-		position: absolute;
-		left: 50%;
-		translate: -50%;
-		min-width: 260px;
 	}
 }
 </style>
