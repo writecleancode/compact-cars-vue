@@ -32,7 +32,7 @@ const { isYears = false } = defineProps<{
 	align-items: flex-start;
 	margin-bottom: 4.8rem;
 
-	@media (min-width: 1200px) {
+	@media (width >= 1200px) {
 		margin-bottom: 0;
 	}
 }

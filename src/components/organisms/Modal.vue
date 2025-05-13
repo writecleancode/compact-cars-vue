@@ -47,7 +47,7 @@ onClickOutside(modal, closeModal as OnClickOutsideHandler);
 	box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
 	overflow-y: auto;
 
-	@media (min-width: 640px) and (min-height: 560px) {
+	@media (width >= 640px) and (height >= 560px) {
 		position: absolute;
 		top: 50%;
 		left: 50%;

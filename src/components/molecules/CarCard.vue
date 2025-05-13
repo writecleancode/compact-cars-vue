@@ -54,7 +54,7 @@ const { handleCompareStatus, handleRemoveCar } = useCarsContext();
 	font-weight: bold;
 	text-align: center;
 
-	@media (min-width: 1600px) {
+	@media (width >= 1600px) {
 		margin-bottom: 0.8rem;
 	}
 }

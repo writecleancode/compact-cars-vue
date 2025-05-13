@@ -35,7 +35,7 @@ const { successNotifications } = useNotificationsProvider();
 <style lang="scss" scoped>
 
 .app-wrapper {
-	@media (min-width: 900px) {
+	@media (width >= 900px) {
 		display: grid;
 		grid-template-columns: 1fr auto;
 		grid-template-rows: auto 1fr;
@@ -44,27 +44,27 @@ const { successNotifications } = useNotificationsProvider();
 		overflow: clip;
 	}
 
-	@media (min-width: 1200px) {
+	@media (width >= 1200px) {
 		grid-template-columns: 300px 1fr auto;
 	}
 
-	@media (min-width: 1400px) {
+	@media (width >= 1400px) {
 		grid-template-columns: 320px 1fr auto;
 	}
 
-	@media (min-width: 1600px) {
+	@media (width >= 1600px) {
 		grid-template-columns: 320px 1fr 320px;
 	}
 }
 
 .content-wrapper {
-	@media (min-width: 900px) { 
+	@media (width >= 900px) { 
 		grid-column: 1 / 2;
 		grid-row: 2 / 3;
 		overflow-x: auto;
 	}
 
-	@media (min-width: 1200px) {
+	@media (width >= 1200px) {
 		grid-column: 2 / 3;
 	}
 }

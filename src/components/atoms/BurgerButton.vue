@@ -31,7 +31,7 @@ const { isNavActive, handleMobileNav } = useNavContext();
 	border: none;
 	background-color: transparent;
 
-	@media (min-width: 900px) {
+	@media (width >= 900px) {
 		display: none;
 	}
 

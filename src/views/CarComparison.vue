@@ -48,7 +48,7 @@ const { comparedCars } = useCarsContext();
 .car-comparison-wrapper {
 	padding: 1.2rem;
 
-	@media (min-width: 440px) {
+	@media (width >= 440px) {
 		margin-top: 1.6rem;
 	}
 }

@@ -20,7 +20,7 @@ const currentRoute = useRoute();
 	display: none;
 }
 
-@media (min-width: 1200px) {
+@media (width >= 1200px) {
 	.filters-management-wrapper {
 		position: relative;
 		display: flex;

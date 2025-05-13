@@ -48,7 +48,7 @@ const handleNavLinksClick = (e: MouseEvent) => {
 	visibility: hidden;
 	transition: translate 0.2s, visibility 0.2s 0.2s;
 
-	@media (min-width: 900px) {
+	@media (width >= 900px) {
 		position: static;
 		z-index: initial;
 		translate: initial;
@@ -62,7 +62,7 @@ const handleNavLinksClick = (e: MouseEvent) => {
 		transition: initial;
 	}
 
-	@media (min-width: 1200px) {
+	@media (width >= 1200px) {
 		grid-column: 3 / 4;
 	}
 }
@@ -119,7 +119,7 @@ const handleNavLinksClick = (e: MouseEvent) => {
 	visibility: hidden;
 	transition: opacity 0.1s, visibility 0.2s 0.2s;
 
-	@media (min-width: 900px) {
+	@media (width >= 900px) {
 		display: none;
 	}
 }

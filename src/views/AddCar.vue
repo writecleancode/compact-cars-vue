@@ -37,7 +37,7 @@ const handleSubmitForm = () => {
 .add-car-wrapper {
 	padding: 2.4rem;
 
-	@media (min-width: 620px) {
+	@media (width >= 620px) {
 		display: flex;
 		gap: 3.2rem;
 
@@ -46,7 +46,7 @@ const handleSubmitForm = () => {
 		}
 	}
 
-	@media (min-width: 900px) {
+	@media (width >= 900px) {
 		justify-content: space-evenly;
 		align-items: center;
 		margin: 0 auto;
@@ -65,23 +65,23 @@ const handleSubmitForm = () => {
 	margin-right: auto;
 	width: 50%;
 
-	@media (min-width: 620px) {
+	@media (width >= 620px) {
 		margin-left: 0;
 		margin-right: 0;
 		width: auto;
 	}
 
-	@media (min-width: 760px) {
+	@media (width >= 760px) {
 		margin-top: 4rem;
 	}
 
-	@media (min-width: 900px) {
+	@media (width >= 900px) {
 		flex-grow: 1;
 		margin-top: 0;
 		max-width: 260px;
 	}
 
-	@media (min-width: 1600px) {
+	@media (width >= 1600px) {
 		max-width: 290px;
 	}
 }

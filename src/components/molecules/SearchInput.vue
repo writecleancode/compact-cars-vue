@@ -23,7 +23,7 @@ defineProps<{
 	min-width: 0;
 	max-width: 260px;
 
-	@media (min-width: 640px) {
+	@media (width >= 640px) {
 		position: absolute;
 		left: 50%;
 		translate: -50%;

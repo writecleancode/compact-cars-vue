@@ -28,7 +28,7 @@
 	width: 40px;
 	animation: spining 0.3s infinite linear;
 
-	@media (min-width: 900px) {
+	@media (width >= 900px) {
 		width: 48px;
 	}
 }
