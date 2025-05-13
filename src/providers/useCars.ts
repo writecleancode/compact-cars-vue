@@ -1,7 +1,7 @@
 import type { CarType, UsersFilterPreferencesType } from '@/types/types';
 import { createProvider } from '@/utils/createProvider';
 import { onMounted, ref } from 'vue';
-import axios from 'axios';
+import { getCars, getFilterOptions } from '@/services/getCars';
 
 const useCars = () => {
 	let filteredCars: CarType[] = [];
@@ -115,21 +115,21 @@ const useCars = () => {
 			!usersFilterPreferences.value[optionType][clickedOptionIndex].isActive;
 	};
 
-	const getCars = async () => {
+	const getCarsData = async () => {
 		try {
-			const response = await axios.get('https://my-json-server.typicode.com/writecleancode/compact-cars-vue/cars')
-			cars.value = response.data
+			const response = await getCars()
+			if (response) cars.value = response.data
 		} catch (err) {
 			console.log(err);
 		}
 	}
 
-	const getFilterOptions = async () => {
+	const getFilterOptionsData = async () => {
 		try {
-			const [responseYears, responseBrands] = await Promise.all([axios.get<number[]>('https://my-json-server.typicode.com/writecleancode/compact-cars-vue/filterYears'), axios.get<string[]>('https://my-json-server.typicode.com/writecleancode/compact-cars-vue/filterBrands')])
+			const [responseYears, responseBrands] = await getFilterOptions()
 			
-			const filterYearsData = responseYears.data.map(option => ({ value: option, isActive: false }));
-			const filterBrandsData = responseBrands.data.map(option => ({ value: option, isActive: false }));
+			const filterYearsData = responseYears ? responseYears.data.map(option => ({ value: option, isActive: false })) : [];
+			const filterBrandsData = responseBrands ? responseBrands.data.map(option => ({ value: option, isActive: false })) : [];
 
 			usersFilterPreferences.value = { brands: filterBrandsData, years: filterYearsData }
 		} catch (err) {
@@ -138,8 +138,8 @@ const useCars = () => {
 	}
 
 	onMounted(() => {
-		getCars()
-		getFilterOptions()
+		getCarsData()
+		getFilterOptionsData()
 	});
 
 	return {
