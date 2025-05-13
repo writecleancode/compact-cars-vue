@@ -15,6 +15,11 @@ export type CarType = {
 	img: CarImageType;
 };
 
+export type FilterValueType<T> = {
+	value: T,
+	isActive: boolean
+}
+
 export type FormValuesType = {
 	brand: string;
 	model: string;
@@ -24,3 +29,8 @@ export type FormValuesType = {
 	facelift: string;
 	img: CarImageType;
 };
+
+export type UsersFilterPreferencesType = {
+	brands: FilterValueType<string>[]
+	years: FilterValueType<number>[]
+}

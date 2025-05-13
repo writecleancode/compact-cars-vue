@@ -8,6 +8,7 @@ const { usersFilterPreferences, handleFilterPreferences } = useCarsContext();
 
 <template>
 	<FilterBox
+		v-if="usersFilterPreferences.years.length"
 		title="Choose production year(s):"
 		:options="usersFilterPreferences.years"
 		@handle-filter="handleFilterPreferences"

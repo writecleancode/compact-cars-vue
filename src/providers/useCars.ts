@@ -1,13 +1,9 @@
-import type { CarType } from '@/types/types';
+import type { CarType, UsersFilterPreferencesType } from '@/types/types';
 import { createProvider } from '@/utils/createProvider';
-import { cars as carsData } from '@/data/cars';
-import { filterBrands, filterYears } from '@/data/filters';
 import { onMounted, ref } from 'vue';
+import axios from 'axios';
 
 const useCars = () => {
-	const filterYearsData = filterYears.map(option => ({ value: option, isActive: false }));
-	const filterBrandsData = filterBrands.map(option => ({ value: option, isActive: false }));
-
 	let filteredCars: CarType[] = [];
 
 	const getCarName = (car: CarType) => `${car.brand} ${car.model}`;
@@ -16,7 +12,7 @@ const useCars = () => {
 	const cars = ref<CarType[]>([]);
 	const carsToDisplay = ref<CarType[]>([]);
 	const comparedCars = ref<CarType[]>([]);
-	const usersFilterPreferences = ref({ brands: filterBrandsData, years: filterYearsData });
+	const usersFilterPreferences = ref<UsersFilterPreferencesType>({ brands: [], years: [] });
 
 	const removeCar = (clickedCarId: string) => {
 		const filteredCars = cars.value.filter(car => car.id !== clickedCarId);
@@ -119,8 +115,31 @@ const useCars = () => {
 			!usersFilterPreferences.value[optionType][clickedOptionIndex].isActive;
 	};
 
+	const getCars = async () => {
+		try {
+			const response = await axios.get('https://my-json-server.typicode.com/writecleancode/compact-cars-vue/cars')
+			cars.value = response.data
+		} catch (err) {
+			console.log(err);
+		}
+	}
+
+	const getFilterOptions = async () => {
+		try {
+			const [responseYears, responseBrands] = await Promise.all([axios.get<number[]>('https://my-json-server.typicode.com/writecleancode/compact-cars-vue/filterYears'), axios.get<string[]>('https://my-json-server.typicode.com/writecleancode/compact-cars-vue/filterBrands')])
+			
+			const filterYearsData = responseYears.data.map(option => ({ value: option, isActive: false }));
+			const filterBrandsData = responseBrands.data.map(option => ({ value: option, isActive: false }));
+
+			usersFilterPreferences.value = { brands: filterBrandsData, years: filterYearsData }
+		} catch (err) {
+			console.log(err);
+		}
+	}
+
 	onMounted(() => {
-		cars.value = carsData;
+		getCars()
+		getFilterOptions()
 	});
 
 	return {

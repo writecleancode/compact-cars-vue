@@ -13,7 +13,7 @@ const props = defineProps({
 </script>
 
 <template>
-	<div class="select-wrapper">
+	<div class="select-wrapper" v-if="options?.length">
 		<select class="styled-select" :value="selectedValue" @change="$emit('handleSelectedValueChange', $event)" aria-label="sort cars">
 			<option v-if="defaultOption" value="" disabled>{{ defaultOption }}</option>
 			<option v-for="option in options" :key="option.value" :value="option.value">{{ option.text }}</option>

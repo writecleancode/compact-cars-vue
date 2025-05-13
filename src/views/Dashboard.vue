@@ -7,16 +7,17 @@ import Modal from '@/components/organisms/Modal.vue';
 import FilterBoxYears from '@/components/molecules/FilterBoxYears.vue';
 import FilterBoxBrands from '@/components/molecules/FilterBoxBrands.vue';
 
-import { selectOptions } from '@/data/select';
 import { useCarsContext } from '@/providers/useCars';
 import { useModal } from '@/composables/useModal';
 import { onMounted, ref, watch } from 'vue';
 import debounce from 'lodash.debounce';
+import axios from 'axios';
 
 const { cars, carsToDisplay, comparedCars, usersFilterPreferences, findCars, filterCars, setCarsToDisplay, sortCars } = useCarsContext();
 const { isModalOpen, handleOpenModel, closeModal } = useModal();
 const isLoading = ref(true);
 const searchPhrase = ref('');
+const selectOptions = ref([])
 const selectedSortValue = ref('');
 
 const handleDisplayCars = () => {
@@ -44,7 +45,17 @@ const handleSelectedValueChange = (e: Event & { target: HTMLSelectElement }) => 
 	sortCars(selectedValue);
 };
 
+const getSortOptions = async () => {
+	try {
+		const response = await axios.get('https://my-json-server.typicode.com/writecleancode/compact-cars-vue/selectOptions')
+		selectOptions.value = response.data;
+	} catch (err) {
+		console.log(err)
+	}
+}
+
 onMounted(() => {
+	getSortOptions()
 	handleDisplayCars();
 	isLoading.value = false;
 });

@@ -7,5 +7,5 @@ const { usersFilterPreferences, handleFilterPreferences } = useCarsContext();
 </script>
 
 <template>
-	<FilterBox title="Choose brand(s):" :options="usersFilterPreferences.brands" @handle-filter="handleFilterPreferences" />
+	<FilterBox v-if="usersFilterPreferences.brands.length" title="Choose brand(s):" :options="usersFilterPreferences.brands" @handle-filter="handleFilterPreferences" />
 </template>
