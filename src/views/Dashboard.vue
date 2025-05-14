@@ -12,7 +12,7 @@ import { useCarsContext } from '@/providers/useCars';
 import { useModal } from '@/composables/useModal';
 import { onMounted, ref, watch } from 'vue';
 import debounce from 'lodash.debounce';
-import { getSortOptions } from '@/services/getCars';
+import { getSortOptions } from '@/services/CarService';
 
 const { cars, carsToDisplay, comparedCars, usersFilterPreferences, findCars, filterCars, setCarsToDisplay, sortCars } = useCarsContext();
 const { isModalOpen, handleOpenModel, closeModal } = useModal();

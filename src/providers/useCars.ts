@@ -1,7 +1,7 @@
 import type { CarType, UsersFilterPreferencesType } from '@/types/types';
 import { createProvider } from '@/utils/createProvider';
 import { onMounted, ref } from 'vue';
-import { getCars, getFilterOptions } from '@/services/getCars';
+import { getCars, getFilterOptions } from '@/services/CarService';
 
 const useCars = () => {
 	let filteredCars: CarType[] = [];
