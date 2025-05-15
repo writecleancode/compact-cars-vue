@@ -4,7 +4,7 @@ import FormField from '@/components/molecules/FormField.vue';
 import StyledButton from '@/components/atoms/StyledButton.vue';
 
 defineProps<{
-	formValues: FormValuesType,
+	formValues: FormValuesType;
 	handleInputChange: (e: InputEvent) => void;
 	handleSubmitForm?: () => void;
 }>();

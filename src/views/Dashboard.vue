@@ -18,7 +18,7 @@ const { cars, carsToDisplay, comparedCars, usersFilterPreferences, findCars, fil
 const { isModalOpen, handleOpenModel, closeModal } = useModal();
 const isLoading = ref(true);
 const searchPhrase = ref('');
-const selectOptions = ref<SelectOptionType[]>([])
+const selectOptions = ref<SelectOptionType[]>([]);
 const selectedSortValue = ref('');
 
 const handleDisplayCars = () => {
@@ -48,15 +48,15 @@ const handleSelectedValueChange = (e: Event & { target: HTMLSelectElement }) => 
 
 const getSortOptionsData = async () => {
 	try {
-		const response = await getSortOptions()
+		const response = await getSortOptions();
 		if (response) selectOptions.value = response.data;
 	} catch (err) {
-		console.log(err)
+		console.log(err);
 	}
-}
+};
 
 onMounted(() => {
-	getSortOptionsData()
+	getSortOptionsData();
 	handleDisplayCars();
 	isLoading.value = false;
 });
@@ -104,26 +104,6 @@ watch(
 </template>
 
 <style lang="scss" scoped>
-.controls-wrapper {
-	@media (width >= 640px) {
-		position: relative;
-		display: flex;
-		flex-direction: row-reverse;
-		justify-content: space-between;
-		padding: 0.8rem;
-		background-color: #d9d9d9;
-	}
-
-	@media (width >= 900px) {
-		background-color: initial;
-		padding: 1.6rem 2.4rem;
-	}
-
-	@media (width >= 1600px) {
-		padding: 2.4rem 3.2rem;
-	}
-}
-
 .search-wrapper {
 	display: flex;
 	gap: 1.6rem;
@@ -155,19 +135,18 @@ watch(
 	display: block;
 	padding: 0.3rem;
 	width: 100%;
+
+	@media (width >= 640px) {
+		padding: 0.4rem 1.2rem;
+		width: auto;
+		height: 100%;
+	}
 }
 
 .manage-filters-button {
 	display: block;
 	padding: 0.3rem;
 	width: 100%;
-
-	
-	@media (width >= 640px) {
-		padding: 0.4rem 1.2rem;
-		width: auto;
-		height: 100%;
-	}
 }
 
 .car-cards-wrapper {
@@ -211,6 +190,26 @@ watch(
 	@media (width >= 1500px) {
 		grid-column: 1 / 5;
 		font-size: 1.8rem;
+	}
+}
+
+.controls-wrapper {
+	@media (width >= 640px) {
+		position: relative;
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+		padding: 0.8rem;
+		background-color: #d9d9d9;
+	}
+
+	@media (width >= 900px) {
+		background-color: initial;
+		padding: 1.6rem 2.4rem;
+	}
+
+	@media (width >= 1600px) {
+		padding: 2.4rem 3.2rem;
 	}
 }
 </style>

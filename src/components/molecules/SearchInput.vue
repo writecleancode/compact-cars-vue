@@ -2,7 +2,7 @@
 import SearchIcon from '@/assets/icons/SearchIcon.vue';
 
 defineProps<{
-	value: string,
+	value: string;
 }>();
 </script>
 
@@ -22,13 +22,6 @@ defineProps<{
 	background-color: #f6f6f6;
 	min-width: 0;
 	max-width: 260px;
-
-	@media (width >= 640px) {
-		position: absolute;
-		left: 50%;
-		translate: -50%;
-		min-width: 260px;
-	}
 }
 
 .search-input {
@@ -51,9 +44,18 @@ defineProps<{
 	background-color: #f6f6f6;
 
 	svg {
-		width: 1.6;
-		height: 1.6;
+		width: 1.6rem;
+		height: 1.6rem;
 		fill: #464646;
+	}
+}
+
+@media (width >= 640px) {
+	.search-input-wrapper {
+		position: absolute;
+		left: 50%;
+		translate: -50%;
+		min-width: 260px;
 	}
 }
 </style>

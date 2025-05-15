@@ -3,8 +3,8 @@ import { onClickOutside, type MaybeElement, type OnClickOutsideHandler } from '@
 import { useTemplateRef } from 'vue';
 
 const { isOpen = false, closeModal } = defineProps<{
-	isOpen: boolean,
-	closeModal: () => void,
+	isOpen: boolean;
+	closeModal: () => void;
 }>();
 
 const modal = useTemplateRef<MaybeElement>('my-modal');
@@ -34,7 +34,7 @@ onClickOutside(modal, closeModal as OnClickOutsideHandler);
 	&.active {
 		display: block;
 
-		@media (min-width: 1200px) {
+		@media (width >= 1200px) {
 			display: none;
 		}
 	}

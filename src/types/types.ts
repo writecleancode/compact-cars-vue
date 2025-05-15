@@ -16,9 +16,9 @@ export type CarType = {
 };
 
 export type FilterValueType<T> = {
-	value: T,
-	isActive: boolean
-}
+	value: T;
+	isActive: boolean;
+};
 
 export type FormValuesType = {
 	brand: string;
@@ -31,12 +31,12 @@ export type FormValuesType = {
 };
 
 export type SelectOptionType = {
-	value: string,
-	text: string,
-	isActive?: string,
-}
+	value: string;
+	text: string;
+	isActive?: string;
+};
 
 export type UsersFilterPreferencesType = {
-	brands: FilterValueType<string>[]
-	years: FilterValueType<number>[]
-}
+	brands: FilterValueType<string>[];
+	years: FilterValueType<number>[];
+};

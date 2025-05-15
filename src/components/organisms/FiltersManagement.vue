@@ -18,10 +18,8 @@ const currentRoute = useRoute();
 <style lang="scss" scoped>
 .filters-wrapper {
 	display: none;
-}
 
-@media (width >= 1200px) {
-	.filters-management-wrapper {
+	@media (width >= 1200px) {
 		position: relative;
 		display: flex;
 		flex-direction: column;
@@ -32,7 +30,9 @@ const currentRoute = useRoute();
 		border-right: 1px solid #d8d8d8;
 		overflow-x: auto;
 	}
+}
 
+@media (width >= 1200px) {
 	.filters-wrapper-unactive-tint {
 		display: none;
 		position: absolute;

@@ -117,29 +117,29 @@ const useCars = () => {
 
 	const getCarsData = async () => {
 		try {
-			const response = await getCars()
-			if (response) cars.value = response.data
+			const response = await getCars();
+			if (response) cars.value = response.data;
 		} catch (err) {
 			console.log(err);
 		}
-	}
+	};
 
 	const getFilterOptionsData = async () => {
 		try {
-			const [responseYears, responseBrands] = await getFilterOptions()
-			
+			const [responseYears, responseBrands] = await getFilterOptions();
+
 			const filterYearsData = responseYears ? responseYears.data.map(option => ({ value: option, isActive: false })) : [];
 			const filterBrandsData = responseBrands ? responseBrands.data.map(option => ({ value: option, isActive: false })) : [];
 
-			usersFilterPreferences.value = { brands: filterBrandsData, years: filterYearsData }
+			usersFilterPreferences.value = { brands: filterBrandsData, years: filterYearsData };
 		} catch (err) {
 			console.log(err);
 		}
-	}
+	};
 
 	onMounted(() => {
-		getCarsData()
-		getFilterOptionsData()
+		getCarsData();
+		getFilterOptionsData();
 	});
 
 	return {

@@ -2,7 +2,7 @@
 import { useNavContext } from '@/providers/useNav';
 
 const { comparedCarsNumber = 0 } = defineProps<{
-	comparedCarsNumber: number
+	comparedCarsNumber: number;
 }>();
 
 const { isNavActive, closeMobileNav } = useNavContext();
@@ -34,7 +34,7 @@ const handleNavLinksClick = (e: MouseEvent) => {
 </template>
 
 <style lang="scss" scoped>
-.nav-bar-wrapper {
+.wrapper {
 	position: absolute;
 	z-index: 2;
 	translate: -100%;

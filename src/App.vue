@@ -33,16 +33,13 @@ const { successNotifications } = useNotificationsProvider();
 </template>
 
 <style lang="scss" scoped>
-
 .app-wrapper {
-	@media (width >= 900px) {
-		display: grid;
-		grid-template-columns: 1fr auto;
-		grid-template-rows: auto 1fr;
-		height: 100vh;
-		height: 100svh;
-		overflow: clip;
-	}
+	display: grid;
+	grid-template-columns: 1fr auto;
+	grid-template-rows: auto 1fr;
+	height: 100vh;
+	height: 100svh;
+	overflow: clip;
 
 	@media (width >= 1200px) {
 		grid-template-columns: 300px 1fr auto;
@@ -58,11 +55,9 @@ const { successNotifications } = useNotificationsProvider();
 }
 
 .content-wrapper {
-	@media (width >= 900px) { 
-		grid-column: 1 / 2;
-		grid-row: 2 / 3;
-		overflow-x: auto;
-	}
+	grid-column: 1 / 2;
+	grid-row: 2 / 3;
+	overflow-x: auto;
 
 	@media (width >= 1200px) {
 		grid-column: 2 / 3;

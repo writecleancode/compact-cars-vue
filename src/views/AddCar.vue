@@ -56,6 +56,12 @@ const handleSubmitForm = () => {
 		& > * {
 			flex-basis: initial;
 		}
+
+		.preview-wrapper {
+			flex-grow: 1;
+			margin-top: 0;
+			max-width: 260px;
+		}
 	}
 }
 
@@ -73,12 +79,6 @@ const handleSubmitForm = () => {
 
 	@media (width >= 760px) {
 		margin-top: 4rem;
-	}
-
-	@media (width >= 900px) {
-		flex-grow: 1;
-		margin-top: 0;
-		max-width: 260px;
 	}
 
 	@media (width >= 1600px) {

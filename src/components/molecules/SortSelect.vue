@@ -2,9 +2,9 @@
 import type { SelectOptionType } from '@/types/types';
 
 defineProps<{
-	options: SelectOptionType[],
-	defaultOption: string,
-	selectedValue: string,
+	options: SelectOptionType[];
+	defaultOption: string;
+	selectedValue: string;
 }>();
 </script>
 
