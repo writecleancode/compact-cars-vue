@@ -6,9 +6,9 @@ import CarComparison from '@/views/CarComparison.vue';
 import Dashboard from '@/views/Dashboard.vue';
 
 const routes = [
-	{ path: '/', component: Dashboard },
-	{ path: '/car-comparison', component: CarComparison },
-	{ path: '/add-car', component: AddCar },
+	{ path: '/', name: 'dashboard', component: Dashboard },
+	{ path: '/car-comparison', name: 'car-comparison', component: CarComparison },
+	{ path: '/add-car', name: 'add-car', component: AddCar },
 	{ path: '/:pathPatch(.*)*', redirect: '/' },
 ];
 

@@ -18,15 +18,15 @@ const handleNavLinksClick = (e: MouseEvent) => {
 	<nav class="nav-bar-wrapper" :class="{ active: isNavActive }">
 		<ul class="nav-links-list" @click="handleNavLinksClick">
 			<li>
-				<RouterLink to="/" class="nav-link">Dashboard</RouterLink>
+				<RouterLink :to="{ name: 'dashboard' }" class="nav-link">Dashboard</RouterLink>
 			</li>
 			<li>
-				<RouterLink to="/car-comparison" class="nav-link"
+				<RouterLink :to="{ name: 'car-comparison' }" class="nav-link"
 					>Comparison {{ comparedCarsNumber > 0 ? `(${comparedCarsNumber})` : ' ' }}
 				</RouterLink>
 			</li>
 			<li>
-				<RouterLink to="/add-car" class="nav-link">Add car</RouterLink>
+				<RouterLink :to="{ name: 'add-car' }" class="nav-link">Add car</RouterLink>
 			</li>
 		</ul>
 	</nav>
