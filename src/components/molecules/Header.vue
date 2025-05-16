@@ -17,6 +17,23 @@ import BurgerButton from '@/components/atoms/BurgerButton.vue';
 	padding: 1.4rem calc($burger-button-width + $burger-button-padding * 2 + 1.6rem) 1.2rem;
 	border-bottom: 1px solid #e4e4e4;
 	background-image: linear-gradient(-45deg, rgb(248, 248, 248), rgba(243, 243, 243, 0.48), rgb(248, 248, 248));
+
+	@media (width >= 640px) {
+		padding: 1.6rem calc($burger-button-width + $burger-button-padding * 2 + 2.4rem);
+	}
+
+	@media (width >= 900px) {
+		grid-column: 1 / 3;
+		grid-row: 1 / 2;
+	}
+
+	@media (width >= 1200px) {
+		grid-column: 1 / 4;
+	}
+
+	@media (width >= 1500px) {
+		padding: 1.8rem;
+	}
 }
 
 .h1 {
@@ -25,33 +42,23 @@ import BurgerButton from '@/components/atoms/BurgerButton.vue';
 	line-height: 1.15;
 	text-align: center;
 
+	@media (width >= 640px) {
+		line-height: initial;
+	}
+
 	span {
 		display: inline-block;
 		width: max-content;
 		font-size: 1.4rem;
 		font-weight: normal;
-	}
-}
 
-@media (width >= 520px) {
-	.h1 {
-		span {
+		@media (width >= 520px) {
 			display: block;
 			width: 100%;
 			text-align: center;
 		}
-	}
-}
 
-@media (width >= 640px) {
-	.header-wrapper {
-		padding: 1.6rem calc($burger-button-width + $burger-button-padding * 2 + 2.4rem);
-	}
-
-	.h1 {
-		line-height: initial;
-
-		span {
+		@media (width >= 640px) {
 			display: inline-block;
 			margin-left: 0.4rem;
 			width: auto;
@@ -59,31 +66,8 @@ import BurgerButton from '@/components/atoms/BurgerButton.vue';
 			text-align: initial;
 			line-height: 1.15;
 		}
-	}
-}
 
-@media (width >= 900px) {
-	.header-wrapper {
-		grid-column: 1 / 3;
-		grid-row: 1 / 2;
-	}
-}
-
-@media (width >= 1200px) {
-	.header-wrapper {
-		grid-column: 1 / 4;
-	}
-}
-
-@media (width >= 1500px) {
-	.header-wrapper {
-		padding: 1.8rem;
-	}
-}
-
-@media (width >= 1600px) {
-	.h1 {
-		span {
+		@media (width >= 1600px) {
 			font-size: 1.6rem;
 		}
 	}

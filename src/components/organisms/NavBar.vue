@@ -22,8 +22,8 @@ const handleNavLinksClick = (e: MouseEvent) => {
 			</li>
 			<li>
 				<RouterLink to="/car-comparison" class="nav-link"
-					>Comparison {{ comparedCarsNumber > 0 ? `(${comparedCarsNumber})` : ' ' }}</RouterLink
-				>
+					>Comparison {{ comparedCarsNumber > 0 ? `(${comparedCarsNumber})` : ' ' }}
+				</RouterLink>
 			</li>
 			<li>
 				<RouterLink to="/add-car" class="nav-link">Add car</RouterLink>
@@ -34,7 +34,7 @@ const handleNavLinksClick = (e: MouseEvent) => {
 </template>
 
 <style lang="scss" scoped>
-.wrapper {
+.nav-bar-wrapper {
 	position: absolute;
 	z-index: 2;
 	translate: -100%;
@@ -125,7 +125,7 @@ const handleNavLinksClick = (e: MouseEvent) => {
 }
 
 .active {
-	&.wrapper {
+	&.nav-bar-wrapper {
 		translate: 0;
 		visibility: visible;
 		transition: translate 0.2s;

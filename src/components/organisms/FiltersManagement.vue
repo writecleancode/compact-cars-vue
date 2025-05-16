@@ -16,7 +16,7 @@ const currentRoute = useRoute();
 </template>
 
 <style lang="scss" scoped>
-.filters-wrapper {
+.filters-management-wrapper {
 	display: none;
 
 	@media (width >= 1200px) {
@@ -32,8 +32,8 @@ const currentRoute = useRoute();
 	}
 }
 
-@media (width >= 1200px) {
-	.filters-wrapper-unactive-tint {
+.filters-wrapper-unactive-tint {
+	@media (width >= 1200px) {
 		display: none;
 		position: absolute;
 		inset: 0;

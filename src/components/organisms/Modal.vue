@@ -31,11 +31,9 @@ onClickOutside(modal, closeModal as OnClickOutsideHandler);
 	z-index: 2;
 	background-color: rgba(255, 255, 255, 0.75);
 
-	&.active {
-		display: block;
-
-		@media (width >= 1200px) {
-			display: none;
+	&.active {		
+		@media (width < 1200px) {
+			display: block;
 		}
 	}
 }

@@ -21,10 +21,8 @@ const unknownCarUrl = `${basePath}assets/img/unknown_car.jpg`;
 </template>
 
 <style lang="scss" scoped>
-.car-image-wrapper-link {
-	&:not([href]) {
-		cursor: default;
-	}
+.car-image-wrapper-link:not([href]) {
+	cursor: default;
 }
 
 .car-img {

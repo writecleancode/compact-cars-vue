@@ -62,8 +62,8 @@ const { isNavActive, handleMobileNav } = useNavContext();
 		.button-line {
 			&.top,
 			&.bottom {
-				transition: translate 0.1s, rotate 0.1s 0.1s, scale 0.1s 0.05s;
 				scale: 1.05 1;
+				transition: translate 0.1s, rotate 0.1s 0.1s, scale 0.1s 0.05s;
 			}
 
 			&.middle {
