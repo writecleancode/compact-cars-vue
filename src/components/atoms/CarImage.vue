@@ -2,8 +2,8 @@
 import type { CarImageType } from '@/types/types';
 
 defineProps<{
-	imgUrl: CarImageType,
-	altText: string,
+	imgUrl: CarImageType;
+	altText: string;
 }>();
 
 const basePath = import.meta.env.VITE_BASE_PATH;

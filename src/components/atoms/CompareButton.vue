@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { isCompared = false } = defineProps<{
-	isCompared: boolean
+	isCompared: boolean;
 }>();
 </script>
 

@@ -74,7 +74,7 @@ const { isNavActive, handleMobileNav } = useNavContext();
 
 			&.top {
 				translate: 0 8px;
-				rotate: 45deg;				
+				rotate: 45deg;
 			}
 
 			&.bottom {

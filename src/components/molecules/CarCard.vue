@@ -9,9 +9,9 @@ import type { CarType } from '@/types/types';
 import { useCarsContext } from '@/providers/useCars';
 
 const { isCompared = false } = defineProps<{
-	car: CarType,
-	isCompared?: boolean,
-	handleRemoveCar?: (clickedCarId: string) => void,
+	car: CarType;
+	isCompared?: boolean;
+	handleRemoveCar?: (clickedCarId: string) => void;
 }>();
 
 const { handleCompareStatus, handleRemoveCar } = useCarsContext();
