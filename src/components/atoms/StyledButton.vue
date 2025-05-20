@@ -16,8 +16,15 @@
 
 	&:hover,
 	&:focus-visible {
-		background-color: transparent;
-		color: #555555;
+		&:not([disabled]) {
+			background-color: transparent;
+			color: #555555;
+		}
+	}
+
+	&[disabled] {
+		opacity: .15;
+		cursor: default;
 	}
 }
 </style>

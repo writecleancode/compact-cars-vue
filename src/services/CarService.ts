@@ -10,8 +10,8 @@ const apiClient = axios.create({
 	},
 });
 
-export const getCars = () => {
-	return apiClient.get('/cars');
+export const getCars = (page = 1, perPage = 8) => {
+	return apiClient.get(`/cars?_limit=${perPage}&_page=${page}`);
 };
 
 export const getFilterOptions = () => {

@@ -3,6 +3,7 @@ import SearchInput from '@/components/molecules/SearchInput.vue';
 import SortSelect from '@/components/molecules/SortSelect.vue';
 import LoadingAnimation from '@/components/atoms/LoadingAnimation.vue';
 import CarCard from '@/components/molecules/CarCard.vue';
+import Pagination from '@/components/molecules/Pagination.vue';
 import Modal from '@/components/organisms/Modal.vue';
 import FilterBoxYears from '@/components/molecules/FilterBoxYears.vue';
 import FilterBoxBrands from '@/components/molecules/FilterBoxBrands.vue';
@@ -14,7 +15,12 @@ import { onMounted, ref, watch } from 'vue';
 import debounce from 'lodash.debounce';
 import { getSortOptions } from '@/services/CarService';
 
-const { cars, carsToDisplay, comparedCars, usersFilterPreferences, findCars, filterCars, setCarsToDisplay, sortCars } = useCarsContext();
+const props = defineProps<{
+	perPage: number,
+	page: number
+}>()
+
+const { cars, carsToDisplay, comparedCars, totalCars, usersFilterPreferences, findCars, filterCars, setCarsToDisplay, sortCars, getCarsData } = useCarsContext();
 const { isModalOpen, handleOpenModel, closeModal } = useModal();
 const isLoading = ref(true);
 const searchPhrase = ref('');
@@ -56,6 +62,7 @@ const getSortOptionsData = async () => {
 };
 
 onMounted(() => {
+	getCarsData(props.page, props.perPage)
 	getSortOptionsData();
 	handleDisplayCars();
 	isLoading.value = false;
@@ -68,6 +75,13 @@ watch(
 	},
 	{ deep: true }
 );
+
+watch(() => props.page, () => {
+	isLoading.value = true;
+	getCarsData(props.page, props.perPage)
+	handleDisplayCars();
+	isLoading.value = false;
+})
 </script>
 
 <template>
@@ -96,6 +110,7 @@ watch(
 			</template>
 			<p class="no-cars-info" v-else>There are no cars to display...</p>
 		</div>
+		<Pagination :currentPage="page" :totalCars />
 		<Modal :isOpen="isModalOpen" :closeModal>
 			<FilterBoxYears />
 			<FilterBoxBrands />

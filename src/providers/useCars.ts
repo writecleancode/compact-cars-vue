@@ -12,6 +12,7 @@ const useCars = () => {
 	const cars = ref<CarType[]>([]);
 	const carsToDisplay = ref<CarType[]>([]);
 	const comparedCars = ref<CarType[]>([]);
+	const totalCars = ref(0)
 	const usersFilterPreferences = ref<UsersFilterPreferencesType>({ brands: [], years: [] });
 
 	const removeCar = (clickedCarId: string) => {
@@ -115,9 +116,10 @@ const useCars = () => {
 			!usersFilterPreferences.value[optionType][clickedOptionIndex].isActive;
 	};
 
-	const getCarsData = async () => {
+	const getCarsData = async (page: number, perPage?: number) => {
 		try {
-			const response = await getCars();
+			const response = await getCars(page, perPage);
+			totalCars.value = response.headers['x-total-count'];
 			if (response) cars.value = response.data;
 		} catch (err) {
 			console.log(err);
@@ -138,7 +140,6 @@ const useCars = () => {
 	};
 
 	onMounted(() => {
-		getCarsData();
 		getFilterOptionsData();
 	});
 
@@ -146,6 +147,7 @@ const useCars = () => {
 		cars,
 		carsToDisplay,
 		comparedCars,
+		totalCars,
 		usersFilterPreferences,
 		handleCompareStatus,
 		handleRemoveCar,
@@ -155,6 +157,7 @@ const useCars = () => {
 		sortCars,
 		handleFilterPreferences,
 		addCar,
+		getCarsData,
 	};
 };
 
