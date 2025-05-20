@@ -119,7 +119,7 @@ const useCars = () => {
 	const getCarsData = async (page: number, perPage?: number) => {
 		try {
 			const response = await getCars(page, perPage);
-			totalCars.value = response.headers['x-total-count'];
+			totalCars.value = Number(response.headers['x-total-count']);
 			if (response) cars.value = response.data;
 		} catch (err) {
 			console.log(err);

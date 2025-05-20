@@ -16,8 +16,8 @@ import debounce from 'lodash.debounce';
 import { getSortOptions } from '@/services/CarService';
 
 const props = defineProps<{
-	perPage: number,
 	page: number
+	perPage: number,
 }>()
 
 const { cars, carsToDisplay, comparedCars, totalCars, usersFilterPreferences, findCars, filterCars, setCarsToDisplay, sortCars, getCarsData } = useCarsContext();
@@ -110,7 +110,7 @@ watch(() => props.page, () => {
 			</template>
 			<p class="no-cars-info" v-else>There are no cars to display...</p>
 		</div>
-		<Pagination :currentPage="page" :totalCars />
+		<Pagination :currentPage="page" :perPage :totalCars />
 		<Modal :isOpen="isModalOpen" :closeModal>
 			<FilterBoxYears />
 			<FilterBoxBrands />
