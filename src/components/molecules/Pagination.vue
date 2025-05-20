@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import StyledButton from '../atoms/StyledButton.vue';
 import ChevronLeft from '@/assets/icons/ChevronLeft.vue';
 import ChevronRight from '@/assets/icons/ChevronRight.vue';
 
@@ -17,16 +16,16 @@ const isLastPage = computed(() => props.totalCars <= props.currentPage * props.p
 
 <template>
     <div class="pagination-wrapper">
-        <RouterLink :to="{ name: 'dashboard', query: { page: currentPage - 1 }}">
-            <StyledButton class="arrow-btn" aria-label="previous page" :disabled="currentPage <= 1"><ChevronLeft class="icon" /></StyledButton>
+        <RouterLink :to="{ name: 'dashboard', query: { page: currentPage - 1 }}" rel="prev" :tabindex="currentPage <= 1 ? -1 : 0">
+            <span class="arrow-icon-wrap" aria-label="previous page" :disabled="currentPage <= 1"><ChevronLeft class="icon" /></span>
         </RouterLink>
 
-        <RouterLink v-for="n in pagesTotal" :to="{ name: 'dashboard', query: { page: n } }">
-            <button class="current-page-number-btn" :class="{ active: n === currentPage }">{{ n }}</button>
+        <RouterLink v-for="n in pagesTotal" :to="{ name: 'dashboard', query: { page: n } }" :tabindex="n === currentPage ? -1 : 0">
+            <span class="current-page-number" :class="{ active: n === currentPage }">{{ n }}</span>
         </RouterLink>
 
-        <RouterLink :to="{ name: 'dashboard', query: { page: currentPage + 1 }}">
-            <StyledButton class="arrow-btn" aria-label="next page" :disabled="isLastPage"><ChevronRight class="icon" /></StyledButton>
+        <RouterLink :to="{ name: 'dashboard', query: { page: currentPage + 1 }}" rel="next" :disabled="isLastPage" :tabindex="isLastPage ? -1 : 0">
+            <span class="arrow-icon-wrap" aria-label="next page" :disabled="isLastPage"><ChevronRight class="icon" /></span>
         </RouterLink>
     </div>
 </template>
@@ -40,12 +39,35 @@ const isLastPage = computed(() => props.totalCars <= props.currentPage * props.p
     margin-bottom: 1.2rem;
     padding: .6rem;
 
-    .arrow-btn {
+    .arrow-icon-wrap {
+        padding: 0.8rem 1.6rem;
+	border: 2px solid #555555;
+	background-color: #555555;
+	color: #fff;
+	font-size: 1.6rem;
+	font-weight: bold;
+	transition: background-color 0.3s, color 0.3s;
+
+	&:hover,
+	&:focus-visible {
+		&:not([disabled]) {
+			background-color: transparent;
+			color: #555555;
+		}
+	}
+
+	&[disabled] {
+		opacity: .15;
+		cursor: default;
+	}
         padding: 0.8rem;
 
-        &:hover:not([disabled]) {
-            .icon {
-                stroke: #555555;
+        &:hover,
+        &:focus-visible {
+            &:not([disabled]) {
+                .icon {
+                    stroke: #555555;
+                }
             }
         }
     }
@@ -61,14 +83,12 @@ const isLastPage = computed(() => props.totalCars <= props.currentPage * props.p
         transition: stroke .2s;
     }
 
-    .current-page-number-btn {
+    .current-page-number {
         display: flex;
         justify-content: center;
         margin: -0.4rem -.8rem;
         padding: 0.8rem 1.6rem;
-        border: none;
         width: 1ch;
-        background-color: transparent;
         font-size: 1.6rem;
 
         &.active {
