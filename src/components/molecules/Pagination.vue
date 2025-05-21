@@ -16,16 +16,23 @@ const isLastPage = computed(() => props.totalCars <= props.currentPage * props.p
 
 <template>
     <div class="pagination-wrapper">
-        <RouterLink :to="{ name: 'dashboard', query: { page: currentPage - 1 }}" rel="prev" :tabindex="currentPage <= 1 ? -1 : 0">
-            <span class="arrow-icon-wrap" aria-label="previous page" :disabled="currentPage <= 1"><ChevronLeft class="icon" /></span>
+        <div v-if="currentPage === 1" class="arrow-icon-wrap placeholder">
+            <ChevronLeft class="icon" />
+        </div>
+        <RouterLink v-else :to="{ name: 'dashboard', query: { page: currentPage - 1 }}" class="arrow-icon-wrap link" rel="prev" aria-label="previous page">
+            <ChevronLeft class="icon" />
         </RouterLink>
 
-        <RouterLink v-for="n in pagesTotal" :to="{ name: 'dashboard', query: { page: n } }" :tabindex="n === currentPage ? -1 : 0">
-            <span class="current-page-number" :class="{ active: n === currentPage }">{{ n }}</span>
-        </RouterLink>
+        <template v-for="n in pagesTotal">
+            <div v-if="n === currentPage" class="page-number placeholder" aria-hidden="true">{{ n }}</div>
+            <RouterLink v-else :to="{ name: 'dashboard', query: { page: n } }" class="page-number link">{{ n }}</RouterLink>
+        </template>
 
-        <RouterLink :to="{ name: 'dashboard', query: { page: currentPage + 1 }}" rel="next" :disabled="isLastPage" :tabindex="isLastPage ? -1 : 0">
-            <span class="arrow-icon-wrap" aria-label="next page" :disabled="isLastPage"><ChevronRight class="icon" /></span>
+        <div v-if="isLastPage" class="arrow-icon-wrap placeholder">
+            <ChevronRight class="icon" />
+        </div>
+        <RouterLink v-else :to="{ name: 'dashboard', query: { page: currentPage + 1 }}" class="arrow-icon-wrap link" rel="next" aria-label="next page">
+            <ChevronRight class="icon" />
         </RouterLink>
     </div>
 </template>
@@ -40,31 +47,24 @@ const isLastPage = computed(() => props.totalCars <= props.currentPage * props.p
     padding: .6rem;
 
     .arrow-icon-wrap {
-        padding: 0.8rem 1.6rem;
-	border: 2px solid #555555;
-	background-color: #555555;
-	color: #fff;
-	font-size: 1.6rem;
-	font-weight: bold;
-	transition: background-color 0.3s, color 0.3s;
-
-	&:hover,
-	&:focus-visible {
-		&:not([disabled]) {
-			background-color: transparent;
-			color: #555555;
-		}
-	}
-
-	&[disabled] {
-		opacity: .15;
-		cursor: default;
-	}
         padding: 0.8rem;
+        border: 2px solid #555555;
+        background-color: #555555;
+        color: #fff;
 
-        &:hover,
-        &:focus-visible {
-            &:not([disabled]) {
+        &.placeholder {
+            opacity: .15;
+            cursor: default;
+        }
+
+        &.link {
+            transition: background-color 0.3s, color 0.3s;
+
+            &:hover,
+            &:focus-visible {
+                background-color: transparent;
+                color: #555555;
+
                 .icon {
                     stroke: #555555;
                 }
@@ -83,7 +83,7 @@ const isLastPage = computed(() => props.totalCars <= props.currentPage * props.p
         transition: stroke .2s;
     }
 
-    .current-page-number {
+    .page-number {
         display: flex;
         justify-content: center;
         margin: -0.4rem -.8rem;
@@ -91,9 +91,8 @@ const isLastPage = computed(() => props.totalCars <= props.currentPage * props.p
         width: 1ch;
         font-size: 1.6rem;
 
-        &.active {
-             font-weight: 700;
-            cursor: default;
+        &.placeholder {
+            font-weight: 700;
         }
     }
 }
