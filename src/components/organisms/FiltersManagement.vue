@@ -5,13 +5,14 @@ import FilterBoxBrands from '@/components/molecules/FilterBoxBrands.vue';
 import { useRoute } from 'vue-router';
 
 const currentRoute = useRoute();
+console.log(currentRoute.name);
 </script>
 
 <template>
 	<aside class="filters-management-wrapper">
 		<FilterBoxYears />
 		<FilterBoxBrands />
-		<div class="filters-wrapper-unactive-tint" :class="{ active: currentRoute.fullPath !== '/' }"></div>
+		<div class="filters-wrapper-unactive-tint" :class="{ active: currentRoute.name !== 'dashboard' }"></div>
 	</aside>
 </template>
 
