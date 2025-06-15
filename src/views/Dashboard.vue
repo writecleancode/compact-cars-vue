@@ -14,13 +14,25 @@ import { useModal } from '@/composables/useModal';
 import { onMounted, ref, watch } from 'vue';
 import debounce from 'lodash.debounce';
 import { getSortOptions } from '@/services/CarService';
+import Gear from '@/assets/icons/Gear.vue';
 
 const props = defineProps<{
-	page: number
-	perPage: number,
-}>()
+	page: number;
+	perPage: number;
+}>();
 
-const { cars, carsToDisplay, comparedCars, totalCars, usersFilterPreferences, findCars, filterCars, setCarsToDisplay, sortCars, getCarsData } = useCarsContext();
+const {
+	cars,
+	carsToDisplay,
+	comparedCars,
+	totalCars,
+	usersFilterPreferences,
+	findCars,
+	filterCars,
+	setCarsToDisplay,
+	sortCars,
+	getCarsData,
+} = useCarsContext();
 const { isModalOpen, handleOpenModel, closeModal } = useModal();
 const isLoading = ref(true);
 const searchPhrase = ref('');
@@ -62,7 +74,7 @@ const getSortOptionsData = async () => {
 };
 
 onMounted(() => {
-	getCarsData(props.page, props.perPage)
+	getCarsData(props.page, props.perPage);
 	getSortOptionsData();
 	handleDisplayCars();
 	isLoading.value = false;
@@ -76,12 +88,15 @@ watch(
 	{ deep: true }
 );
 
-watch(() => props.page, () => {
-	isLoading.value = true;
-	getCarsData(props.page, props.perPage)
-	handleDisplayCars();
-	isLoading.value = false;
-})
+watch(
+	() => props.page,
+	() => {
+		isLoading.value = true;
+		getCarsData(props.page, props.perPage);
+		handleDisplayCars();
+		isLoading.value = false;
+	}
+);
 </script>
 
 <template>
@@ -89,11 +104,14 @@ watch(() => props.page, () => {
 		<div class="controls-wrapper">
 			<div class="search-wrapper">
 				<SearchInput :value="searchPhrase" v-on:handle-input-change="handleSearchInputChange" />
-				<SortSelect
+				<button class="settings-btn" aria-label="ustawienia wyświetlanych wyników">
+					<Gear class="icon" />
+				</button>
+				<!-- <SortSelect
 					:options="selectOptions"
 					defaultOption="sort cars"
 					:selectedValue="selectedSortValue"
-					v-on:handle-selected-value-change="handleSelectedValueChange" />
+					v-on:handle-selected-value-change="handleSelectedValueChange" /> -->
 			</div>
 			<div class="filters-wrapper">
 				<button class="manage-filters-btn" v-on:click="handleOpenModel">manage filters</button>
@@ -119,6 +137,22 @@ watch(() => props.page, () => {
 </template>
 
 <style lang="scss" scoped>
+.settings-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: auto;
+	padding: 0.5rem;
+	border: none;
+	background-color: #f6f6f6;
+
+	.icon {
+		width: 2rem;
+		height: 2rem;
+		fill: #464646;
+	}
+}
+
 .search-wrapper {
 	display: flex;
 	gap: 1.6rem;
