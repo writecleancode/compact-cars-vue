@@ -1,11 +1,13 @@
+import type { PxString } from '@/types/types';
+
 import { nextTick, ref, watch } from 'vue';
 import { useViewportWidth } from './useViewportWidth';
 
-export const useModal = () => {
+export const useModal = (maxViewport: PxString = '1200px') => {
 	const isModalOpen = ref(false);
 	const appRootElement = document.getElementById('app');
 	const openModalBtn = ref<HTMLButtonElement | null>(null);
-	const { isDesktopViewport } = useViewportWidth('1200px');
+	const { matchesQuery } = useViewportWidth(maxViewport);
 
 	const openModal = () => (isModalOpen.value = true);
 	const closeModal = () => (isModalOpen.value = false);
@@ -39,8 +41,8 @@ export const useModal = () => {
 		handleModalAccessibility();
 	});
 
-	watch(isDesktopViewport, () => {
-		isDesktopViewport && closeModal();
+	watch(matchesQuery, () => {
+		matchesQuery && closeModal();
 	});
 
 	return {

@@ -21,6 +21,7 @@ const { isCompared = false } = defineProps<{
 	justify-content: center;
 	align-items: center;
 	padding: 0.4rem 0.6rem;
+	padding: 1.2rem 1.2rem;
 	border: 2px solid #555555;
 	background-color: #555555;
 	color: #fff;

@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import SearchInput from '@/components/molecules/SearchInput.vue';
-import SortSelect from '@/components/molecules/SortSelect.vue';
 import LoadingAnimation from '@/components/atoms/LoadingAnimation.vue';
 import CarCard from '@/components/molecules/CarCard.vue';
 import Pagination from '@/components/molecules/Pagination.vue';
 import Modal from '@/components/organisms/Modal.vue';
+import ResultDisplayOptions from '@/components/molecules/ResultDisplayOptions.vue';
 import FilterBoxYears from '@/components/molecules/FilterBoxYears.vue';
 import FilterBoxBrands from '@/components/molecules/FilterBoxBrands.vue';
 
-import type { SelectOptionType } from '@/types/types';
 import { useCarsContext } from '@/providers/useCars';
+import { useViewportWidth } from '@/composables/useViewportWidth';
 import { useModal } from '@/composables/useModal';
 import { onMounted, ref, watch } from 'vue';
 import debounce from 'lodash.debounce';
-import { getSortOptions } from '@/services/CarService';
 import Gear from '@/assets/icons/Gear.vue';
 
 const props = defineProps<{
@@ -22,6 +21,7 @@ const props = defineProps<{
 }>();
 
 const {
+	isLoading,
 	cars,
 	carsToDisplay,
 	comparedCars,
@@ -30,14 +30,12 @@ const {
 	findCars,
 	filterCars,
 	setCarsToDisplay,
-	sortCars,
 	getCarsData,
 } = useCarsContext();
-const { isModalOpen, handleOpenModel, closeModal } = useModal();
-const isLoading = ref(true);
+const { matchesQuery: isTabletViewport } = useViewportWidth('640px');
+const filtersModal = useModal();
+const settingsModal = useModal('640px');
 const searchPhrase = ref('');
-const selectOptions = ref<SelectOptionType[]>([]);
-const selectedSortValue = ref('');
 
 const handleDisplayCars = () => {
 	let matchingCars;
@@ -58,26 +56,9 @@ const handleSearchInputChange = (e: InputEvent & { target: HTMLInputElement }) =
 	handleSearchCars(inputValue);
 };
 
-const handleSelectedValueChange = (e: Event & { target: HTMLSelectElement }) => {
-	const selectedValue = e.target.value;
-	selectedSortValue.value = selectedValue;
-	sortCars(selectedValue);
-};
-
-const getSortOptionsData = async () => {
-	try {
-		const response = await getSortOptions();
-		if (response) selectOptions.value = response.data;
-	} catch (err) {
-		console.log(err);
-	}
-};
-
 onMounted(() => {
 	getCarsData(props.page, props.perPage);
-	getSortOptionsData();
 	handleDisplayCars();
-	isLoading.value = false;
 });
 
 watch(
@@ -89,12 +70,10 @@ watch(
 );
 
 watch(
-	() => props.page,
+	() => [props.page, props.perPage],
 	() => {
-		isLoading.value = true;
 		getCarsData(props.page, props.perPage);
 		handleDisplayCars();
-		isLoading.value = false;
 	}
 );
 </script>
@@ -102,34 +81,39 @@ watch(
 <template>
 	<div class="dashboard-wrapper">
 		<div class="controls-wrapper">
-			<div class="search-wrapper">
+			<div class="options-wrapper">
+				<ResultDisplayOptions v-if="isTabletViewport" :page />
 				<SearchInput :value="searchPhrase" v-on:handle-input-change="handleSearchInputChange" />
-				<button class="settings-btn" aria-label="ustawienia wyświetlanych wyników">
+				<button
+					v-if="!isTabletViewport"
+					class="settings-btn"
+					aria-label="ustawienia wyświetlanych wyników"
+					@click="settingsModal.handleOpenModel">
 					<Gear class="icon" />
 				</button>
-				<!-- <SortSelect
-					:options="selectOptions"
-					defaultOption="sort cars"
-					:selectedValue="selectedSortValue"
-					v-on:handle-selected-value-change="handleSelectedValueChange" /> -->
 			</div>
 			<div class="filters-wrapper">
-				<button class="manage-filters-btn" v-on:click="handleOpenModel">manage filters</button>
+				<button class="manage-filters-btn" v-on:click="filtersModal.handleOpenModel">manage filters</button>
 			</div>
 		</div>
 		<LoadingAnimation v-if="isLoading" />
-		<div v-else class="car-cards-wrapper">
-			<template v-if="carsToDisplay.length > 0">
-				<CarCard
-					v-for="car in carsToDisplay"
-					:key="car.id"
-					:car
-					:isCompared="comparedCars.some(comparedCar => comparedCar.id === car.id)" />
-			</template>
-			<p class="no-cars-info" v-else>There are no cars to display...</p>
-		</div>
-		<Pagination :currentPage="page" :perPage :totalCars />
-		<Modal :isOpen="isModalOpen" :closeModal>
+		<template v-else>
+			<div class="car-cards-wrapper">
+				<template v-if="carsToDisplay.length > 0">
+					<CarCard
+						v-for="car in carsToDisplay"
+						:key="car.id"
+						:car
+						:is-compared="comparedCars.some(comparedCar => comparedCar.id === car.id)" />
+				</template>
+				<p class="no-cars-info" v-else>There are no cars to display...</p>
+			</div>
+			<Pagination v-if="carsToDisplay.length > 0" :current-page="page" :per-page :total-cars />
+		</template>
+		<Modal :is-open="settingsModal.isModalOpen.value" :close-modal="settingsModal.closeModal" variant="centered">
+			<ResultDisplayOptions :page />
+		</Modal>
+		<Modal :is-open="filtersModal.isModalOpen.value" :close-modal="filtersModal.closeModal">
 			<FilterBoxYears />
 			<FilterBoxBrands />
 		</Modal>
@@ -137,6 +121,40 @@ watch(
 </template>
 
 <style lang="scss" scoped>
+.controls-wrapper {
+	@media (width >= 900px) {
+		background-color: initial;
+		padding: 1.6rem 2.4rem;
+	}
+
+	@media (width >= 1600px) {
+		padding: 2.4rem 3.2rem;
+	}
+}
+
+.options-wrapper {
+	display: flex;
+	gap: 1.6rem;
+	padding: 0.8rem;
+	background-color: #d9d9d9;
+
+	@media (width >= 440px) {
+		justify-content: space-between;
+	}
+
+	@media (width >= 640px) {
+		position: relative;
+		flex-direction: row-reverse;
+		padding-inline: 1.2rem;
+	}
+
+	@media (width >= 900px) {
+		background-color: initial;
+		margin-bottom: 1.6rem;
+		padding: 0;
+	}
+}
+
 .settings-btn {
 	display: flex;
 	justify-content: center;
@@ -153,25 +171,14 @@ watch(
 	}
 }
 
-.search-wrapper {
-	display: flex;
-	gap: 1.6rem;
-	padding: 0.8rem;
-	background-color: #d9d9d9;
-
-	@media (width >= 440px) {
-		justify-content: space-between;
-	}
-
-	@media (width >= 640px) {
-		padding: 0;
-	}
-}
-
 .filters-wrapper {
 	padding: 0.8rem 0.8rem 0.4rem;
 
 	@media (width >= 640px) {
+		padding-inline: 1.2rem;
+	}
+
+	@media (width >= 900px) {
 		padding: 0;
 	}
 
@@ -239,26 +246,6 @@ watch(
 	@media (width >= 1500px) {
 		grid-column: 1 / 5;
 		font-size: 1.8rem;
-	}
-}
-
-.controls-wrapper {
-	@media (width >= 640px) {
-		position: relative;
-		display: flex;
-		flex-direction: row-reverse;
-		justify-content: space-between;
-		padding: 0.8rem;
-		background-color: #d9d9d9;
-	}
-
-	@media (width >= 900px) {
-		background-color: initial;
-		padding: 1.6rem 2.4rem;
-	}
-
-	@media (width >= 1600px) {
-		padding: 2.4rem 3.2rem;
 	}
 }
 </style>

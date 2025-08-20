@@ -30,6 +30,8 @@ export type FormValuesType = {
 	img: CarImageType;
 };
 
+export type PxString = `${number}px`;
+
 export type SelectOptionType = {
 	value: string;
 	text: string;

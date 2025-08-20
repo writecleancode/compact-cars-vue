@@ -9,11 +9,15 @@ const useCars = () => {
 	const getCarName = (car: CarType) => `${car.brand} ${car.model}`;
 	const getCarProductionYear = (car: CarType) => car.productionStartYear;
 
+	const isLoading = ref(true);
 	const cars = ref<CarType[]>([]);
 	const carsToDisplay = ref<CarType[]>([]);
 	const comparedCars = ref<CarType[]>([]);
-	const totalCars = ref(0)
+	const totalCars = ref(0);
 	const usersFilterPreferences = ref<UsersFilterPreferencesType>({ brands: [], years: [] });
+
+	const setLoadingTrue = () => (isLoading.value = true);
+	const setLoadingFalse = () => (isLoading.value = false);
 
 	const removeCar = (clickedCarId: string) => {
 		const filteredCars = cars.value.filter(car => car.id !== clickedCarId);
@@ -117,12 +121,15 @@ const useCars = () => {
 	};
 
 	const getCarsData = async (page: number, perPage?: number) => {
+		setLoadingTrue();
 		try {
 			const response = await getCars(page, perPage);
 			totalCars.value = Number(response.headers['x-total-count']);
 			if (response) cars.value = response.data;
+			setLoadingFalse();
 		} catch (err) {
 			console.log(err);
+			setLoadingFalse();
 		}
 	};
 
@@ -144,6 +151,7 @@ const useCars = () => {
 	});
 
 	return {
+		isLoading,
 		cars,
 		carsToDisplay,
 		comparedCars,

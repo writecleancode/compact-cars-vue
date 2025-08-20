@@ -5,7 +5,7 @@ import FilterBoxBrands from '@/components/molecules/FilterBoxBrands.vue';
 import { useRoute } from 'vue-router';
 
 const currentRoute = useRoute();
-console.log(currentRoute.name);
+// console.log(currentRoute.name);
 </script>
 
 <template>

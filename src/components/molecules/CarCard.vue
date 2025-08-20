@@ -9,9 +9,9 @@ import type { CarType } from '@/types/types';
 import { useCarsContext } from '@/providers/useCars';
 
 const { isCompared = false } = defineProps<{
-	car: CarType,
-	isCompared?: boolean,
-	handleRemoveCar?: (clickedCarId: string) => void,
+	car: CarType;
+	isCompared?: boolean;
+	handleRemoveCar?: (clickedCarId: string) => void;
 }>();
 
 const { handleCompareStatus, handleRemoveCar } = useCarsContext();
@@ -28,9 +28,9 @@ const { handleCompareStatus, handleRemoveCar } = useCarsContext();
 		</div>
 		<div class="buttons-wrapper" v-if="car.id">
 			<CompareButton :isCompared="isCompared" @click="handleCompareStatus(car.id)" />
-			<StyledButton class="delete-button" aria-label="delete car" @click="handleRemoveCar(car.id)">
+			<!-- <StyledButton class="delete-button" aria-label="delete car" @click="handleRemoveCar(car.id)">
 				<TrashIcon />
-			</StyledButton>
+			</StyledButton> -->
 		</div>
 	</div>
 </template>
@@ -70,9 +70,9 @@ const { handleCompareStatus, handleRemoveCar } = useCarsContext();
 	position: absolute;
 	bottom: 0.6rem;
 	right: 0.6rem;
-	display: grid;
+	/* display: grid;
 	grid-template-rows: repeat(2, 1fr);
-	gap: 0.4rem;
+	gap: 0.4rem; */
 
 	@container (min-width: 190px) {
 		right: 0.8rem;
@@ -81,7 +81,7 @@ const { handleCompareStatus, handleRemoveCar } = useCarsContext();
 	}
 }
 
-.delete-button {
+/* .delete-button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -93,5 +93,5 @@ const { handleCompareStatus, handleRemoveCar } = useCarsContext();
 	&:focus-visible {
 		fill: #555;
 	}
-}
+} */
 </style>

@@ -19,7 +19,7 @@ const { successNotifications } = useNotificationsProvider();
 <template>
 	<div class="app-wrapper">
 		<Header />
-		<NavBar :comparedCarsNumber="comparedCars.length" />
+		<NavBar :compared-cars-number="comparedCars.length" />
 		<FiltersManagement />
 		<main id="main" class="content-wrapper">
 			<RouterView />

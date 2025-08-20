@@ -2,9 +2,14 @@
 import { onClickOutside, type MaybeElement, type OnClickOutsideHandler } from '@vueuse/core';
 import { useTemplateRef } from 'vue';
 
-const { isOpen = false, closeModal } = defineProps<{
+const {
+	isOpen = false,
+	closeModal,
+	variant = 'default',
+} = defineProps<{
 	isOpen: boolean;
 	closeModal: () => void;
+	variant?: 'default' | 'centered';
 }>();
 
 const modal = useTemplateRef<MaybeElement>('my-modal');
@@ -15,7 +20,7 @@ onClickOutside(modal, closeModal as OnClickOutsideHandler);
 <template>
 	<Teleport to="body">
 		<div v-if="isOpen" class="modal-overlay" :class="{ active: isOpen }">
-			<div class="modal-wrapper" ref="my-modal">
+			<div class="modal-wrapper" :class="variant" ref="my-modal">
 				<slot />
 				<button id="close-modal-btn" class="close-modal-btn" @click="closeModal">Close</button>
 			</div>
@@ -31,7 +36,7 @@ onClickOutside(modal, closeModal as OnClickOutsideHandler);
 	z-index: 2;
 	background-color: rgba(255, 255, 255, 0.75);
 
-	&.active {		
+	&.active {
 		@media (width < 1200px) {
 			display: block;
 		}
@@ -53,6 +58,14 @@ onClickOutside(modal, closeModal as OnClickOutsideHandler);
 		width: 80vw;
 		max-width: 560px;
 		box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+	}
+
+	&.centered {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		translate: -50% -50%;
+		width: max-content;
 	}
 }
 
