@@ -5,23 +5,20 @@ import StyledTitle from '@/components/atoms/StyledTitle.vue';
 import type { SelectOptionType } from '@/types/types';
 import { useCarsContext } from '@/providers/useCars';
 import { getSortOptions } from '@/services/CarService';
-import { onMounted, onUpdated, ref, watch } from 'vue';
+import { inject, onMounted, onUpdated, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
-
-const props = defineProps<{
-	page: number;
-	perPage: number;
-}>();
 
 const { getCarsData, sortCars } = useCarsContext();
 
+const page = inject<number>('page', 1)
+const perPage = inject<number>('perPage', 8)
 const router = useRouter();
 const selectOptions = ref<SelectOptionType[]>([]);
 const perPageSelectOptions = ref(['8', '16', '24', '32', '40']);
 const selectedSortValue = ref('');
-const selectedPerPageValue = ref(Number(props.perPage || perPageSelectOptions.value[0]));
+const selectedPerPageValue = ref(Number(perPage || perPageSelectOptions.value[0]));
 const query = ref<{ page: number; limit?: number }>({
-	page: props.page
+	page: page
 });
 
 const handleSortSelectValueChange = (e: Event & { target: HTMLSelectElement }) => {
@@ -52,15 +49,15 @@ const manageQueryParams = () => {
 				page: 1
 			}
 		} else {
-			query.value = { page: props.page}
+			query.value = { page: page}
 		}
 }
 
 onMounted(() => getSortOptionsData());
 
 onUpdated(() => {
-	if (props.page) {
-		query.value.page = props.page;
+	if (page) {
+		query.value.page = page;
 	}
 });
 
@@ -69,9 +66,9 @@ watch(
 	() => manageQueryParams()
 );
 
-watch(() => props.page,
+watch(() => page,
 	() => {
-		query.value.page = props.page
+		query.value.page = page
 	}
 );
 

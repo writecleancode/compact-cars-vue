@@ -11,7 +11,7 @@ import FilterBoxBrands from '@/components/molecules/FilterBoxBrands.vue';
 import { useCarsContext } from '@/providers/useCars';
 import { useViewportWidth } from '@/composables/useViewportWidth';
 import { useModal } from '@/composables/useModal';
-import { onMounted, ref, watch } from 'vue';
+import { onMounted, provide, ref, watch } from 'vue';
 import debounce from 'lodash.debounce';
 import Gear from '@/assets/icons/Gear.vue';
 
@@ -36,6 +36,9 @@ const { matchesQuery: isTabletViewport } = useViewportWidth('640px');
 const filtersModal = useModal();
 const settingsModal = useModal('640px');
 const searchPhrase = ref('');
+
+provide('page', props.page);
+provide('perPage', props.perPage);
 
 const handleDisplayCars = () => {
 	let matchingCars;
@@ -82,7 +85,7 @@ watch(
 	<div class="dashboard-wrapper">
 		<div class="controls-wrapper">
 			<div class="options-wrapper">
-				<ResultDisplayOptions v-if="isTabletViewport" :page :perPage />
+				<ResultDisplayOptions v-if="isTabletViewport" />
 				<SearchInput :value="searchPhrase" v-on:handle-input-change="handleSearchInputChange" />
 				<button
 					v-if="!isTabletViewport"
@@ -111,7 +114,7 @@ watch(
 			<Pagination v-if="carsToDisplay.length > 0" :current-page="page" :per-page :total-cars />
 		</template>
 		<Modal :is-open="settingsModal.isModalOpen.value" :close-modal="settingsModal.closeModal" variant="centered">
-			<ResultDisplayOptions :page :perPage />
+			<ResultDisplayOptions />
 		</Modal>
 		<Modal :is-open="filtersModal.isModalOpen.value" :close-modal="filtersModal.closeModal">
 			<FilterBoxYears />
