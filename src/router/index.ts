@@ -12,7 +12,7 @@ const routes = [
 		component: Dashboard,
 		props: (route: RouteLocationNormalized) => ({
 			page: parseInt(route.query.page as string) || 1,
-			perPage: parseInt(route.query.limit as string) | 8,
+			perPage: parseInt(route.query.limit as string) || 8,
 		}),
 	},
 	{ path: '/car-comparison', name: 'car-comparison', component: CarComparison },

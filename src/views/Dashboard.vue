@@ -82,7 +82,7 @@ watch(
 	<div class="dashboard-wrapper">
 		<div class="controls-wrapper">
 			<div class="options-wrapper">
-				<ResultDisplayOptions v-if="isTabletViewport" :page />
+				<ResultDisplayOptions v-if="isTabletViewport" :page :perPage />
 				<SearchInput :value="searchPhrase" v-on:handle-input-change="handleSearchInputChange" />
 				<button
 					v-if="!isTabletViewport"
@@ -111,7 +111,7 @@ watch(
 			<Pagination v-if="carsToDisplay.length > 0" :current-page="page" :per-page :total-cars />
 		</template>
 		<Modal :is-open="settingsModal.isModalOpen.value" :close-modal="settingsModal.closeModal" variant="centered">
-			<ResultDisplayOptions :page />
+			<ResultDisplayOptions :page :perPage />
 		</Modal>
 		<Modal :is-open="filtersModal.isModalOpen.value" :close-modal="filtersModal.closeModal">
 			<FilterBoxYears />

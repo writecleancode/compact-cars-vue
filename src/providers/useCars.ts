@@ -126,11 +126,10 @@ const useCars = () => {
 			const response = await getCars(page, perPage);
 			totalCars.value = Number(response.headers['x-total-count']);
 			if (response) cars.value = response.data;
-			setLoadingFalse();
 		} catch (err) {
 			console.log(err);
-			setLoadingFalse();
 		}
+		setLoadingFalse();
 	};
 
 	const getFilterOptionsData = async () => {
