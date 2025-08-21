@@ -1,9 +1,12 @@
 import { createWebHistory, createRouter, type RouteLocationNormalized } from 'vue-router';
 import { basePath } from '@/utils/base-path';
 
-import AddCar from '@/views/AddCar.vue';
-import CarComparison from '@/views/CarComparison.vue';
 import Dashboard from '@/views/Dashboard.vue';
+import Details from '@/views/car/Details.vue';
+import Edit from '@/views/car/Edit.vue';
+import Delete from '@/views/car/Delete.vue';
+import CarComparison from '@/views/CarComparison.vue';
+import AddCar from '@/views/AddCar.vue';
 
 const routes = [
 	{
@@ -15,6 +18,9 @@ const routes = [
 			perPage: parseInt(route.query.limit as string) || 8,
 		}),
 	},
+	{ path: '/car/:id', name: 'car-details', component: Details, props: true },
+	{ path: '/car/:id/edit', name: 'car-edit', component: Edit, props: true },
+	{ path: '/car/:id/delete', name: 'car-delete', component: Delete, props: true },
 	{ path: '/car-comparison', name: 'car-comparison', component: CarComparison },
 	{ path: '/add-car', name: 'add-car', component: AddCar },
 	{ path: '/:pathPatch(.*)*', redirect: '/' },
