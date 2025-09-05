@@ -18,7 +18,7 @@ const { handleCompareStatus, handleRemoveCar } = useCarsContext();
 </script>
 
 <template>
-	<div class="car-card-wrapper">
+	<RouterLink :to="{ name: 'car-details', params: { id: 1 } }" class="car-card-wrapper">
 		<p class="car-name">{{ car.brand || 'unknown' }} {{ car.model || 'unknown' }}</p>
 		<CarImage :imgUrl="car.img" :altText="`${car.brand} ${car.model}`" />
 		<div class="car-info-wrapper">
@@ -32,7 +32,7 @@ const { handleCompareStatus, handleRemoveCar } = useCarsContext();
 				<TrashIcon />
 			</StyledButton> -->
 		</div>
-	</div>
+	</RouterLink>
 </template>
 
 <style lang="scss" scoped>
