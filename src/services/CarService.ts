@@ -14,6 +14,10 @@ export const getCars = (page = 1, perPage = 8) => {
 	return apiClient.get(`/cars?_limit=${perPage}&_page=${page}`);
 };
 
+export const getCarDetails = (id: string) => {
+	return apiClient.get(`/cars/${id}`)
+}
+
 export const getFilterOptions = () => {
 	return Promise.all([apiClient.get<number[]>('/filterYears'), apiClient.get<string[]>('/filterBrands')]);
 };
