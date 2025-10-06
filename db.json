@@ -1,23 +1,49 @@
 {
-    "cars": [
-        {
+    "cars": [{
             "id": 1,
             "brand": "Alfa Romeo",
             "model": "146",
-            "generation": "I (Type 930)",
+            "generationCode": "Type 930",
             "productionStartYear": 1994,
             "productionEndYear": 2000,
             "facelift": "1999",
             "img": {
                 "small": "https://www.datocms-assets.com/112049/1730745382-alfa_romeo_146_i_320.jpg",
                 "medium": "https://www.datocms-assets.com/112049/1699786166-alfa_romeo_146_i.png"
-            }
+            },
+            "pictures": [
+                {
+                    "small": "https://www.datocms-assets.com/112049/1730745382-alfa_romeo_146_i_320.jpg",
+                    "medium": "https://www.datocms-assets.com/112049/1699786166-alfa_romeo_146_i.png"
+                },
+                {
+                    "small": "https://www.netcarshow.com/Alfa_Romeo-146-1997-1280-da466d801c6c38153128df16a0ffae9aae.jpg",
+                    "medium": "https://www.netcarshow.com/Alfa_Romeo-146-1997-1280-da466d801c6c38153128df16a0ffae9aae.jpg"
+                },
+                {
+                    "small": "https://www.netcarshow.com/Alfa_Romeo-146-1997-1280-ae58883f3496cb982fc85da7d0304014f0.jpg?token=5292a34df410ca158dbb54e7c993b941f4c2aca6ff87661f3d5813c",
+                    "medium": "https://www.netcarshow.com/Alfa_Romeo-146-1997-1280-ae58883f3496cb982fc85da7d0304014f0.jpg?token=5292a34df410ca158dbb54e7c993b941f4c2aca6ff87661f3d5813c"
+                },
+                {
+                    "small": "https://www.netcarshow.com/Alfa_Romeo-146-1997-1280-3b3f3c6741e0fab50ac7cae39099123334.jpg?token=5292a34df410ca158dbb54e7c993b941f4c2aca6ff87681f3d5813c",
+                    "medium": "https://www.netcarshow.com/Alfa_Romeo-146-1997-1280-3b3f3c6741e0fab50ac7cae39099123334.jpg?token=5292a34df410ca158dbb54e7c993b941f4c2aca6ff87681f3d5813c"
+                },
+                {
+                    "small": "https://www.netcarshow.com/Alfa_Romeo-146-1997-1280-d0f086746b43cad1e4ac18f680d0a49e0e.jpg?token=5292a34df410ca158dbb54e7c993b941f4c2aca6ff87691f3d5813c",
+                    "medium": "https://www.netcarshow.com/Alfa_Romeo-146-1997-1280-d0f086746b43cad1e4ac18f680d0a49e0e.jpg?token=5292a34df410ca158dbb54e7c993b941f4c2aca6ff87691f3d5813c"
+                },
+                {
+                    "small": "https://www.netcarshow.com/Alfa_Romeo-146-1997-1280-0f75c7818e482be1e6fde32290d84814cc.jpg",
+                    "medium": "https://www.netcarshow.com/Alfa_Romeo-146-1997-1280-0f75c7818e482be1e6fde32290d84814cc.jpg"
+                }
+            ]
         },
         {
             "id": 2,
             "brand": "Audi",
             "model": "A3",
-            "generation": "I (8L)",
+            "generation": "I",
+            "generationCode": "8L",
             "productionStartYear": 1996,
             "productionEndYear": 2003,
             "facelift": "2000",
@@ -25,26 +51,72 @@
                 "small": "https://www.datocms-assets.com/112049/1730745383-audi_a3_i_320.jpg",
                 "medium": "https://www.datocms-assets.com/112049/1730745382-audi_a3_i_1280.jpg",
                 "big": "https://www.datocms-assets.com/112049/1699699902-audi_a3_i.jpg"
-            }
+            },
+            "pictures": [
+                {
+                    "small": "https://www.datocms-assets.com/112049/1730745383-audi_a3_i_320.jpg",
+                    "medium": "https://www.datocms-assets.com/112049/1730745382-audi_a3_i_1280.jpg",
+                    "big": "https://www.datocms-assets.com/112049/1699699902-audi_a3_i.jpg"
+                },
+                {
+                    "small": "https://www.netcarshow.com/Audi-A3_5-door-1999-1280-4702ec6a3b6798a63f7976cdc08a2fa272.jpg?token=c8cc25e3f410ce158fbb54e7c99d3b462a06549169d06616401c9de",
+                    "medium": "https://www.netcarshow.com/Audi-A3_5-door-1999-1280-4702ec6a3b6798a63f7976cdc08a2fa272.jpg?token=c8cc25e3f410ce158fbb54e7c99d3b462a06549169d06616401c9de"
+                },
+                {
+                    "small": "https://www.netcarshow.com/Audi-A3_5-door-1999-1280-cbe0ba7c59fb1dfdbe9021b5605d6309c6.jpg?token=c8cc25e3f410ce158fbb54e7c99d3b462a06549169d06816401c9de",
+                    "medium": "https://www.netcarshow.com/Audi-A3_5-door-1999-1280-cbe0ba7c59fb1dfdbe9021b5605d6309c6.jpg?token=c8cc25e3f410ce158fbb54e7c99d3b462a06549169d06816401c9de"
+                },
+                {
+                    "small": "https://www.netcarshow.com/Audi-A3_5-door-1999-1280-ab4ecd001cc0763361a498ed80ecfc11e4.jpg",
+                    "medium": "https://www.netcarshow.com/Audi-A3_5-door-1999-1280-ab4ecd001cc0763361a498ed80ecfc11e4.jpg"
+                },
+                {
+                    "small": "https://www.netcarshow.com/Audi-A3_5-door-1999-1280-2fec02014c4d80f31b37d14e907bd7be4c.jpg?token=c8cc25e3f410ce158fbb54e7c99d3b462a06549169d06716401c9de",
+                    "medium": "https://www.netcarshow.com/Audi-A3_5-door-1999-1280-2fec02014c4d80f31b37d14e907bd7be4c.jpg?token=c8cc25e3f410ce158fbb54e7c99d3b462a06549169d06716401c9de"
+                }
+            ]
         },
         {
             "id": 3,
             "brand": "BMW",
             "model": "3 Compact",
-            "generation": "I (E36)",
+            "generation": "I",
+            "generationCode": "E36",
             "productionStartYear": 1993,
             "productionEndYear": 2000,
             "facelift": "-",
             "img": {
                 "small": "https://www.datocms-assets.com/112049/1730745385-bmw_3_compact_i_320.jpg",
                 "medium": "https://www.datocms-assets.com/112049/1729758243-bmw_3_compact_i.jpeg"
-            }
+            },
+            "pictures": [
+                {
+                   "small": "https://www.datocms-assets.com/112049/1730745385-bmw_3_compact_i_320.jpg",
+                    "medium": "https://www.datocms-assets.com/112049/1729758243-bmw_3_compact_i.jpeg"
+                },
+                {
+                    "small": "https://classics.honestjohn.co.uk/media/15725324/bmw-318ti-compact-2_530x379.jpg",
+                    "medium": "https://classics.honestjohn.co.uk/media/15725324/bmw-318ti-compact-2_530x379.jpg"
+                },
+                {
+                    "small": "https://bmwguide.net/bm-contents/uploads/2018/09/BMW-3-Series-E36-compact-0394-0800-2.jpg",
+                    "medium": "https://bmwguide.net/bm-contents/uploads/2018/09/BMW-3-Series-E36-compact-0394-0800-2.jpg"
+                },
+                {
+                    "small": "https://bmwguide.net/bm-contents/uploads/2018/09/BMW-3-Series-E36-compact-0394-0800-3.jpg",
+                    "medium": "https://bmwguide.net/bm-contents/uploads/2018/09/BMW-3-Series-E36-compact-0394-0800-3.jpg"
+                },
+                {
+                    "small": "https://hagerty.co.uk/wp-content/uploads/2022/09/compact-interior-1024x768.jpeg",
+                    "medium": "https://hagerty.co.uk/wp-content/uploads/2022/09/compact-interior-1024x768.jpeg"
+                }
+            ]
         },
         {
             "id": 4,
             "brand": "Citroen",
             "model": "Xsara",
-            "generation": "I (N1)",
+            "generationCode": "N1",
             "productionStartYear": 1997,
             "productionEndYear": 2005,
             "facelift": "2000",
@@ -57,7 +129,7 @@
             "id": 5,
             "brand": "Fiat",
             "model": "Brava",
-            "generation": "I (Type 182)",
+            "generationCode": "Type 182",
             "productionStartYear": 1995,
             "productionEndYear": 2001,
             "facelift": "1999",
@@ -70,7 +142,8 @@
             "id": 6,
             "brand": "Ford",
             "model": "Focus",
-            "generation": "I (C170)",
+            "generation": "I",
+            "generationCode": "C170",
             "productionStartYear": 1998,
             "productionEndYear": 2005,
             "facelift": "2001",
@@ -112,7 +185,8 @@
             "id": 9,
             "brand": "Mazda",
             "model": "323",
-            "generation": "VI (BJ)",
+            "generation": "VI",
+            "generationCode": "BJ",
             "productionStartYear": 1998,
             "productionEndYear": 2003,
             "facelift": "2001",
@@ -125,7 +199,8 @@
             "id": 10,
             "brand": "Nissan",
             "model": "Almera",
-            "generation": "I (N15)",
+            "generation": "I",
+            "generationCode": "N15",
             "productionStartYear": 1995,
             "productionEndYear": 2000,
             "facelift": "1998",
@@ -138,7 +213,8 @@
             "id": 11,
             "brand": "Opel",
             "model": "Astra",
-            "generation": "II (G)",
+            "generation": "II",
+            "generationCode": "G",
             "productionStartYear": 1998,
             "productionEndYear": 2009,
             "facelift": "-",
@@ -152,7 +228,7 @@
             "id": 12,
             "brand": "Peugeot",
             "model": "306",
-            "generation": "I (7A/C)",
+            "generationCode": "7A/C",
             "productionStartYear": 1993,
             "productionEndYear": 2002,
             "facelift": "1997, 1999",
@@ -165,7 +241,8 @@
             "id": 13,
             "brand": "Renault",
             "model": "Megane",
-            "generation": "I (BA)",
+            "generation": "I",
+            "generationCode": "BA",
             "productionStartYear": 1995,
             "productionEndYear": 2003,
             "facelift": "1999",
@@ -179,7 +256,8 @@
             "id": 14,
             "brand": "Seat",
             "model": "Leon",
-            "generation": "I (1M)",
+            "generation": "I",
+            "generationCode": "1M",
             "productionStartYear": 1999,
             "productionEndYear": 2005,
             "facelift": "-",
@@ -192,7 +270,8 @@
             "id": 15,
             "brand": "Toyota",
             "model": "Corolla",
-            "generation": "VIII (E110)",
+            "generation": "VIII",
+            "generationCode": "E110",
             "productionStartYear": 1997,
             "productionEndYear": 2002,
             "facelift": "1999",
@@ -205,14 +284,37 @@
             "id": 16,
             "brand": "Volkswagen",
             "model": "Golf",
-            "generation": "IV (1J)",
+            "generation": "IV",
+            "generationCode": "1J",
             "productionStartYear": 1997,
             "productionEndYear": 2003,
             "facelift": "-",
             "img": {
                 "small": "https://www.datocms-assets.com/112049/1730745382-volkswagen_golf_iv_320.jpg",
                 "medium": "https://www.datocms-assets.com/112049/1729759146-volkswagen_golf_iv.jpg"
-            }
+            },
+            "pictures": [
+                {
+                    "small": "https://www.datocms-assets.com/112049/1730745382-volkswagen_golf_iv_320.jpg",
+                    "medium": "https://www.datocms-assets.com/112049/1729759146-volkswagen_golf_iv.jpg"
+                },
+                {
+                    "small": "https://www.netcarshow.com/Volkswagen-Golf_IV-1997-1280-2320b92e6c933f4a5d2f430a9076d86ad1.jpg",
+                    "medium": "https://www.netcarshow.com/Volkswagen-Golf_IV-1997-1280-2320b92e6c933f4a5d2f430a9076d86ad1.jpg"
+                },
+                {
+                    "small": "https://trends.com.pl/wp-content/uploads/2019/10/DB2012AU00870_large-1024x683.jpg",
+                    "medium": "https://trends.com.pl/wp-content/uploads/2019/10/DB2012AU00870_large-1024x683.jpg"
+                },
+                {
+                    "small": "https://www.netcarshow.com/Volkswagen-Golf_IV-1997-1280-0a23333372a4cecc0c36712fd0151b22c0.jpg",
+                    "medium": "https://www.netcarshow.com/Volkswagen-Golf_IV-1997-1280-0a23333372a4cecc0c36712fd0151b22c0.jpg"
+                },
+                {
+                    "small": "https://www.netcarshow.com/Volkswagen-Golf_IV-1997-1280-97f226ce92da9b7d4c4906ec50cf608e23.jpg?token=cd77d2acf410c8158abb54e7c99f7c8045ce60dfde4d24ae97cefb3",
+                    "medium": "https://www.netcarshow.com/Volkswagen-Golf_IV-1997-1280-97f226ce92da9b7d4c4906ec50cf608e23.jpg?token=cd77d2acf410c8158abb54e7c99f7c8045ce60dfde4d24ae97cefb3"
+                }
+            ]
         }
     ],
     "filterYears": [
@@ -251,8 +353,7 @@
         "Toyota",
         "Volkswagen"
     ],
-    "selectOptions": [
-        {
+    "selectOptions": [{
             "value": "byAlphabet",
             "text": "A - Z"
         },
