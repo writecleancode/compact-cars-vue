@@ -1,5 +1,6 @@
 {
-    "cars": [{
+    "cars": [
+        {
             "id": 1,
             "brand": "Alfa Romeo",
             "model": "146",
@@ -317,6 +318,7 @@
             ]
         }
     ],
+
     "filterYears": [
         1993,
         1994,
@@ -334,6 +336,7 @@
         2006,
         2007
     ],
+
     "filterBrands": [
         "Alfa Romeo",
         "Audi",
@@ -353,7 +356,9 @@
         "Toyota",
         "Volkswagen"
     ],
-    "selectOptions": [{
+    
+    "selectOptions": [
+        {
             "value": "byAlphabet",
             "text": "A - Z"
         },
