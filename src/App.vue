@@ -32,7 +32,7 @@ const { successNotifications } = useNotificationsProvider();
 	</div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .app-wrapper {
 	display: grid;
 	grid-template-columns: 1fr auto;

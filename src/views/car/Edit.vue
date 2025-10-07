@@ -14,47 +14,47 @@ const { formValues, handleInputChange } = useForm();
 const { handleSuccessNotifications } = useNotificationsContext();
 
 const props = defineProps<{
-	id: string
-}>()
+	id: string;
+}>();
 
-const isLoading = ref(false)
-const carData = ref<CarType | null>(null)
+const isLoading = ref(false);
+const carData = ref<CarType | null>(null);
 
 const getData = async () => {
-  isLoading.value = true
+	isLoading.value = true;
 
-  try {
-    const response = await getCarDetails(props.id)
-    carData.value = response.data
-  } catch (error) {
-    console.log(error);
-  } finally {
-    isLoading.value = false
-  }
-}
-
-const handleSubmitForm = async () => {
-  if (!carData.value || !carData.value.id) return;
-
-  handleSuccessNotifications('Sorry, this feature is not available yet');
-  // try {
-  //   await updateCar(carData.value.id, formValues.value);
-  //   handleSuccessNotifications('✔ Changes have been saved');
-  // } catch (error) {
-  //   console.log(error);
-  //   handleSuccessNotifications('Sorry, an error occurred. Please try again later.');
-  // }
+	try {
+		const response = await getCarDetails(props.id);
+		carData.value = response.data;
+	} catch (error) {
+		console.log(error);
+	} finally {
+		isLoading.value = false;
+	}
 };
 
-onMounted(() => getData())
+const handleSubmitForm = async () => {
+	if (!carData.value || !carData.value.id) return;
+
+	handleSuccessNotifications('Sorry, this feature is not available yet');
+	// try {
+	//   await updateCar(carData.value.id, formValues.value);
+	//   handleSuccessNotifications('✔ Changes have been saved');
+	// } catch (error) {
+	//   console.log(error);
+	//   handleSuccessNotifications('Sorry, an error occurred. Please try again later.');
+	// }
+};
+
+onMounted(() => getData());
 </script>
 
 <template>
-  <LoadingAnimation v-if="isLoading" />
+	<LoadingAnimation v-if="isLoading" />
 	<div v-else-if="carData" class="add-car-wrapper">
 		<Form :formValues="carData" :handleInputChange v-on:submit.prevent="handleSubmitForm">
-      <button class="styled-button" type="submit">Save changes</button>
-    </Form>
+			<button class="styled-button" type="submit">Save changes</button>
+		</Form>
 		<div class="preview-wrapper">
 			<StyledTitle class="preview-title">Live preview</StyledTitle>
 			<CarCard :car="carData" />
@@ -75,9 +75,9 @@ onMounted(() => getData())
 		}
 	}
 
-  .styled-button {
-    width: 100%;
-  }
+	.styled-button {
+		width: 100%;
+	}
 
 	@media (width >= 900px) {
 		justify-content: space-evenly;

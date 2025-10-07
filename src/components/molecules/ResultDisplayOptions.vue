@@ -10,15 +10,15 @@ import { useRouter } from 'vue-router';
 
 const { getCarsData, sortCars } = useCarsContext();
 
-const page = inject<number>('page', 1)
-const perPage = inject<number>('perPage', 8)
+const page = inject<number>('page', 1);
+const perPage = inject<number>('perPage', 8);
 const router = useRouter();
 const selectOptions = ref<SelectOptionType[]>([]);
 const perPageSelectOptions = ref(['8', '16', '24', '32', '40']);
 const selectedSortValue = ref('');
 const selectedPerPageValue = ref(Number(perPage || perPageSelectOptions.value[0]));
 const query = ref<{ page: number; limit?: number }>({
-	page: page
+	page: page,
 });
 
 const handleSortSelectValueChange = (e: Event & { target: HTMLSelectElement }) => {
@@ -44,14 +44,14 @@ const getSortOptionsData = async () => {
 
 const manageQueryParams = () => {
 	if (selectedPerPageValue.value !== Number(perPageSelectOptions.value[0])) {
-			query.value = {
-				limit: selectedPerPageValue.value,
-				page: 1
-			}
-		} else {
-			query.value = { page: page}
-		}
-}
+		query.value = {
+			limit: selectedPerPageValue.value,
+			page: 1,
+		};
+	} else {
+		query.value = { page: page };
+	}
+};
 
 onMounted(() => getSortOptionsData());
 
@@ -66,9 +66,10 @@ watch(
 	() => manageQueryParams()
 );
 
-watch(() => page,
+watch(
+	() => page,
 	() => {
-		query.value.page = page
+		query.value.page = page;
 	}
 );
 

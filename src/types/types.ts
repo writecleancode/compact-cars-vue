@@ -8,7 +8,8 @@ export type CarType = {
 	id?: string;
 	brand: string;
 	model: string;
-	generation: string;
+	generation?: string;
+	generationCode?: string;
 	productionStartYear: number;
 	productionEndYear: number;
 	facelift: string;

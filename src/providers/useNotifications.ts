@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 import { ref } from 'vue';
 
 const useNotifications = () => {
-	const successNotifications = ref<{id: string, message: string }[]>([]);
+	const successNotifications = ref<{ id: string; message: string }[]>([]);
 
 	const removeSuccessNotification = (id: string) => {
 		successNotifications.value = successNotifications.value.filter(el => el.id !== id);

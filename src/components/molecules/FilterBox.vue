@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import StyledTitle from '@/components/atoms/StyledTitle.vue';
-import type { FilterValueType } from '@/types/types'
+import type { FilterValueType } from '@/types/types';
 
 const { isYears = false } = defineProps<{
-	title: string,
-	options: FilterValueType<string | number>[],
-	isYears?: boolean,
+	title: string;
+	options: FilterValueType<string | number>[];
+	isYears?: boolean;
 }>();
 </script>
 

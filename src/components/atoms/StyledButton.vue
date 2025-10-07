@@ -23,7 +23,7 @@
 	}
 
 	&[disabled] {
-		opacity: .15;
+		opacity: 0.15;
 		cursor: default;
 	}
 }

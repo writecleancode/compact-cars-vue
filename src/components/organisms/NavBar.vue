@@ -18,7 +18,7 @@ const handleNavLinksClick = (e: MouseEvent) => {
 	<nav class="nav-bar-wrapper" :class="{ active: isNavActive }">
 		<ul class="nav-links-list" @click="handleNavLinksClick">
 			<li>
-				<RouterLink :to="{ name: 'dashboard' }" class="nav-link">Dashboard</RouterLink>
+				<RouterLink :to="{ name: 'dashboard' }" class="nav-link">Home</RouterLink>
 			</li>
 			<li>
 				<RouterLink :to="{ name: 'car-comparison' }" class="nav-link"

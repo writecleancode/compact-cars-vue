@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const { type = 'text' } = defineProps<{
-	name: string,
-	id: string,
-	type: string,
-	min?: number,
-	value: string | number,
+	name: string;
+	id: string;
+	type: string;
+	min?: number;
+	value: string | number;
 }>();
 </script>
 

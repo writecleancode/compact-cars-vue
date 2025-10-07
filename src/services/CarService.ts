@@ -16,12 +16,12 @@ export const getCars = (page = 1, perPage = 8) => {
 };
 
 export const getCarDetails = (id: string) => {
-	return apiClient.get(`/cars/${id}`)
-}
+	return apiClient.get(`/cars/${id}`);
+};
 
 export const updateCar = (id: string, carData: CarType) => {
-	return apiClient.put(`/cars/${id}`, carData)
-}
+	return apiClient.put(`/cars/${id}`, carData);
+};
 
 export const getFilterOptions = () => {
 	return Promise.all([apiClient.get<{ value: number }[]>('/filterYears'), apiClient.get<{ value: string }[]>('/filterBrands')]);

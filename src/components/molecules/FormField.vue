@@ -3,13 +3,13 @@ import StyledLabel from '@/components/atoms/StyledLabel.vue';
 import StyledInput from '@/components/atoms/StyledInput.vue';
 
 const { type = 'text' } = defineProps<{
-	label: string,
-	name: string,
-	id: string,
-	type?: string,
-	min?: number
-	value: string | number
-	handleInputChange: (e: InputEvent) => void,
+	label: string;
+	name: string;
+	id: string;
+	type?: string;
+	min?: number;
+	value: string | number;
+	handleInputChange: (e: InputEvent) => void;
 }>();
 </script>
 

@@ -18,8 +18,11 @@ const { handleCompareStatus, handleRemoveCar } = useCarsContext();
 </script>
 
 <template>
-	<component :is="car.id ? 'RouterLink' : 'div'" v-bind="car.id ? { to : { name: 'car-details', params: { id: car.id } } } : {}" class="car-card-wrapper">
-				<p class="car-name">{{ car.brand || 'unknown' }} {{ car.model || 'unknown' }}</p>
+	<component
+		:is="car.id ? 'RouterLink' : 'div'"
+		v-bind="car.id ? { to: { name: 'car-details', params: { id: car.id } } } : {}"
+		class="car-card-wrapper">
+		<p class="car-name">{{ car.brand || 'unknown' }} {{ car.model || 'unknown' }}</p>
 		<CarImage :imgUrl="car.img" :altText="`${car.brand} ${car.model}`" />
 		<div class="car-info-wrapper">
 			<CarInfoBox title="Generation" :content="car.generation || '-'" />

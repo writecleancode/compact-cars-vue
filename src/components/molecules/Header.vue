@@ -4,7 +4,11 @@ import BurgerButton from '@/components/atoms/BurgerButton.vue';
 
 <template>
 	<header class="header-wrapper">
-		<h1 class="h1">Segment C Hatchback cars <span>(late 1990's, early 2000's)</span></h1>
+		<div class="link-wrapper">
+			<RouterLink to="/" class="home-link">
+				<h1 class="h1">Segment C Hatchback cars <span>(late 1990's, early 2000's)</span></h1>
+			</RouterLink>
+		</div>
 		<BurgerButton />
 	</header>
 </template>
@@ -34,41 +38,52 @@ import BurgerButton from '@/components/atoms/BurgerButton.vue';
 	@media (width >= 1500px) {
 		padding: 1.8rem;
 	}
-}
 
-.h1 {
-	font-size: 1.9rem;
-	font-weight: bold;
-	line-height: 1.15;
-	text-align: center;
-
-	@media (width >= 640px) {
-		line-height: initial;
+	.link-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
-	span {
-		display: inline-block;
-		width: max-content;
-		font-size: 1.4rem;
-		font-weight: normal;
+	.home-link {
+		margin: -0.8rem -1.6rem;
+		padding: 0.8rem 1.6rem;
+	}
 
-		@media (width >= 520px) {
-			display: block;
-			width: 100%;
-			text-align: center;
-		}
+	.h1 {
+		font-size: 1.9rem;
+		font-weight: bold;
+		line-height: 1.15;
+		text-align: center;
 
 		@media (width >= 640px) {
-			display: inline-block;
-			margin-left: 0.4rem;
-			width: auto;
-			font-size: 1.5rem;
-			text-align: initial;
-			line-height: 1.15;
+			line-height: initial;
 		}
 
-		@media (width >= 1600px) {
-			font-size: 1.6rem;
+		span {
+			display: inline-block;
+			width: max-content;
+			font-size: 1.4rem;
+			font-weight: normal;
+
+			@media (width >= 520px) {
+				display: block;
+				width: 100%;
+				text-align: center;
+			}
+
+			@media (width >= 640px) {
+				display: inline-block;
+				margin-left: 0.4rem;
+				width: auto;
+				font-size: 1.5rem;
+				text-align: initial;
+				line-height: 1.15;
+			}
+
+			@media (width >= 1600px) {
+				font-size: 1.6rem;
+			}
 		}
 	}
 }
