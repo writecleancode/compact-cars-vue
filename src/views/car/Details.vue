@@ -7,6 +7,8 @@ import StyledButton from '@/components/atoms/StyledButton.vue';
 import type { CarType } from '@/types/types';
 import { getCarDetails } from '@/services/CarService';
 import { computed, onMounted, ref } from 'vue';
+import { router } from '@/router';
+import ChevronLeft from '@/assets/icons/ChevronLeft.vue';
 
 const props = defineProps<{
 	id: string;
@@ -43,6 +45,9 @@ onMounted(() => getData());
 <template>
 	<LoadingAnimation v-if="isLoading" />
 	<div v-else-if="carData" class="car-details-wrapper">
+		<button class="styled-button back-btn" @click="router.back()" aria-label="bo back">
+			<ChevronLeft class="icon" />
+		</button>
 		<div class="mobile-introduction-image">
 			<p class="car-name">{{ carData.brand || 'unknown' }} {{ carData.model || 'unknown' }}</p>
 			<CarImage :imgUrl="carData.img" :altText="`${carData.brand} ${carData.model}`" />
@@ -144,6 +149,39 @@ onMounted(() => getData());
 
 	@media (width >= 780px) {
 		flex-direction: row;
+	}
+
+	.back-btn {
+		position: absolute;
+		top: 2rem;
+		left: 2rem;
+		z-index: 1;
+		padding: 0.8rem;
+		border: 2px solid #555555;
+		background-color: #555555;
+		color: #fff;
+		transition: background-color 0.3s, color 0.3s;
+
+		&:hover,
+		&:focus-visible {
+			background-color: transparent;
+			color: #555555;
+
+			.icon {
+				stroke: #555555;
+			}
+		}
+
+		.icon {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 1.2rem;
+			height: 1.2rem;
+			stroke-width: 2;
+			stroke: #fff;
+			transition: stroke 0.2s;
+		}
 	}
 
 	.car-name {
