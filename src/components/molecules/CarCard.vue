@@ -22,7 +22,7 @@ const { handleCompareStatus, handleRemoveCar } = useCarsContext();
 				<p class="car-name">{{ car.brand || 'unknown' }} {{ car.model || 'unknown' }}</p>
 		<CarImage :imgUrl="car.img" :altText="`${car.brand} ${car.model}`" />
 		<div class="car-info-wrapper">
-			<CarInfoBox title="Generation" :content="car.generation || 'unknown'" />
+			<CarInfoBox title="Generation" :content="car.generation || '-'" />
 			<CarInfoBox title="Production years" :content="`${car.productionStartYear} - ${car.productionEndYear}`" />
 			<CarInfoBox title="Facelift" :content="car.facelift || 'unknown'" />
 		</div>

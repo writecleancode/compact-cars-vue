@@ -13,6 +13,7 @@ export type CarType = {
 	productionEndYear: number;
 	facelift: string;
 	img: CarImageType;
+	pictures?: CarImageType[];
 };
 
 export type FilterValueType<T> = {
@@ -28,6 +29,7 @@ export type FormValuesType = {
 	productionEndYear: number;
 	facelift: string;
 	img: CarImageType;
+	pictures?: CarImageType[];
 };
 
 export type PxString = `${number}px`;

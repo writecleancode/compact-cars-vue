@@ -29,5 +29,6 @@ const unknownCarUrl = `${basePath}assets/img/unknown_car.jpg`;
 	width: 100%;
 	aspect-ratio: 320 / 220;
 	object-fit: cover;
+	background-color: #ddd;
 }
 </style>

@@ -19,13 +19,15 @@ const handleSubmitForm = () => {
 	};
 	addCar(newCar);
 	clearForm();
-	handleSuccessNotifications();
+	handleSuccessNotifications('✔ Car added to the list');
 };
 </script>
 
 <template>
 	<div class="add-car-wrapper">
-		<Form :formValues :handleInputChange v-on:submit.prevent="handleSubmitForm" />
+		<Form :formValues :handleInputChange v-on:submit.prevent="handleSubmitForm">
+			<button class="styled-button" type="submit">Add car</button>
+		</Form>
 		<div class="preview-wrapper">
 			<StyledTitle class="preview-title">Live preview</StyledTitle>
 			<CarCard :car="formValues" />
@@ -62,6 +64,10 @@ const handleSubmitForm = () => {
 			margin-top: 0;
 			max-width: 260px;
 		}
+	}
+
+	.styled-button {
+		width: 100%;
 	}
 }
 

@@ -25,8 +25,8 @@ const { successNotifications } = useNotificationsProvider();
 			<RouterView />
 		</main>
 		<template v-if="successNotifications.length > 0">
-			<SuccessNotification v-for="successNotification in successNotifications" :key="successNotification">
-				✔ Car added to the list
+			<SuccessNotification v-for="notification in successNotifications" :key="notification.id">
+				{{ notification.message }}
 			</SuccessNotification>
 		</template>
 	</div>

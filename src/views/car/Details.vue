@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import LoadingAnimation from '@/components/atoms/LoadingAnimation.vue';
 import CarImage from '@/components/atoms/CarImage.vue';
 import CarInfoBox from '@/components/atoms/CarInfoBox.vue';
 import StyledButton from '@/components/atoms/StyledButton.vue';
+
+import type { CarType } from '@/types/types';
 import { getCarDetails } from '@/services/CarService';
 import { onMounted, ref } from 'vue';
 
@@ -9,14 +12,19 @@ const props = defineProps<{
   id: string
 }>()
 
-const carData = ref(null)
+const isLoading = ref(false)
+const carData = ref<CarType | null>(null)
 
 const getData = async () => {
+  isLoading.value = true
+
   try {
     const response = await getCarDetails(props.id)
     carData.value = response.data
   } catch (error) {
     console.log(error);
+  } finally {
+    isLoading.value = false
   }
 }
 
@@ -24,17 +32,18 @@ onMounted(() => getData())
 </script>
 
 <template>
-  <div class="car-details-wrapper">
+  <LoadingAnimation v-if="isLoading" />
+  <div v-else-if="carData" class="car-details-wrapper">
     <div class="mobile-introduction-image">
-      <p class="car-name">{{ carData?.brand || 'unknown' }} {{ carData?.model || 'unknown' }}</p>
-      <CarImage :imgUrl="carData?.img" :altText="`${carData?.brand} ${carData?.model}`" />
+      <p class="car-name">{{ carData.brand || 'unknown' }} {{ carData.model || 'unknown' }}</p>
+      <CarImage :imgUrl="carData.img" :altText="`${carData.brand} ${carData.model}`" />
     </div>
     <div class="car-data">
-      <p class="car-name">{{ carData?.brand || 'unknown' }} {{ carData?.model || 'unknown' }}</p>
+      <p class="car-name">{{ carData.brand || 'unknown' }} {{ carData.model || 'unknown' }}</p>
       <!-- <div class="car-info-wrapper"> -->
-        <CarInfoBox title="Generation" :content="carData?.generation || 'unknown'" />
-        <CarInfoBox title="Production years" :content="`${carData?.productionStartYear} - ${carData?.productionEndYear}`" />
-        <CarInfoBox title="Facelift" :content="carData?.facelift || 'unknown'" />
+        <CarInfoBox title="Generation" :content="carData.generation || 'unknown'" />
+        <CarInfoBox title="Production years" :content="`${carData.productionStartYear} - ${carData.productionEndYear}`" />
+        <CarInfoBox title="Facelift" :content="carData.facelift || 'unknown'" />
       <!-- </div> -->
       <div>
         <details class="competitors-details">
@@ -100,13 +109,13 @@ onMounted(() => getData())
         <StyledButton class="show-list-btn">Display on the list</StyledButton>
       </div>
       <div class="buttons-wrapper">
-        <StyledButton class="show-list-btn">Edit car details</StyledButton>
-        <StyledButton class="show-list-btn">Hide car</StyledButton>
+        <RouterLink :to="{ name: 'car-edit', params: { id: carData.id } }" class="styled-button show-list-btn">Edit car details</RouterLink>
+        <button class="styled-button show-list-btn" disabled>Hide car</button>
       </div>
     </div>
     <div class="car-gallery">
-      <template v-if="carData?.pictures?.length">
-        <CarImage v-for="picture in carData.pictures" :key="picture.small" :imgUrl="picture" :altText="`${carData?.brand} ${carData?.model}`" />
+      <template v-if="carData.pictures?.length">
+        <CarImage v-for="picture in carData.pictures" :key="picture.small" :imgUrl="picture" :altText="`${carData.brand} ${carData.model}`" />
       </template>
     </div>
   </div>

@@ -1,34 +1,63 @@
 <script setup lang="ts">
+import LoadingAnimation from '@/components/atoms/LoadingAnimation.vue';
 import Form from '@/components/organisms/Form.vue';
 import StyledTitle from '@/components/atoms/StyledTitle.vue';
 import CarCard from '@/components/molecules/CarCard.vue';
 
 import { useForm } from '@/composables/useForm';
 import { useNotificationsContext } from '@/providers/useNotifications';
-import { useCarsContext } from '@/providers/useCars';
-import { v4 as uuid } from 'uuid';
+import { onMounted, ref } from 'vue';
+import { getCarDetails, updateCar } from '@/services/CarService';
+import type { CarType } from '@/types/types';
 
-const { formValues, handleInputChange, clearForm } = useForm();
+const { formValues, handleInputChange } = useForm();
 const { handleSuccessNotifications } = useNotificationsContext();
-const { addCar } = useCarsContext();
 
-const handleSubmitForm = () => {
-	const newCar = {
-		id: uuid(),
-		...formValues.value,
-	};
-	addCar(newCar);
-	clearForm();
-	handleSuccessNotifications();
+const props = defineProps<{
+	id: string
+}>()
+
+const isLoading = ref(false)
+const carData = ref<CarType | null>(null)
+
+const getData = async () => {
+  isLoading.value = true
+
+  try {
+    const response = await getCarDetails(props.id)
+    carData.value = response.data
+  } catch (error) {
+    console.log(error);
+  } finally {
+    isLoading.value = false
+  }
+}
+
+const handleSubmitForm = async () => {
+  if (!carData.value || !carData.value.id) return;
+
+  handleSuccessNotifications('Sorry, this feature is not available yet');
+  // try {
+  //   await updateCar(carData.value.id, formValues.value);
+  //   handleSuccessNotifications('✔ Changes have been saved');
+  // } catch (error) {
+  //   console.log(error);
+  //   handleSuccessNotifications('Sorry, an error occurred. Please try again later.');
+  // }
 };
+
+onMounted(() => getData())
 </script>
 
 <template>
-	<div class="add-car-wrapper">
-		<Form :formValues :handleInputChange v-on:submit.prevent="handleSubmitForm" />
+  <LoadingAnimation v-if="isLoading" />
+	<div v-else-if="carData" class="add-car-wrapper">
+		<Form :formValues="carData" :handleInputChange v-on:submit.prevent="handleSubmitForm">
+      <button class="styled-button" type="submit">Save changes</button>
+    </Form>
 		<div class="preview-wrapper">
 			<StyledTitle class="preview-title">Live preview</StyledTitle>
-			<CarCard :car="formValues" />
+			<CarCard :car="carData" />
 		</div>
 	</div>
 </template>
@@ -45,6 +74,10 @@ const handleSubmitForm = () => {
 			flex-basis: 100%;
 		}
 	}
+
+  .styled-button {
+    width: 100%;
+  }
 
 	@media (width >= 900px) {
 		justify-content: space-evenly;

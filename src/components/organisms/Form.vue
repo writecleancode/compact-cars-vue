@@ -14,7 +14,7 @@ defineProps<{
 	<form class="form-wrapper">
 		<FormField label="Brand" name="brand" id="brand" :value="formValues.brand" :handleInputChange />
 		<FormField label="Model" name="model" id="model" :value="formValues.model" :handleInputChange />
-		<FormField label="Generation" name="generation" id="generation" :value="formValues.generation" :handleInputChange />
+		<!-- <FormField label="Generation" name="generation" id="generation" :value="formValues.generation" :handleInputChange /> -->
 		<FormField
 			label="Start of production (year)"
 			name="productionStartYear"
@@ -33,11 +33,13 @@ defineProps<{
 			:handleInputChange />
 		<FormField label="Year of facelift" name="facelift" id="facelift" :value="formValues.facelift" :handleInputChange />
 		<FormField label="Photo url" name="img" id="imgUrl" :value="formValues.img.small" :handleInputChange />
-		<StyledButton class="margin-top" type="submit">Add car</StyledButton>
+		<div class="margin-top">
+			<slot />
+		</div>
 	</form>
 </template>
 
-<style lang="scss" foped>
+<style lang="scss" scoped>
 .form-wrapper {
 	display: flex;
 	flex-direction: column;

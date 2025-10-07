@@ -124,7 +124,6 @@ const useCars = () => {
 		setLoadingTrue();
 		try {
 			const response = await getCars(page, perPage);
-			console.log(response.headers['x-total-count']);
 			totalCars.value = Number(response.headers['x-total-count']);
 			if (response) cars.value = response.data;
 		} catch (err) {

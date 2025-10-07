@@ -53,3 +53,30 @@ table {
   border-spacing: 0;
   border-collapse: collapse;
 }
+
+
+// -------------------
+
+.styled-button {
+	padding: 0.8rem 1.6rem;
+	border: 2px solid #555555;
+	background-color: #555555;
+	color: #fff;
+	font-size: 1.6rem;
+	font-weight: bold;
+  text-align: center;
+	transition: background-color 0.3s, color 0.3s;
+
+	&:hover,
+	&:focus-visible {
+		&:not([disabled]) {
+			background-color: transparent;
+			color: #555555;
+		}
+	}
+
+	&[disabled] {
+		opacity: .15;
+		cursor: default;
+	}
+}

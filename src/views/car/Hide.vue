@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div>This is delete car view</div>
+  <div>This is hide car view</div>
 </template>
 
 <style scoped>

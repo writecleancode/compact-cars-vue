@@ -1,4 +1,4 @@
-import type { SelectOptionType } from '@/types/types';
+import type { CarType, SelectOptionType } from '@/types/types';
 import axios from 'axios';
 
 const apiClient = axios.create({
@@ -17,6 +17,10 @@ export const getCars = (page = 1, perPage = 8) => {
 
 export const getCarDetails = (id: string) => {
 	return apiClient.get(`/cars/${id}`)
+}
+
+export const updateCar = (id: string, carData: CarType) => {
+	return apiClient.put(`/cars/${id}`, carData)
 }
 
 export const getFilterOptions = () => {
