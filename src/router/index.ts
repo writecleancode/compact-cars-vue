@@ -19,7 +19,7 @@ const routes = [
 		}),
 	},
 	{ path: '/cars/:id', name: 'car-details', component: Details, props: true },
-	{ path: '/car/:afterEvent(.*)', redirect: (to: RouteLocation) => ( { path: `/cars/${to.params.afterEvent}` } ) }, 
+	{ path: '/car/:afterCar(.*)', redirect: (to: RouteLocation) => ( { path: `/cars/${to.params.afterCar}` } ) }, 
 	{ path: '/cars/:id/edit', name: 'car-edit', component: Edit, props: true },
 	{ path: '/cars/:id/hide', name: 'car-hide', component: Hide, props: true },
 	{ path: '/car-comparison', name: 'car-comparison', component: CarComparison },
