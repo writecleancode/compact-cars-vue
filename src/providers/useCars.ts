@@ -124,6 +124,7 @@ const useCars = () => {
 		setLoadingTrue();
 		try {
 			const response = await getCars(page, perPage);
+			console.log(response.headers['x-total-count']);
 			totalCars.value = Number(response.headers['x-total-count']);
 			if (response) cars.value = response.data;
 		} catch (err) {
@@ -136,8 +137,8 @@ const useCars = () => {
 		try {
 			const [responseYears, responseBrands] = await getFilterOptions();
 
-			const filterYearsData = responseYears ? responseYears.data.map(option => ({ value: option, isActive: false })) : [];
-			const filterBrandsData = responseBrands ? responseBrands.data.map(option => ({ value: option, isActive: false })) : [];
+			const filterYearsData = responseYears ? responseYears.data.map(option => ({ ...option, isActive: false })) : [];
+			const filterBrandsData = responseBrands ? responseBrands.data.map(option => ({ ...option, isActive: false })) : [];
 
 			usersFilterPreferences.value = { brands: filterBrandsData, years: filterYearsData };
 		} catch (err) {

@@ -26,6 +26,7 @@ onMounted(() => getData())
 <template>
   <div class="car-details-wrapper">
     <div class="mobile-introduction-image">
+      <p class="car-name">{{ carData?.brand || 'unknown' }} {{ carData?.model || 'unknown' }}</p>
       <CarImage :imgUrl="carData?.img" :altText="`${carData?.brand} ${carData?.model}`" />
     </div>
     <div class="car-data">
@@ -104,10 +105,9 @@ onMounted(() => getData())
       </div>
     </div>
     <div class="car-gallery">
-        <CarImage :imgUrl="carData?.img" :altText="`${carData?.brand} ${carData?.model}`" />
-        <CarImage :imgUrl="carData?.img" :altText="`${carData?.brand} ${carData?.model}`" />
-        <CarImage :imgUrl="carData?.img" :altText="`${carData?.brand} ${carData?.model}`" />
-        <CarImage :imgUrl="carData?.img" :altText="`${carData?.brand} ${carData?.model}`" />
+      <template v-if="carData?.pictures?.length">
+        <CarImage v-for="picture in carData.pictures" :key="picture.small" :imgUrl="picture" :altText="`${carData?.brand} ${carData?.model}`" />
+      </template>
     </div>
   </div>
 </template>
@@ -118,31 +118,72 @@ onMounted(() => getData())
   flex-direction: column;
   gap: 1.6rem;
   padding: 1.2rem;
+  position: relative;
+  
+  @media (width >= 780px) {
+    flex-direction: row;
+  }
+
+  .car-name {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+
+    @media (width >= 1600px) {
+      margin-bottom: 0.8rem;
+    }
+  }
 
   .mobile-introduction-image {
     margin-top: -12px;
     margin-inline: -12px;
+
+    @media (width >= 480px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (width >= 780px) {
+      display: none;
+    }
+
+    .car-name {
+      display: none;
+
+      @media (width >= 480px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3.2rem;
+        background-color: #f5f5f5ee;
+      }
+    }
   }
 
   .car-data {
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     gap: 1.6rem;
+    /* height: fit-content; */
 
-    .car-name {
-      font-size: 2rem;
-      text-align: center;
-      font-weight: bold;
-  
-      @media (width >= 1600px) {
-        margin-bottom: 0.8rem;
-      }
+    @media (width >= 780px) {
+      position: sticky;
+      top: 1.2rem;
+      padding: 1.2rem;
+      background-color: #f5f5f5ee;
     }
 
     .competitors-details {
       summary {
         font-size: 1.6rem;
         font-weight: bold;
+      }
+    }
+
+    .car-name {
+      @media (480px < width < 780px) {
+        display: none;
       }
     }
 
@@ -183,6 +224,11 @@ onMounted(() => getData())
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.2rem;
+    height: fit-content;
+
+    @media (width >= 480px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   /* .image-wrap {

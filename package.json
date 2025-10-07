@@ -14,6 +14,7 @@
   "dependencies": {
     "@vueuse/core": "^12.3.0",
     "axios": "^1.9.0",
+    "json-server": "^0.17.4",
     "lodash.debounce": "^4.0.8",
     "uuid": "^11.0.4",
     "vue": "^3.5.13",
@@ -34,7 +35,7 @@
     "vue-tsc": "^2.1.10"
   },
   "volta": {
-    "node": "22.15.0",
+    "node": "23.7.0",
     "npm": "10.9.0"
   }
 }

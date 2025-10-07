@@ -30,8 +30,8 @@
                     "medium": "https://www.netcarshow.com/Alfa_Romeo-146-1997-1280-3b3f3c6741e0fab50ac7cae39099123334.jpg?token=5292a34df410ca158dbb54e7c993b941f4c2aca6ff87681f3d5813c"
                 },
                 {
-                    "small": "https://images.autoboom.co.il/7gQWpaov2yxvocCcEzO780GhD-0LZ2zv7N1ap_wXb_U/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8wODEvODE4MDYuanBn.webp",
-                    "medium": "https://images.autoboom.co.il/7gQWpaov2yxvocCcEzO780GhD-0LZ2zv7N1ap_wXb_U/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8wODEvODE4MDYuanBn.webp"
+                    "small": "https://www.netcarshow.com/Alfa_Romeo-146-1997-1280-d0f086746b43cad1e4ac18f680d0a49e0e.jpg?token=5292a34df410ca158dbb54e7c993b941f4c2aca6ff87691f3d5813c",
+                    "medium": "https://www.netcarshow.com/Alfa_Romeo-146-1997-1280-d0f086746b43cad1e4ac18f680d0a49e0e.jpg?token=5292a34df410ca158dbb54e7c993b941f4c2aca6ff87691f3d5813c"
                 },
                 {
                     "small": "https://www.netcarshow.com/Alfa_Romeo-146-1997-1280-0f75c7818e482be1e6fde32290d84814cc.jpg",
@@ -60,10 +60,6 @@
                     "big": "https://www.datocms-assets.com/112049/1699699902-audi_a3_i.jpg"
                 },
                 {
-                    "small": "https://images.autoboom.co.il/DnGfZUam4NOK81RSidzaBGszMtXI9319az8YjDHyzEI/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8wMTMvMTM3ODkuanBn.webp",
-                    "medium": "https://images.autoboom.co.il/DnGfZUam4NOK81RSidzaBGszMtXI9319az8YjDHyzEI/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8wMTMvMTM3ODkuanBn.webp"
-                },
-                {
                     "small": "https://www.netcarshow.com/Audi-A3_5-door-1999-1280-4702ec6a3b6798a63f7976cdc08a2fa272.jpg?token=c8cc25e3f410ce158fbb54e7c99d3b462a06549169d06616401c9de",
                     "medium": "https://www.netcarshow.com/Audi-A3_5-door-1999-1280-4702ec6a3b6798a63f7976cdc08a2fa272.jpg?token=c8cc25e3f410ce158fbb54e7c99d3b462a06549169d06616401c9de"
                 },
@@ -78,17 +74,13 @@
                 {
                     "small": "https://www.netcarshow.com/Audi-A3_5-door-1999-1280-2fec02014c4d80f31b37d14e907bd7be4c.jpg?token=c8cc25e3f410ce158fbb54e7c99d3b462a06549169d06716401c9de",
                     "medium": "https://www.netcarshow.com/Audi-A3_5-door-1999-1280-2fec02014c4d80f31b37d14e907bd7be4c.jpg?token=c8cc25e3f410ce158fbb54e7c99d3b462a06549169d06716401c9de"
-                },
-                {
-                    "small": "https://www.autofakty.pl/wp-content/uploads/2017/05/audi_a3_22.jpg",
-                    "medium": "https://www.autofakty.pl/wp-content/uploads/2017/05/audi_a3_22.jpg"
                 }
             ]
         },
         {
             "id": 3,
             "brand": "BMW",
-            "model": "3 Series Compact",
+            "model": "3 Compact",
             "generation": "I",
             "generationCode": "E36",
             "productionStartYear": 1993,
@@ -100,7 +92,7 @@
             },
             "pictures": [
                 {
-                    "small": "https://www.datocms-assets.com/112049/1730745385-bmw_3_compact_i_320.jpg",
+                   "small": "https://www.datocms-assets.com/112049/1730745385-bmw_3_compact_i_320.jpg",
                     "medium": "https://www.datocms-assets.com/112049/1729758243-bmw_3_compact_i.jpeg"
                 },
                 {
@@ -132,41 +124,7 @@
             "img": {
                 "small": "https://www.datocms-assets.com/112049/1730745386-citroen_xsara_i_320.jpg",
                 "medium": "https://www.datocms-assets.com/112049/1729758243-citroen_xsara_i.png"
-            },
-             "pictures": [
-                {
-                    "small": "https://www.datocms-assets.com/112049/1730745386-citroen_xsara_i_320.jpg",
-                    "medium": "https://www.datocms-assets.com/112049/1729758243-citroen_xsara_i.png"
-                },
-                {
-                    "small": "https://img.autoabc.lv/Citroen-Xsara/Citroen-Xsara_1997_Hecbeks_1512841505_4.jpg",
-                    "medium": "https://img.autoabc.lv/Citroen-Xsara/Citroen-Xsara_1997_Hecbeks_1512841505_4.jpg"
-                },
-                {
-                    "small": "https://s1.cdn.autoevolution.com/images/gallery/CITROEN-Xsara-2030_10.jpeg",
-                    "medium": "https://s1.cdn.autoevolution.com/images/gallery/CITROEN-Xsara-2030_10.jpeg"
-                },
-                {
-                    "small": "https://s1.cdn.autoevolution.com/images/gallery/CITROEN-Xsara-2030_12.jpeg",
-                    "medium": "https://s1.cdn.autoevolution.com/images/gallery/CITROEN-Xsara-2030_12.jpeg"
-                },
-                {
-                    "small": "https://s1.cdn.autoevolution.com/images/gallery/CITROENXsara-2030_4.jpg",
-                    "medium": "https://s1.cdn.autoevolution.com/images/gallery/CITROENXsara-2030_4.jpg"
-                },
-                {
-                    "small": "https://s1.cdn.autoevolution.com/images/gallery/CITROENXsara-2030_7.jpg",
-                    "medium": "https://s1.cdn.autoevolution.com/images/gallery/CITROENXsara-2030_7.jpg"
-                },
-                {
-                     "small": "https://s1.cdn.autoevolution.com/images/gallery/CITROEN-Xsara-2030_11.jpeg",
-                    "medium": "https://s1.cdn.autoevolution.com/images/gallery/CITROEN-Xsara-2030_11.jpeg"
-                },
-                {
-                    "small": "https://espirituracer.com/archivos/2018/12/Citroen-Xsara-VTS-2003-interior.jpg",
-                    "medium": "https://espirituracer.com/archivos/2018/12/Citroen-Xsara-VTS-2003-interior.jpg"
-                }
-            ]
+            }
         },
         {
             "id": 5,
@@ -179,33 +137,7 @@
             "img": {
                 "small": "https://www.datocms-assets.com/112049/1730745382-fiat_brava_i_320.jpg",
                 "medium": "https://www.datocms-assets.com/112049/1729758753-fiat_brava_i.jpg"
-            },
-            "pictures": [
-                {
-                    "small": "https://www.datocms-assets.com/112049/1730745382-fiat_brava_i_320.jpg",
-                    "medium": "https://www.datocms-assets.com/112049/1729758753-fiat_brava_i.jpg"
-                },
-                {
-                    "small": "https://images.autoboom.co.il/BV-I4iKcv6kgfJkvQs_xQVDvutKnAEqiM_sgVY8dv3c/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8xMzAvMTMwNTU4LmpwZw.webp",
-                    "medium": "https://images.autoboom.co.il/BV-I4iKcv6kgfJkvQs_xQVDvutKnAEqiM_sgVY8dv3c/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8xMzAvMTMwNTU4LmpwZw.webp"
-                },
-                {
-                    "small": "https://images.autoboom.co.il/x4VCl8oYaI99nvnk_Q1Ds3pEVu_wS4v9IIzYYCJS-dE/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8xMzAvMTMwNTUzLmpwZw.webp",
-                    "medium": "https://images.autoboom.co.il/x4VCl8oYaI99nvnk_Q1Ds3pEVu_wS4v9IIzYYCJS-dE/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8xMzAvMTMwNTUzLmpwZw.webp"
-                },
-                {
-                    "small": "https://images.autoboom.co.il/Wlfyuquoe1bvWy5F1eTTwiXfoGolAsPtHYK39jxooiw/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8xMzAvMTMwNTQ4LmpwZw.webp",
-                    "medium": "https://images.autoboom.co.il/Wlfyuquoe1bvWy5F1eTTwiXfoGolAsPtHYK39jxooiw/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8xMzAvMTMwNTQ4LmpwZw.webp"
-                },
-                {
-                    "small": "https://garagemmaster.com.br/wp-content/uploads/2024/12/03_11zon-41.webp",
-                    "medium": "https://garagemmaster.com.br/wp-content/uploads/2024/12/03_11zon-41.webp"
-                },
-                {
-                    "small": "https://images.autoboom.co.il/UQjcyL-q9FDaafr0Sh0Pljm2IwRmiNHK1aFdsDL29gw/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8xMzAvMTMwNTU3LmpwZw.webp",
-                    "medium": "https://images.autoboom.co.il/UQjcyL-q9FDaafr0Sh0Pljm2IwRmiNHK1aFdsDL29gw/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8xMzAvMTMwNTU3LmpwZw.webp"
-                }
-            ]
+            }
         },
         {
             "id": 6,
@@ -220,34 +152,7 @@
                 "small": "https://www.datocms-assets.com/112049/1730745382-ford_focus_i_320.jpg",
                 "medium": "https://www.datocms-assets.com/112049/1730745382-ford_focus_i_1280.jpg",
                 "big": "https://www.datocms-assets.com/112049/1729758779-ford_focus_i.jpg"
-            },
-            "pictures": [
-                {
-                    "small": "https://www.datocms-assets.com/112049/1730745382-ford_focus_i_320.jpg",
-                    "medium": "https://www.datocms-assets.com/112049/1730745382-ford_focus_i_1280.jpg",
-                    "big": "https://www.datocms-assets.com/112049/1729758779-ford_focus_i.jpg"
-                },
-                {
-                    "small": "https://images.autoboom.co.il/RfGF-qqKIG_aQ0xKBDiblz1EpMXpC3YqTajzgr76hRU/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8wNzAvNzA4ODYuanBn.webp",
-                    "medium": "https://images.autoboom.co.il/RfGF-qqKIG_aQ0xKBDiblz1EpMXpC3YqTajzgr76hRU/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8wNzAvNzA4ODYuanBn.webp"
-                },
-                {
-                    "small": "https://images.autoboom.co.il/PxIFqaUoLmXvOimDBAMwpuSxe31W2nYiNeTQc236jLQ/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8wNzAvNzA4ODkuanBn.webp",
-                    "medium": "https://images.autoboom.co.il/PxIFqaUoLmXvOimDBAMwpuSxe31W2nYiNeTQc236jLQ/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8wNzAvNzA4ODkuanBn.webp"
-                },
-                {
-                    "small": "https://images.autoboom.co.il/OPUw5ptEHwPup3tpliSm8NNU3MbtSnvIUMlB6_9r8Hw/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8wNzAvNzA4OTQuanBn.webp",
-                    "medium": "https://images.autoboom.co.il/OPUw5ptEHwPup3tpliSm8NNU3MbtSnvIUMlB6_9r8Hw/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8wNzAvNzA4OTQuanBn.webp"
-                },                
-                {
-                    "small": "https://images.autoboom.co.il/9rCyBXdf7IpupaBBuvP20oT9jzCipLvz6vqo4WCIRLE/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8wNzAvNzA4OTkuanBn.webp",
-                    "medium": "https://images.autoboom.co.il/9rCyBXdf7IpupaBBuvP20oT9jzCipLvz6vqo4WCIRLE/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8wNzAvNzA4OTkuanBn.webp"
-                },
-                {
-                    "small": "https://images.autoboom.co.il/9qvPvFMgVfVFsTG_BIFzYmaBBhj1v8rOnIiQpa2dl-M/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8wNzAvNzA4OTguanBn.webp",
-                    "medium": "https://images.autoboom.co.il/9qvPvFMgVfVFsTG_BIFzYmaBBhj1v8rOnIiQpa2dl-M/fit/1200/1200/sm/0/Z3M6Ly9hdXRvYm9vbS1pbWFnZXMvMDAwLzAwMC8wNzAvNzA4OTguanBn.webp"
-                }
-            ]
+            }
         },
         {
             "id": 7,
@@ -415,41 +320,41 @@
     ],
     
     "filterYears": [
-        { "value": 1993 },
-        { "value": 1994 },
-        { "value": 1995 },
-        { "value": 1996 },
-        { "value": 1997 },
-        { "value": 1998 },
-        { "value": 1999 },
-        { "value": 2000 },
-        { "value": 2001 },
-        { "value": 2002 },
-        { "value": 2003 },
-        { "value": 2004 },
-        { "value": 2005 },
-        { "value": 2006 },
-        { "value": 2007 }
+        1993,
+        1994,
+        1995,
+        1996,
+        1997,
+        1998,
+        1999,
+        2000,
+        2001,
+        2002,
+        2003,
+        2004,
+        2005,
+        2006,
+        2007
     ],
-
+    
     "filterBrands": [
-        { "value": "Alfa Romeo" },
-        { "value": "Audi" },
-        { "value": "BMW" },
-        { "value": "Citroen" },
-        { "value": "Daewoo" },
-        { "value": "Fiat" },
-        { "value": "Ford" },
-        { "value": "Honda" },
-        { "value": "Lancia" },
-        { "value": "Mazda" },
-        { "value": "Nissan" },
-        { "value": "Opel" },
-        { "value": "Peugeot" },
-        { "value": "Renault" },
-        { "value": "Seat" },
-        { "value": "Toyota" },
-        { "value": "Volkswagen" }
+        "Alfa Romeo",
+        "Audi",
+        "BMW",
+        "Citroen",
+        "Daewoo",
+        "Fiat",
+        "Ford",
+        "Honda",
+        "Lancia",
+        "Mazda",
+        "Nissan",
+        "Opel",
+        "Peugeot",
+        "Renault",
+        "Seat",
+        "Toyota",
+        "Volkswagen"
     ],
 
     "selectOptions": [

@@ -2,7 +2,8 @@ import type { SelectOptionType } from '@/types/types';
 import axios from 'axios';
 
 const apiClient = axios.create({
-	baseURL: 'https://my-json-server.typicode.com/writecleancode/compact-cars-vue',
+	// baseURL: 'https://my-json-server.typicode.com/writecleancode/compact-cars-vue',
+	baseURL: 'http://localhost:3000',
 	withCredentials: false,
 	headers: {
 		Accept: 'application/json',
@@ -19,7 +20,7 @@ export const getCarDetails = (id: string) => {
 }
 
 export const getFilterOptions = () => {
-	return Promise.all([apiClient.get<number[]>('/filterYears'), apiClient.get<string[]>('/filterBrands')]);
+	return Promise.all([apiClient.get<{ value: number }[]>('/filterYears'), apiClient.get<{ value: string }[]>('/filterBrands')]);
 };
 
 export const getSortOptions = () => {
