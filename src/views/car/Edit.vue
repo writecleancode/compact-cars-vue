@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import LoadingAnimation from '@/components/atoms/LoadingAnimation.vue';
+import BackButton from '@/components/atoms/BackButton.vue';
 import Form from '@/components/organisms/Form.vue';
 import StyledTitle from '@/components/atoms/StyledTitle.vue';
 import CarCard from '@/components/molecules/CarCard.vue';
@@ -50,52 +51,68 @@ onMounted(() => getData());
 </script>
 
 <template>
-	<LoadingAnimation v-if="isLoading" />
-	<div v-else-if="carData" class="add-car-wrapper">
-		<Form :formValues="carData" :handleInputChange v-on:submit.prevent="handleSubmitForm">
-			<button class="styled-button" type="submit">Save changes</button>
-		</Form>
-		<div class="preview-wrapper">
-			<StyledTitle class="preview-title">Live preview</StyledTitle>
-			<CarCard :car="carData" />
-		</div>
+  <div class="edit-car-wrapper">
+    <BackButton />
+    <div class="content-wrapper">
+      <LoadingAnimation v-if="isLoading" />
+      <template v-else-if="carData">
+        <Form :formValues="carData" :handleInputChange v-on:submit.prevent="handleSubmitForm">
+          <button class="styled-button" type="submit">Save changes</button>
+        </Form>
+        <div class="preview-wrapper">
+          <StyledTitle class="preview-title">Live preview</StyledTitle>
+          <CarCard :car="carData" />
+        </div>
+      </template>
+    </div>
 	</div>
 </template>
 
 <style scoped>
-.add-car-wrapper {
-	padding: 2.4rem;
+.edit-car-wrapper {
+  position: relative;
 
-	@media (width >= 620px) {
-		display: flex;
-		gap: 3.2rem;
+  @media (width > 900px) {
+    min-height: 100%;
+    align-content: center;
+  }
 
-		& > * {
-			flex-basis: 100%;
-		}
-	}
+  .content-wrapper {
+    padding: 2.4rem;
 
-	.styled-button {
-		width: 100%;
-	}
+    @media (width >= 620px) {
+      display: flex;
+      gap: 3.2rem;
 
-	@media (width >= 900px) {
-		justify-content: space-evenly;
-		align-items: center;
-		margin: 0 auto;
-		min-height: 100%;
-		max-width: 960px;
+      & > * {
+        flex-basis: 100%;
+      }
+    }
 
-		& > * {
-			flex-basis: initial;
-		}
+    .form-wrapper {
+      .styled-button {
+        width: 100%;
+      }
+    }
 
-		.preview-wrapper {
-			flex-grow: 1;
-			margin-top: 0;
-			max-width: 260px;
-		}
-	}
+    @media (width >= 900px) {
+      justify-content: space-evenly;
+      align-items: center;
+      margin: 0 auto;
+      min-height: 100%;
+      max-width: 960px;
+
+      & > * {
+        flex-basis: initial;
+      }
+
+      .preview-wrapper {
+        flex-grow: 1;
+        margin-top: 0;
+        max-width: 260px;
+      }
+    }
+  }
 }
 
 .preview-wrapper {

@@ -20,7 +20,9 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	align-self: flex-start;
 	gap: 1.6rem;
+	width: 100%;
 }
 
 .spinning-wheel {

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import LoadingAnimation from '@/components/atoms/LoadingAnimation.vue';
+import BackButton from '@/components/atoms/BackButton.vue';
 import CarImage from '@/components/atoms/CarImage.vue';
 import CarInfoBox from '@/components/atoms/CarInfoBox.vue';
 import StyledButton from '@/components/atoms/StyledButton.vue';
@@ -7,8 +8,6 @@ import StyledButton from '@/components/atoms/StyledButton.vue';
 import type { CarType } from '@/types/types';
 import { getCarDetails } from '@/services/CarService';
 import { computed, onMounted, ref } from 'vue';
-import { router } from '@/router';
-import ChevronLeft from '@/assets/icons/ChevronLeft.vue';
 
 const props = defineProps<{
 	id: string;
@@ -43,99 +42,99 @@ onMounted(() => getData());
 </script>
 
 <template>
-	<LoadingAnimation v-if="isLoading" />
-	<div v-else-if="carData" class="car-details-wrapper">
-		<button class="styled-button back-btn" @click="router.back()" aria-label="bo back">
-			<ChevronLeft class="icon" />
-		</button>
-		<div class="mobile-introduction-image">
-			<p class="car-name">{{ carData.brand || 'unknown' }} {{ carData.model || 'unknown' }}</p>
-			<CarImage :imgUrl="carData.img" :altText="`${carData.brand} ${carData.model}`" />
-		</div>
-		<div class="car-data">
-			<p class="car-name">{{ carData.brand || 'unknown' }} {{ carData.model || 'unknown' }}</p>
-			<!-- <div class="car-info-wrapper"> -->
-			<CarInfoBox title="Generation" :content="generation" />
-			<CarInfoBox title="Production years" :content="`${carData.productionStartYear} - ${carData.productionEndYear}`" />
-			<CarInfoBox title="Facelift" :content="carData.facelift || 'unknown'" />
-			<!-- </div> -->
-			<div>
-				<details class="competitors-details">
-					<summary>Early production years competitors</summary>
-					<ul class="competitors-list">
-						<li>Alfa Romeo 146</li>
-						<li>Audi A3 I</li>
-						<li>BMW 3 Series Compact (E36)</li>
-						<li>Citroen Xsara</li>
-						<li>Fiat Brava</li>
-						<li>Ford Focus I</li>
-						<li>Honda Civic VI</li>
-						<li>Lancia Delta II</li>
-						<li>Mazda 323 VI</li>
-						<li>Nissan Almera I</li>
-						<li>Opel Astra II</li>
-						<li>Peugeot 306</li>
-						<li>Renault Megane I</li>
-						<li>Seat Leon I</li>
-						<li>Toyota Corolla VIII</li>
-					</ul>
-				</details>
-				<!-- <p class="text-title">Early production years competitors</p>
-        <ul class="competitors-list">
-          <li>Alfa Romeo 146</li>
-          <li>Audi A3 I</li>
-          <li>BMW 3 Series Compact (E36)</li>
-          <li>Citroen Xsara</li>
-          <li>Fiat Brava</li>
-          <li>Ford Focus I</li>
-          <li>Honda Civic VI</li>
-          <li>Lancia Delta II</li>
-          <li>Mazda 323 VI</li>
-          <li>Nissan Almera I</li>
-          <li>Opel Astra II</li>
-          <li>Peugeot 306</li>
-          <li>Renault Megane I</li>
-          <li>Seat Leon I</li>
-          <li>Toyota Corolla VIII</li>
-        </ul> -->
-				<StyledButton class="show-list-btn">Display on the list</StyledButton>
-			</div>
-			<div>
-				<details class="competitors-details">
-					<summary>Late production years competitors</summary>
-					<ul class="competitors-list">
-						<li>Alfa Romeo 147</li>
-						<li>Audi A3 I</li>
-						<li>BMW 3 Series Compact (E46)</li>
-						<li>Citroen Xsara</li>
-						<li>Fiat Brava</li>
-						<li>Ford Focus I</li>
-						<li>Honda Civic VI</li>
-						<li>Mazda 323 VI</li>
-						<li>Nissan Almera I</li>
-						<li>Opel Astra II</li>
-						<li>Peugeot 306</li>
-						<li>Renault Megane I</li>
-						<li>Seat Leon I</li>
-						<li>Toyota Corolla VIII</li>
-					</ul>
-				</details>
-				<StyledButton class="show-list-btn">Display on the list</StyledButton>
-			</div>
-			<div class="buttons-wrapper">
-				<RouterLink :to="{ name: 'car-edit', params: { id: carData.id } }" class="styled-button show-list-btn">Edit car details</RouterLink>
-				<button class="styled-button show-list-btn" disabled>Hide car</button>
-			</div>
-		</div>
-		<div class="car-gallery">
-			<template v-if="carData.pictures?.length">
-				<CarImage
-					v-for="picture in carData.pictures"
-					:key="picture.small"
-					:imgUrl="picture"
-					:altText="`${carData.brand} ${carData.model}`" />
-			</template>
-		</div>
+  <div class="car-details-wrapper">
+    <BackButton />
+    <LoadingAnimation v-if="isLoading" />
+    <template v-else-if="carData">
+      <div class="mobile-introduction-image">
+        <p class="car-name">{{ carData.brand || 'unknown' }} {{ carData.model || 'unknown' }}</p>
+        <CarImage :imgUrl="carData.img" :altText="`${carData.brand} ${carData.model}`" />
+      </div>
+      <div class="car-data">
+        <p class="car-name">{{ carData.brand || 'unknown' }} {{ carData.model || 'unknown' }}</p>
+        <!-- <div class="car-info-wrapper"> -->
+        <CarInfoBox title="Generation" :content="generation" />
+        <CarInfoBox title="Production years" :content="`${carData.productionStartYear} - ${carData.productionEndYear}`" />
+        <CarInfoBox title="Facelift" :content="carData.facelift || 'unknown'" />
+        <!-- </div> -->
+        <div>
+          <details class="competitors-details">
+            <summary>Early production years competitors</summary>
+            <ul class="competitors-list">
+              <li>Alfa Romeo 146</li>
+              <li>Audi A3 I</li>
+              <li>BMW 3 Series Compact (E36)</li>
+              <li>Citroen Xsara</li>
+              <li>Fiat Brava</li>
+              <li>Ford Focus I</li>
+              <li>Honda Civic VI</li>
+              <li>Lancia Delta II</li>
+              <li>Mazda 323 VI</li>
+              <li>Nissan Almera I</li>
+              <li>Opel Astra II</li>
+              <li>Peugeot 306</li>
+              <li>Renault Megane I</li>
+              <li>Seat Leon I</li>
+              <li>Toyota Corolla VIII</li>
+            </ul>
+          </details>
+          <!-- <p class="text-title">Early production years competitors</p>
+          <ul class="competitors-list">
+            <li>Alfa Romeo 146</li>
+            <li>Audi A3 I</li>
+            <li>BMW 3 Series Compact (E36)</li>
+            <li>Citroen Xsara</li>
+            <li>Fiat Brava</li>
+            <li>Ford Focus I</li>
+            <li>Honda Civic VI</li>
+            <li>Lancia Delta II</li>
+            <li>Mazda 323 VI</li>
+            <li>Nissan Almera I</li>
+            <li>Opel Astra II</li>
+            <li>Peugeot 306</li>
+            <li>Renault Megane I</li>
+            <li>Seat Leon I</li>
+            <li>Toyota Corolla VIII</li>
+          </ul> -->
+          <StyledButton class="show-list-btn">Display on the list</StyledButton>
+        </div>
+        <div>
+          <details class="competitors-details">
+            <summary>Late production years competitors</summary>
+            <ul class="competitors-list">
+              <li>Alfa Romeo 147</li>
+              <li>Audi A3 I</li>
+              <li>BMW 3 Series Compact (E46)</li>
+              <li>Citroen Xsara</li>
+              <li>Fiat Brava</li>
+              <li>Ford Focus I</li>
+              <li>Honda Civic VI</li>
+              <li>Mazda 323 VI</li>
+              <li>Nissan Almera I</li>
+              <li>Opel Astra II</li>
+              <li>Peugeot 306</li>
+              <li>Renault Megane I</li>
+              <li>Seat Leon I</li>
+              <li>Toyota Corolla VIII</li>
+            </ul>
+          </details>
+          <StyledButton class="show-list-btn">Display on the list</StyledButton>
+        </div>
+        <div class="buttons-wrapper">
+          <RouterLink :to="{ name: 'car-edit', params: { id: carData.id } }" class="styled-button show-list-btn">Edit car details</RouterLink>
+          <button class="styled-button show-list-btn" disabled>Hide car</button>
+        </div>
+      </div>
+      <div class="car-gallery">
+        <template v-if="carData.pictures?.length">
+          <CarImage
+            v-for="picture in carData.pictures"
+            :key="picture.small"
+            :imgUrl="picture"
+            :altText="`${carData.brand} ${carData.model}`" />
+        </template>
+      </div>
+    </template>
 	</div>
 </template>
 
@@ -149,39 +148,6 @@ onMounted(() => getData());
 
 	@media (width >= 780px) {
 		flex-direction: row;
-	}
-
-	.back-btn {
-		position: absolute;
-		top: 2rem;
-		left: 2rem;
-		z-index: 1;
-		padding: 0.8rem;
-		border: 2px solid #555555;
-		background-color: #555555;
-		color: #fff;
-		transition: background-color 0.3s, color 0.3s;
-
-		&:hover,
-		&:focus-visible {
-			background-color: transparent;
-			color: #555555;
-
-			.icon {
-				stroke: #555555;
-			}
-		}
-
-		.icon {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 1.2rem;
-			height: 1.2rem;
-			stroke-width: 2;
-			stroke: #fff;
-			transition: stroke 0.2s;
-		}
 	}
 
 	.car-name {
