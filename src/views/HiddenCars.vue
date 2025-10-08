@@ -2,6 +2,7 @@
 import SearchInput from '@/components/molecules/SearchInput.vue';
 import LoadingAnimation from '@/components/atoms/LoadingAnimation.vue';
 import CarCard from '@/components/molecules/CarCard.vue';
+import ArrowBack from '@/assets/icons/ArrowBack.vue';
 import Modal from '@/components/organisms/Modal.vue';
 import ResultDisplayOptions from '@/components/molecules/ResultDisplayOptions.vue';
 import FilterBoxYears from '@/components/molecules/FilterBoxYears.vue';
