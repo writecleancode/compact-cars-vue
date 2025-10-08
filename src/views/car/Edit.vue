@@ -51,68 +51,68 @@ onMounted(() => getData());
 </script>
 
 <template>
-  <div class="edit-car-wrapper">
-    <BackButton />
-    <div class="content-wrapper">
-      <LoadingAnimation v-if="isLoading" />
-      <template v-else-if="carData">
-        <Form :formValues="carData" :handleInputChange v-on:submit.prevent="handleSubmitForm">
-          <button class="styled-button" type="submit">Save changes</button>
-        </Form>
-        <div class="preview-wrapper">
-          <StyledTitle class="preview-title">Live preview</StyledTitle>
-          <CarCard :car="carData" />
-        </div>
-      </template>
-    </div>
+	<div class="edit-car-wrapper">
+		<BackButton />
+		<div class="content-wrapper">
+			<LoadingAnimation v-if="isLoading" />
+			<template v-else-if="carData">
+				<Form :formValues="carData" :handleInputChange v-on:submit.prevent="handleSubmitForm">
+					<button class="styled-button" type="submit">Save changes</button>
+				</Form>
+				<div class="preview-wrapper">
+					<StyledTitle class="preview-title">Live preview</StyledTitle>
+					<CarCard :car="carData" />
+				</div>
+			</template>
+		</div>
 	</div>
 </template>
 
 <style scoped>
 .edit-car-wrapper {
-  position: relative;
+	position: relative;
 
-  @media (width > 900px) {
-    min-height: 100%;
-    align-content: center;
-  }
+	@media (width > 900px) {
+		min-height: 100%;
+		align-content: center;
+	}
 
-  .content-wrapper {
-    padding: 2.4rem;
+	.content-wrapper {
+		padding: 2.4rem;
 
-    @media (width >= 620px) {
-      display: flex;
-      gap: 3.2rem;
+		@media (width >= 620px) {
+			display: flex;
+			gap: 3.2rem;
 
-      & > * {
-        flex-basis: 100%;
-      }
-    }
+			& > * {
+				flex-basis: 100%;
+			}
+		}
 
-    .form-wrapper {
-      .styled-button {
-        width: 100%;
-      }
-    }
+		.form-wrapper {
+			.styled-button {
+				width: 100%;
+			}
+		}
 
-    @media (width >= 900px) {
-      justify-content: space-evenly;
-      align-items: center;
-      margin: 0 auto;
-      min-height: 100%;
-      max-width: 960px;
+		@media (width >= 900px) {
+			justify-content: space-evenly;
+			align-items: center;
+			margin: 0 auto;
+			min-height: 100%;
+			max-width: 960px;
 
-      & > * {
-        flex-basis: initial;
-      }
+			& > * {
+				flex-basis: initial;
+			}
 
-      .preview-wrapper {
-        flex-grow: 1;
-        margin-top: 0;
-        max-width: 260px;
-      }
-    }
-  }
+			.preview-wrapper {
+				flex-grow: 1;
+				margin-top: 0;
+				max-width: 260px;
+			}
+		}
+	}
 }
 
 .preview-wrapper {

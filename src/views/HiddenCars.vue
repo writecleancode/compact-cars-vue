@@ -15,16 +15,12 @@ import debounce from 'lodash.debounce';
 import { getCarsByIds } from '@/services/CarService';
 import type { CarType } from '@/types/types';
 
-const {
-	hiddenCars,
-	findCars,
-	setCarsToDisplay,
-} = useCarsContext();
+const { hiddenCars, findCars, setCarsToDisplay } = useCarsContext();
 const filtersModal = useModal();
 const settingsModal = useModal('640px');
-const isLoading = ref(false)
+const isLoading = ref(false);
 const searchPhrase = ref('');
-const carsData = ref<CarType[]>([])
+const carsData = ref<CarType[]>([]);
 
 const handleSearchCars = debounce((inputValue: string) => {
 	setCarsToDisplay(findCars(inputValue));
@@ -37,22 +33,22 @@ const handleSearchInputChange = (e: InputEvent & { target: HTMLInputElement }) =
 };
 
 const removeFromHidden = (id?: string) => {
-	if (!id) return
+	if (!id) return;
 
-	hiddenCars.value = hiddenCars.value.filter(carId => carId !== id)
-} 
+	hiddenCars.value = hiddenCars.value.filter(carId => carId !== id);
+};
 
 const getHiddenCars = async () => {
 	try {
-		isLoading.value = true
-		const response = await getCarsByIds(hiddenCars.value)
+		isLoading.value = true;
+		const response = await getCarsByIds(hiddenCars.value);
 		carsData.value = response.data;
 	} catch (error) {
 		console.log(error);
 	} finally {
-		isLoading.value = false
+		isLoading.value = false;
 	}
-}
+};
 
 onMounted(() => {
 	getHiddenCars();
@@ -60,7 +56,7 @@ onMounted(() => {
 
 watch(hiddenCars, () => {
 	getHiddenCars();
-})
+});
 </script>
 
 <template>
@@ -78,13 +74,8 @@ watch(hiddenCars, () => {
 			<div class="car-cards-wrapper">
 				<template v-if="carsData.length > 0">
 					<div v-for="car in carsData" class="card-wrapper">
-						<CarCard
-						class="car-card"						
-						:key="car.id"
-						:car />
-						<button class="styled-button reveal-button" @click="removeFromHidden(car.id)">
-							Bring car back to results <ArrowBack />
-						</button>
+						<CarCard class="car-card" :key="car.id" :car />
+						<button class="styled-button reveal-button" @click="removeFromHidden(car.id)">Bring car back to results <ArrowBack /></button>
 					</div>
 				</template>
 				<div class="no-cars-info" v-else>
@@ -217,7 +208,7 @@ watch(hiddenCars, () => {
 
 	.card-wrapper {
 		position: relative;
-		
+
 		.car-card {
 			pointer-events: none;
 			filter: grayscale(30%) opacity(0.5);
