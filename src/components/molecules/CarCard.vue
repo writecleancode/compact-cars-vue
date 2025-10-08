@@ -30,7 +30,7 @@ const { handleCompareStatus, handleRemoveCar } = useCarsContext();
 			<CarInfoBox title="Facelift" :content="car.facelift || 'unknown'" />
 		</div>
 		<div class="buttons-wrapper" v-if="car.id">
-			<CompareButton :isCompared="isCompared" @click="handleCompareStatus(car.id)" />
+			<CompareButton :isCompared="isCompared" @click.prevent="handleCompareStatus(car.id)" />
 			<!-- <StyledButton class="delete-button" aria-label="delete car" @click="handleRemoveCar(car.id)">
 				<TrashIcon />
 			</StyledButton> -->
