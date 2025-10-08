@@ -11,9 +11,18 @@ const apiClient = axios.create({
 	},
 });
 
-export const getCars = (page = 1, perPage = 8) => {
-	return apiClient.get(`/cars?_limit=${perPage}&_page=${page}`);
+export const getCars = (page = 1, perPage = 8, exclude?: string[]) => {
+	if (exclude?.length) {
+		return apiClient.get(`/cars?_limit=${perPage}&_page=${page}${exclude.map(id => `&id_ne=${id}`).join('')}`);
+	} else {
+		return apiClient.get(`/cars?_limit=${perPage}&_page=${page}`);
+	}
+	// return apiClient.get(`/cars?_limit=${perPage}&_page=${page}`);
 };
+
+export const getCarsByIds = (ids: string[]) => {
+	return apiClient.get(`/cars?id=${ids.join('&id=')}`);
+}
 
 export const getCarDetails = (id: string) => {
 	return apiClient.get(`/cars/${id}`);

@@ -6,15 +6,21 @@ import CarInfoBox from '@/components/atoms/CarInfoBox.vue';
 import StyledButton from '@/components/atoms/StyledButton.vue';
 
 import type { CarType } from '@/types/types';
+import { useCarsContext } from '@/providers/useCars';
 import { getCarDetails } from '@/services/CarService';
 import { computed, onMounted, ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const props = defineProps<{
 	id: string;
 }>();
 
+const { hiddenCars } = useCarsContext()
+
+const router = useRouter();
 const isLoading = ref(false);
 const carData = ref<CarType | null>(null);
+
 const generation = computed(() => {
 	const gen = carData.value?.generation;
 	const genCode = carData.value?.generationCode;
@@ -24,6 +30,13 @@ const generation = computed(() => {
 	if (genCode) return `(${genCode})`;
 	return '-';
 });
+
+const hideCar = (id?: string) => {
+  if (!id || hiddenCars.value.includes(id)) return;
+
+  hiddenCars.value.push(id);
+  router.push({ name: 'dashboard' })
+}
 
 const getData = async () => {
 	isLoading.value = true;
@@ -122,7 +135,7 @@ onMounted(() => getData());
         </div>
         <div class="buttons-wrapper">
           <RouterLink :to="{ name: 'car-edit', params: { id: carData.id } }" class="styled-button show-list-btn">Edit car details</RouterLink>
-          <button class="styled-button show-list-btn" disabled>Hide car</button>
+          <button class="styled-button show-list-btn" @click="hideCar(carData.id)">Hide car</button>
         </div>
       </div>
       <div class="car-gallery">

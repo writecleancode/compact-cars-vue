@@ -13,6 +13,7 @@ const useCars = () => {
 	const cars = ref<CarType[]>([]);
 	const carsToDisplay = ref<CarType[]>([]);
 	const comparedCars = ref<CarType[]>([]);
+	const hiddenCars = ref<string[]>([])
 	const totalCars = ref(0);
 	const usersFilterPreferences = ref<UsersFilterPreferencesType>({ brands: [], years: [] });
 
@@ -123,7 +124,7 @@ const useCars = () => {
 	const getCarsData = async (page: number, perPage?: number) => {
 		setLoadingTrue();
 		try {
-			const response = await getCars(page, perPage);
+			const response = await getCars(page, perPage, hiddenCars.value);
 			totalCars.value = Number(response.headers['x-total-count']);
 			if (response) cars.value = response.data;
 		} catch (err) {
@@ -154,6 +155,7 @@ const useCars = () => {
 		cars,
 		carsToDisplay,
 		comparedCars,
+		hiddenCars,
 		totalCars,
 		usersFilterPreferences,
 		handleCompareStatus,

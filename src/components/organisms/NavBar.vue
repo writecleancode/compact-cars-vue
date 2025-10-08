@@ -28,6 +28,9 @@ const handleNavLinksClick = (e: MouseEvent) => {
 			<li>
 				<RouterLink :to="{ name: 'add-car' }" class="nav-link">Add car</RouterLink>
 			</li>
+			<li>
+				<RouterLink :to="{ name: 'hidden-cars' }" class="nav-link">Hidden cars</RouterLink>
+			</li>
 		</ul>
 	</nav>
 	<div class="background-tint" @click="closeMobileNav"></div>
