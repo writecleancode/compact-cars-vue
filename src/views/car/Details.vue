@@ -44,9 +44,13 @@ const getData = async () => {
 	try {
 		const response = await getCarDetails(props.id);
 		carData.value = response.data;
-	} catch (error) {
+	} catch (error: any) {
 		console.log(error);
-		router.push({ name: '404-resource', params: { resource: 'car' } });
+		if (error?.response?.status === 404) {
+			router.push({ name: '404-resource', params: { resource: 'car' } });
+		} else {
+			router.push({ name: 'network-error' });
+		}
 	} finally {
 		isLoading.value = false;
 	}
