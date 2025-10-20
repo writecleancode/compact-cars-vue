@@ -7,6 +7,7 @@ import StyledButton from '@/components/atoms/StyledButton.vue';
 
 import type { CarType } from '@/types/types';
 import { useCarsContext } from '@/providers/useCars';
+import { useNotificationsContext } from '@/providers/useNotifications';
 import { getCarDetails } from '@/services/CarService';
 import { computed, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
@@ -16,6 +17,7 @@ const props = defineProps<{
 }>();
 
 const { hiddenCars } = useCarsContext()
+const { handleSuccessNotifications } = useNotificationsContext();
 
 const router = useRouter();
 const isLoading = ref(false);
@@ -36,6 +38,7 @@ const hideCar = (id?: string) => {
 
   hiddenCars.value.push(id);
   router.push({ name: 'dashboard' })
+  handleSuccessNotifications('✔ Car successfully hidden');
 }
 
 const getData = async () => {

@@ -9,6 +9,7 @@ import FilterBoxYears from '@/components/molecules/FilterBoxYears.vue';
 import FilterBoxBrands from '@/components/molecules/FilterBoxBrands.vue';
 
 import { useCarsContext } from '@/providers/useCars';
+import { useNotificationsContext } from '@/providers/useNotifications';
 import { useModal } from '@/composables/useModal';
 import { onMounted, ref, watch } from 'vue';
 import debounce from 'lodash.debounce';
@@ -20,6 +21,7 @@ const {
 	findCars,
 	setCarsToDisplay,
 } = useCarsContext();
+const { handleSuccessNotifications } = useNotificationsContext();
 const filtersModal = useModal();
 const settingsModal = useModal('640px');
 const isLoading = ref(false)
@@ -40,6 +42,7 @@ const removeFromHidden = (id?: string) => {
 	if (!id) return
 
 	hiddenCars.value = hiddenCars.value.filter(carId => carId !== id)
+	handleSuccessNotifications('✔ Car is visible again');
 } 
 
 const getHiddenCars = async () => {
@@ -83,7 +86,7 @@ watch(hiddenCars, () => {
 						:key="car.id"
 						:car />
 						<button class="styled-button reveal-button" @click="removeFromHidden(car.id)">
-							Bring car back to results <ArrowBack />
+							Bring car back to results <ArrowBack class="icon" />
 						</button>
 					</div>
 				</template>
@@ -230,7 +233,7 @@ watch(hiddenCars, () => {
 			left: 50%;
 			translate: -50% -50%;
 			width: max-content;
-			max-width: 100%;
+			max-width: calc(100% - 1.8rem);
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -239,6 +242,10 @@ watch(hiddenCars, () => {
 
 			&:hover {
 				background-color: #fff;
+			}
+
+			.icon {
+				flex-shrink: 0;
 			}
 		}
 	}
