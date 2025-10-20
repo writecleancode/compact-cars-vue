@@ -2,6 +2,7 @@ import type { CarType, UsersFilterPreferencesType } from '@/types/types';
 import { createProvider } from '@/utils/createProvider';
 import { onMounted, ref } from 'vue';
 import { getCars, getFilterOptions } from '@/services/CarService';
+import { useRouter } from 'vue-router';
 
 const useCars = () => {
 	let filteredCars: CarType[] = [];
@@ -9,11 +10,13 @@ const useCars = () => {
 	const getCarName = (car: CarType) => `${car.brand} ${car.model}`;
 	const getCarProductionYear = (car: CarType) => car.productionStartYear;
 
+	const router = useRouter();
+
 	const isLoading = ref(true);
 	const cars = ref<CarType[]>([]);
 	const carsToDisplay = ref<CarType[]>([]);
 	const comparedCars = ref<CarType[]>([]);
-	const hiddenCars = ref<string[]>([])
+	const hiddenCars = ref<string[]>([]);
 	const totalCars = ref(0);
 	const usersFilterPreferences = ref<UsersFilterPreferencesType>({ brands: [], years: [] });
 
@@ -129,6 +132,7 @@ const useCars = () => {
 			if (response) cars.value = response.data;
 		} catch (err) {
 			console.log(err);
+			router.push({ name: 'network-error' });
 		}
 		setLoadingFalse();
 	};

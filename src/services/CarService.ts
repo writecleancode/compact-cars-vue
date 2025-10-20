@@ -22,7 +22,7 @@ export const getCars = (page = 1, perPage = 8, exclude?: string[]) => {
 
 export const getCarsByIds = (ids: string[]) => {
 	return apiClient.get(`/cars?id=${ids.join('&id=')}`);
-}
+};
 
 export const getCarDetails = (id: string) => {
 	return apiClient.get(`/cars/${id}`);
