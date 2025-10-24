@@ -16,12 +16,8 @@ const props = defineProps<{
 	id: string;
 }>();
 
-<<<<<<< HEAD
 const { hiddenCars } = useCarsContext()
 const { handleSuccessNotifications } = useNotificationsContext();
-=======
-const { hiddenCars } = useCarsContext();
->>>>>>> 191aad46aac220848067fc0c9e399d508d90e460
 
 const router = useRouter();
 const isLoading = ref(false);
@@ -40,16 +36,10 @@ const generation = computed(() => {
 const hideCar = (id?: string) => {
 	if (!id || hiddenCars.value.includes(id)) return;
 
-<<<<<<< HEAD
   hiddenCars.value.push(id);
   router.push({ name: 'dashboard' })
   handleSuccessNotifications('✔ Car successfully hidden');
 }
-=======
-	hiddenCars.value.push(id);
-	router.push({ name: 'dashboard' });
-};
->>>>>>> 191aad46aac220848067fc0c9e399d508d90e460
 
 const getData = async () => {
 	isLoading.value = true;
